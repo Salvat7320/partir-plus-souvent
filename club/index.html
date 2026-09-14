@@ -171,6 +171,22 @@
   .dest b{font-family:var(--f-head);font-size:1.2rem}
   .dest .ph{color:#fff;border-bottom-color:rgba(255,255,255,.8)}
 
+  /* abonnements du quotidien */
+  .subs{list-style:none;margin:0 auto;padding:0;max-width:44rem;display:flex;flex-direction:column;gap:.5rem}
+  .subs li{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:16px;padding:.8rem 1.1rem}
+  .subs li i{flex:none;width:14px;height:14px;border-radius:50%}
+  .subs li .logo{flex:none;width:44px;height:28px;object-fit:contain;object-position:left center}
+  .subs li .logo.wide{width:84px}
+  .subs li i{margin-left:15px;margin-right:15px}
+  @media(max-width:719px){.subs li .logo.wide{width:64px}.subs li .logo{width:36px}}
+  .subs li span{flex:1;min-width:0;line-height:1.3}
+  .subs li span b{font-family:var(--f-head);font-weight:600}
+  .subs li span em{display:block;font-style:normal;font-size:.85rem;color:var(--ink-3)}
+  .subs li strong{font-family:var(--f-head);font-weight:700;font-size:1.15rem;color:var(--ink);white-space:nowrap}
+  .subs li strong small{font-weight:600;font-size:.8rem;color:var(--ink-3)}
+  .subs li.ta{border:2px solid var(--acc);background:var(--acc-soft);padding:1rem 1.1rem;margin-top:.4rem}
+  .subs li.ta span em{color:var(--acc-deep);font-weight:600}
+  .subs li.ta strong{color:var(--acc-deep);font-size:1.35rem}
   /* guarantees */
   .guar{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
   @media(min-width:48rem){.guar{grid-template-columns:repeat(4,1fr)}}
@@ -502,6 +518,10 @@
     .qinfo .acc-h{padding:.85rem 1.1rem;font-size:1rem}
     .qinfo .events li{padding:.6rem .9rem}
     .qinfo .plan{margin:0;max-width:none;padding:1.4rem}
+    .qinfo .subs{max-width:none;gap:.4rem}
+    .qinfo .subs li{padding:.55rem 1rem}
+    .qinfo .subs li.ta{padding:.8rem 1rem}
+
     .qinfo .trust{border:0;padding:.4rem 0 0}
     .qinfo .trust-in{justify-content:flex-start;gap:.4rem 1.2rem;font-size:.85rem}
     .qfit.wide{grid-template-columns:1fr;align-content:center;gap:1.6rem}
@@ -695,7 +715,7 @@
       <span>Depuis <b>2013</b></span>
       <span><b>150+</b> pays</span>
       <span>Bureaux à <b>Paris · Dubaï · Fort Lauderdale · Hong Kong</b></span>
-      <span><b>2,48 M$</b> économisés par les membres en 2025<sup>*</sup></span>
+      <span><b>≈ 2,3 M€</b> économisés par les membres en 2025<sup>*</sup></span>
     </div>
   </div>
 
@@ -877,7 +897,7 @@
               <li data-line="1">
                 <div class="rl"><span>Vos économies de voyage</span><b class="num" data-o="lSave">—</b></div>
                 <button type="button" class="more" data-more>Voir le calcul</button>
-                <div class="detail"><p data-o="fSave"></p><p class="why">45&nbsp;% : la part hébergement d'un budget voyage. 36&nbsp;% : l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Vols, locations, activités, repas et sorties ne sont pas comptés. Adhésion VIP : 19,97&nbsp;$/mois + 20&nbsp;$ d'activation (site officiel).</p></div>
+                <div class="detail"><p data-o="fSave"></p><p class="why">45&nbsp;% : la part hébergement d'un budget voyage. 36&nbsp;% : l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Vols, locations, activités, repas et sorties ne sont pas comptés. Adhésion VIP : 18,37 €/mois + 18,40 € d'activation (site officiel).</p></div>
               </li>
               <li data-line="2" class="aside">
                 <div class="rl"><span>Économisés par vos proches<em>dans leur poche — pas compté</em></span><b class="num" data-o="lNear">—</b></div>
@@ -899,7 +919,7 @@
               <li data-line="3">
                 <div class="rl"><span>Soit, sur une première année</span><b class="num" data-o="lGain">—</b></div>
                 <button type="button" class="more" data-more>Voir le calcul</button>
-                <div class="detail"><p data-o="fBonus"></p><p data-o="fRes"></p><p class="why">Bonus d'accueil : une fois par personne, à son inscription (20 $ pour quelqu'un qui voyage, 40 $ pour quelqu'un qui fait comme vous). Builder Bonus : 10 $ de plus par personne qui fait comme vous, dès le rang Silver. Fast Start : 150 $ par paire de proches qui font comme vous dans vos 21 premiers jours, jusqu'à 450 $. Paliers : 6 points par personne qui fait comme vous, 1 point par personne qui voyage — Silver à 18, Gold à 72, Platinum à 175 (avec un bon Life Experience de 300 $), Jade à 350. Chaque mois ensuite : votre part de chaque renouvellement, tant que la personne reste membre. Barème relevé sur des sites d'ambassadeurs, à confirmer au back-office.</p></div>
+                <div class="detail"><p data-o="fBonus"></p><p data-o="fRes"></p><p class="why">Bonus d'accueil : une fois par personne, à son inscription (18,40 € pour quelqu'un qui voyage, 36,80 € pour quelqu'un qui fait comme vous). Builder Bonus : 9,20 € de plus par personne qui fait comme vous, dès le rang Silver. Fast Start : 138 € par paire de proches qui font comme vous dans vos 21 premiers jours, jusqu'à 414 €. Paliers : 6 points par personne qui fait comme vous, 1 point par personne qui voyage — Silver à 18, Gold à 72, Platinum à 175 (avec un bon Life Experience de 276 €), Jade à 350. Chaque mois ensuite : votre part de chaque renouvellement, tant que la personne reste membre. Barème relevé sur des sites d'ambassadeurs, à confirmer au back-office.</p></div>
               </li>
               <li>
                 <div class="rl"><span>Votre adhésion ambassadeur<em data-o="lCoverNote">—</em></span><b class="num" data-o="lCost">—</b></div>
@@ -924,7 +944,7 @@
         <button class="btn btn-gold" type="button" data-q="open">Calculer en 30 s</button>
       </div>
       <div class="dash-cta d-only"><a class="btn btn-gold" data-wa="simu" href="#">Je veux ce style de vie</a></div>
-      <p class="small narrow center" style="margin-top:1.25rem">Illustration mathématique, pas une promesse : aucun revenu n'est garanti et la majorité des ambassadeurs ne dégagent pas de revenu significatif. Économie moyenne de 36&nbsp;% sur l'hébergement : comparatif de 46 hôtels face à Booking (juin 2026) publié par une ambassadrice. Conditions : licence active et qualification personnelle minimale. Montants (20 $, 40 $, jusqu'à 25 %, prix des adhésions) relevés sur des sources publiques, à confirmer sur le back-office. Commissions en dollars, converties à 0,92 €/$ (taux à actualiser).</p>
+      <p class="small narrow center" style="margin-top:1.25rem">Illustration mathématique, pas une promesse : aucun revenu n'est garanti et la majorité des ambassadeurs ne dégagent pas de revenu significatif. Économie moyenne de 36&nbsp;% sur l'hébergement : comparatif de 46 hôtels face à Booking (juin 2026) publié par une ambassadrice. Conditions : licence active et qualification personnelle minimale. Montants (18,40 €, 36,80 €, jusqu'à 25 %, prix des adhésions) relevés sur des sources publiques, à confirmer sur le back-office. Montants convertis en euros au taux indicatif de 0,92 €/$ (à actualiser).</p>
     </div>
   </section>
 
@@ -980,6 +1000,25 @@
     </div>
   </section>
 
+  <section id="normal" data-dock-t="Un abonnement qui vous rend de l'argent." data-dock-s="C'est le seul de la liste." data-dock-b="WhatsApp" data-dock-go="wa">
+    <div class="wrap">
+      <div class="stack narrow center" data-reveal>
+        <p class="kicker">Un abonnement, comme les autres</p>
+        <h2>Vos proches paient déjà pour leurs séries et leur musique. <span class="hl">Pourquoi pas pour leurs voyages ?</span></h2>
+        <p class="soft">Ce que vous proposez à vos proches, c'est un abonnement comme ceux qu'ils paient déjà — sauf que celui-ci leur rend plus qu'il ne coûte. C'est ce qui rend la recommandation facile.</p>
+      </div>
+      <ul class="subs mt" data-reveal>
+        <li><img class="logo wide" alt="Netflix" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDI0IiBoZWlnaHQ9IjI3Ni43NDIiIHZpZXdCb3g9IjAgMCAxMDI0IDI3Ni43NDIiPjxwYXRoIGQ9Ik0xNDAuODAzIDI1OC45MDRjLTE1LjQwNCAyLjcwNS0zMS4wNzkgMy41MTYtNDcuMjk0IDUuNjc2bC00OS40NTgtMTQ0Ljg1NnYxNTEuMDczYy0xNS40MDQgMS42MjEtMjkuNDU3IDMuNzgzLTQ0LjA1MSA1Ljk0NXYtMjc2Ljc0Mmg0MS4wOGw1Ni4yMTIgMTU3LjAyMXYtMTU3LjAyMWg0My41MTF2MjU4LjkwNHptODUuMTMxLTE1Ny41NThjMTYuNzU3IDAgNDIuNDMxLS44MTEgNTcuODM1LS44MTF2NDMuMjRjLTE5LjE4OSAwLTQxLjYxOSAwLTU3LjgzNS44MTF2NjQuMzIyYzI1LjQwNS0xLjYyMSA1MC44MDktMy43ODUgNzYuNDgyLTQuNTk2djQxLjYxN2wtMTE5LjcyNCA5LjQ2MXYtMjU1LjM5aDExOS43MjR2NDMuMjQxaC03Ni40ODJ2NTguMTA1em0yMzcuMjg0LTU4LjEwNGgtNDQuODYydjE5OC45MDhjLTE0LjU5NCAwLTI5LjE4OCAwLTQzLjIzOS41Mzl2LTE5OS40NDdoLTQ0Ljg2MnYtNDMuMjQyaDEzMi45NjVsLS4wMDIgNDMuMjQyem03MC4yNjYgNTUuMTMyaDU5LjE4N3Y0My4yNGgtNTkuMTg3djk4LjEwNGgtNDIuNDMzdi0yMzkuNzE4aDEyMC44MDh2NDMuMjQxaC03OC4zNzV2NTUuMTMzem0xNDguNjQxIDEwMy41MDdjMjQuNTk0LjUzOSA0OS40NTYgMi40MzQgNzMuNTEgMy43ODN2NDIuNzAxYy0zOC42NDYtMi40MzQtNzcuMjkzLTQuODYzLTExNi43NS01LjY3NnYtMjQyLjY4OWg0My4yNHYyMDEuODgxem0xMDkuOTk0IDQ5LjQ1N2MxMy43ODMuODEyIDI4LjM3NyAxLjYyMyA0Mi40MyAzLjI0MnYtMjU0LjU4aC00Mi40M3YyNTEuMzM4em0yMzEuODgxLTI1MS4zMzhsLTU0Ljg2MyAxMzEuNjE1IDU0Ljg2MyAxNDUuMTI3Yy0xNi4yMTctMi4xNjItMzIuNDMyLTUuMTM1LTQ4LjY0OC03LjgzOGwtMzEuMDc4LTc5Ljk5NC0zMS42MTcgNzMuNTFjLTE1LjY3OC0yLjcwNS0zMC44MTItMy41MTYtNDYuNDg0LTUuNjc4bDU1LjY3Mi0xMjYuNzUtNTAuMjY5LTEyOS45OTJoNDYuNDgybDI4LjM3NyA3Mi42OTkgMzAuMjctNzIuNjk5aDQ3LjI5NXoiIGZpbGw9IiNkODFmMjYiLz48L3N2Zz4="><span><b>Netflix</b> Premium<em>des séries et des films</em></span><strong class="num">21,99&nbsp;€<small>/mois</small></strong></li>
+        <li><img class="logo" alt="YouTube" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJleHRlcm5hbC1pY29uIiB2aWV3Qm94PSIwIDAgMjguNTcgMjAiIGZvY3VzYWJsZT0iZmFsc2UiIHN0eWxlPSJwb2ludGVyLWV2ZW50czogbm9uZTsgZGlzcGxheTogYmxvY2s7IHdpZHRoOiAxMDAlOyBoZWlnaHQ6IDEwMCU7Ij4gPHN2ZyB2aWV3Qm94PSIwIDAgMjguNTcgMjAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxnPiA8cGF0aCBkPSJNMjcuOTcyNyAzLjEyMzI0QzI3LjY0MzUgMS44OTMyMyAyNi42NzY4IDAuOTI2NjIzIDI1LjQ0NjggMC41OTczNjZDMjMuMjE5NyAyLjI0Mjg4ZS0wNyAxNC4yODUgMCAxNC4yODUgMEMxNC4yODUgMCA1LjM1MDQyIDIuMjQyODhlLTA3IDMuMTIzMjMgMC41OTczNjZDMS44OTMyMyAwLjkyNjYyMyAwLjkyNjYyMyAxLjg5MzIzIDAuNTk3MzY2IDMuMTIzMjRDMi4yNDI4OGUtMDcgNS4zNTA0MiAwIDEwIDAgMTBDMCAxMCAyLjI0Mjg4ZS0wNyAxNC42NDk2IDAuNTk3MzY2IDE2Ljg3NjhDMC45MjY2MjMgMTguMTA2OCAxLjg5MzIzIDE5LjA3MzQgMy4xMjMyMyAxOS40MDI2QzUuMzUwNDIgMjAgMTQuMjg1IDIwIDE0LjI4NSAyMEMxNC4yODUgMjAgMjMuMjE5NyAyMCAyNS40NDY4IDE5LjQwMjZDMjYuNjc2OCAxOS4wNzM0IDI3LjY0MzUgMTguMTA2OCAyNy45NzI3IDE2Ljg3NjhDMjguNTcwMSAxNC42NDk2IDI4LjU3MDEgMTAgMjguNTcwMSAxMEMyOC41NzAxIDEwIDI4LjU2NzcgNS4zNTA0MiAyNy45NzI3IDMuMTIzMjRaIiBmaWxsPSIjRkYwMDAwIj48L3BhdGg+IDxwYXRoIGQ9Ik0xMS40MjUzIDE0LjI4NTRMMTguODQ3NyAxMC4wMDA0TDExLjQyNTMgNS43MTUzM1YxNC4yODU0WiIgZmlsbD0id2hpdGUiPjwvcGF0aD4gPC9nPiA8L3N2Zz4gPC9zdmc+"><span><b>YouTube Premium</b> Famille<em>des vidéos sans pub</em></span><strong class="num">29,99&nbsp;€<small>/mois</small></strong></li>
+        <li><img class="logo" alt="Spotify" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTY4cHgiIHdpZHRoPSIxNjhweCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTY4IDE2OCI+IDxwYXRoIGZpbGw9IiMxRUQ3NjAiIGQ9Im04My45OTYgMC4yNzdjLTQ2LjI0OSAwLTgzLjc0MyAzNy40OTMtODMuNzQzIDgzLjc0MiAwIDQ2LjI1MSAzNy40OTQgODMuNzQxIDgzLjc0MyA4My43NDEgNDYuMjU0IDAgODMuNzQ0LTM3LjQ5IDgzLjc0NC04My43NDEgMC00Ni4yNDYtMzcuNDktODMuNzM4LTgzLjc0NS04My43MzhsMC4wMDEtMC4wMDR6bTM4LjQwNCAxMjAuNzhjLTEuNSAyLjQ2LTQuNzIgMy4yNC03LjE4IDEuNzMtMTkuNjYyLTEyLjAxLTQ0LjQxNC0xNC43My03My41NjQtOC4wNy0yLjgwOSAwLjY0LTUuNjA5LTEuMTItNi4yNDktMy45My0wLjY0My0yLjgxIDEuMTEtNS42MSAzLjkyNi02LjI1IDMxLjktNy4yOTEgNTkuMjYzLTQuMTUgODEuMzM3IDkuMzQgMi40NiAxLjUxIDMuMjQgNC43MiAxLjczIDcuMTh6bTEwLjI1LTIyLjgwNWMtMS44OSAzLjA3NS01LjkxIDQuMDQ1LTguOTggMi4xNTUtMjIuNTEtMTMuODM5LTU2LjgyMy0xNy44NDYtODMuNDQ4LTkuNzY0LTMuNDUzIDEuMDQzLTcuMS0wLjkwMy04LjE0OC00LjM1LTEuMDQtMy40NTMgMC45MDctNy4wOTMgNC4zNTQtOC4xNDMgMzAuNDEzLTkuMjI4IDY4LjIyMi00Ljc1OCA5NC4wNzIgMTEuMTI3IDMuMDcgMS44OSA0LjA0IDUuOTEgMi4xNSA4Ljk3NnYtMC4wMDF6bTAuODgtMjMuNzQ0Yy0yNi45OS0xNi4wMzEtNzEuNTItMTcuNTA1LTk3LjI4OS05LjY4NC00LjEzOCAxLjI1NS04LjUxNC0xLjA4MS05Ljc2OC01LjIxOS0xLjI1NC00LjE0IDEuMDgtOC41MTMgNS4yMjEtOS43NzEgMjkuNTgxLTguOTggNzguNzU2LTcuMjQ1IDEwOS44MyAxMS4yMDIgMy43MyAyLjIwOSA0Ljk1IDcuMDE2IDIuNzQgMTAuNzMzLTIuMiAzLjcyMi03LjAyIDQuOTQ5LTEwLjczIDIuNzM5eiIvPiA8L3N2Zz4="><span><b>Spotify</b> Premium Famille<em>de la musique</em></span><strong class="num">21,24&nbsp;€<small>/mois</small></strong></li>
+        <li><img class="logo" alt="Apple Music" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJBcnR3b3JrIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjM2MXB4IiBoZWlnaHQ9IjM2MXB4IiB2aWV3Qm94PSIwIDAgMzYxIDM2MSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYxIDM2MTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPiA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPiAuc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6dXJsKCNTVkdJRF8xXyk7fSAuc3Qxe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I0ZGRkZGRjt9IDwvc3R5bGU+IDxnIGlkPSJMYXllcl81Ij4gPC9nPiA8Zz4gPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8xXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxODAiIHkxPSIzNTguNjA0NyIgeDI9IjE4MCIgeTI9IjcuNzU4NiI+IDxzdG9wIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZBMjMzQiIvPiA8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQjVDNzQiLz4gPC9saW5lYXJHcmFkaWVudD4gPHBhdGggY2xhc3M9InN0MCIgZD0iTTM2MCwxMTIuNjFjMC00LjMsMC04LjYtMC4wMi0xMi45Yy0wLjAyLTMuNjItMC4wNi03LjI0LTAuMTYtMTAuODZjLTAuMjEtNy44OS0wLjY4LTE1Ljg0LTIuMDgtMjMuNjQgYy0xLjQyLTcuOTItMy43NS0xNS4yOS03LjQxLTIyLjQ5Yy0zLjYtNy4wNy04LjMtMTMuNTMtMTMuOTEtMTkuMTRjLTUuNjEtNS42MS0xMi4wOC0xMC4zMS0xOS4xNS0xMy45MSBjLTcuMTktMy42Ni0xNC41Ni01Ljk4LTIyLjQ3LTcuNDFjLTcuOC0xLjQtMTUuNzYtMS44Ny0yMy42NS0yLjA4Yy0zLjYyLTAuMS03LjI0LTAuMTQtMTAuODYtMC4xNkMyNTUuOTksMCwyNTEuNjksMCwyNDcuMzksMCBIMTEyLjYxYy00LjMsMC04LjYsMC0xMi45LDAuMDJjLTMuNjIsMC4wMi03LjI0LDAuMDYtMTAuODYsMC4xNkM4MC45NiwwLjQsNzMsMC44Niw2NS4yLDIuMjdjLTcuOTIsMS40Mi0xNS4yOCwzLjc1LTIyLjQ3LDcuNDEgYy03LjA3LDMuNi0xMy41NCw4LjMtMTkuMTUsMTMuOTFjLTUuNjEsNS42MS0xMC4zMSwxMi4wNy0xMy45MSwxOS4xNGMtMy42Niw3LjItNS45OSwxNC41Ny03LjQxLDIyLjQ5IGMtMS40LDcuOC0xLjg3LDE1Ljc2LTIuMDgsMjMuNjRjLTAuMSwzLjYyLTAuMTQsNy4yNC0wLjE2LDEwLjg2QzAsMTA0LjAxLDAsMTA4LjMxLDAsMTEyLjYxdjEzNC43N2MwLDQuMywwLDguNiwwLjAyLDEyLjkgYzAuMDIsMy42MiwwLjA2LDcuMjQsMC4xNiwxMC44NmMwLjIxLDcuODksMC42OCwxNS44NCwyLjA4LDIzLjY0YzEuNDIsNy45MiwzLjc1LDE1LjI5LDcuNDEsMjIuNDljMy42LDcuMDcsOC4zLDEzLjUzLDEzLjkxLDE5LjE0IGM1LjYxLDUuNjEsMTIuMDgsMTAuMzEsMTkuMTUsMTMuOTFjNy4xOSwzLjY2LDE0LjU2LDUuOTgsMjIuNDcsNy40MWM3LjgsMS40LDE1Ljc2LDEuODcsMjMuNjUsMi4wOGMzLjYyLDAuMSw3LjI0LDAuMTQsMTAuODYsMC4xNiBjNC4zLDAuMDMsOC42LDAuMDIsMTIuOSwwLjAyaDEzNC43N2M0LjMsMCw4LjYsMCwxMi45LTAuMDJjMy42Mi0wLjAyLDcuMjQtMC4wNiwxMC44Ni0wLjE2YzcuODktMC4yMSwxNS44NS0wLjY4LDIzLjY1LTIuMDggYzcuOTItMS40MiwxNS4yOC0zLjc1LDIyLjQ3LTcuNDFjNy4wNy0zLjYsMTMuNTQtOC4zLDE5LjE1LTEzLjkxYzUuNjEtNS42MSwxMC4zMS0xMi4wNywxMy45MS0xOS4xNCBjMy42Ni03LjIsNS45OS0xNC41Nyw3LjQxLTIyLjQ5YzEuNC03LjgsMS44Ny0xNS43NiwyLjA4LTIzLjY0YzAuMS0zLjYyLDAuMTQtNy4yNCwwLjE2LTEwLjg2YzAuMDMtNC4zLDAuMDItOC42LDAuMDItMTIuOVYxMTIuNjEgeiIvPiA8L2c+IDxnIGlkPSJHbHlwaF8yXyI+IDxnPiA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjU0LjUsNTVjLTAuODcsMC4wOC04LjYsMS40NS05LjUzLDEuNjRsLTEwNywyMS41OWwtMC4wNCwwLjAxYy0yLjc5LDAuNTktNC45OCwxLjU4LTYuNjcsMyBjLTIuMDQsMS43MS0zLjE3LDQuMTMtMy42LDYuOTVjLTAuMDksMC42LTAuMjQsMS44Mi0wLjI0LDMuNjJjMCwwLDAsMTA5LjMyLDAsMTMzLjkyYzAsMy4xMy0wLjI1LDYuMTctMi4zNyw4Ljc2IGMtMi4xMiwyLjU5LTQuNzQsMy4zNy03LjgxLDMuOTljLTIuMzMsMC40Ny00LjY2LDAuOTQtNi45OSwxLjQxYy04Ljg0LDEuNzgtMTQuNTksMi45OS0xOS44LDUuMDEgYy00Ljk4LDEuOTMtOC43MSw0LjM5LTExLjY4LDcuNTFjLTUuODksNi4xNy04LjI4LDE0LjU0LTcuNDYsMjIuMzhjMC43LDYuNjksMy43MSwxMy4wOSw4Ljg4LDE3LjgyIGMzLjQ5LDMuMiw3Ljg1LDUuNjMsMTIuOTksNi42NmM1LjMzLDEuMDcsMTEuMDEsMC43LDE5LjMxLTAuOThjNC40Mi0wLjg5LDguNTYtMi4yOCwxMi41LTQuNjFjMy45LTIuMyw3LjI0LTUuMzcsOS44NS05LjExIGMyLjYyLTMuNzUsNC4zMS03LjkyLDUuMjQtMTIuMzVjMC45Ni00LjU3LDEuMTktOC43LDEuMTktMTMuMjZsMC0xMTYuMTVjMC02LjIyLDEuNzYtNy44Niw2Ljc4LTkuMDhjMCwwLDg4Ljk0LTE3Ljk0LDkzLjA5LTE4Ljc1IGM1Ljc5LTEuMTEsOC41MiwwLjU0LDguNTIsNi42MWwwLDc5LjI5YzAsMy4xNC0wLjAzLDYuMzItMi4xNyw4LjkyYy0yLjEyLDIuNTktNC43NCwzLjM3LTcuODEsMy45OSBjLTIuMzMsMC40Ny00LjY2LDAuOTQtNi45OSwxLjQxYy04Ljg0LDEuNzgtMTQuNTksMi45OS0xOS44LDUuMDFjLTQuOTgsMS45My04LjcxLDQuMzktMTEuNjgsNy41MSBjLTUuODksNi4xNy04LjQ5LDE0LjU0LTcuNjcsMjIuMzhjMC43LDYuNjksMy45MiwxMy4wOSw5LjA5LDE3LjgyYzMuNDksMy4yLDcuODUsNS41NiwxMi45OSw2LjZjNS4zMywxLjA3LDExLjAxLDAuNjksMTkuMzEtMC45OCBjNC40Mi0wLjg5LDguNTYtMi4yMiwxMi41LTQuNTVjMy45LTIuMyw3LjI0LTUuMzcsOS44NS05LjExYzIuNjItMy43NSw0LjMxLTcuOTIsNS4yNC0xMi4zNWMwLjk2LTQuNTcsMS04LjcsMS0xMy4yNlY2NC40NiBDMjYzLjU0LDU4LjMsMjYwLjI5LDU0LjUsMjU0LjUsNTV6Ii8+IDwvZz4gPC9nPiA8Zz4gPC9nPiA8Zz4gPC9nPiA8Zz4gPC9nPiA8Zz4gPC9nPiA8Zz4gPC9nPiA8Zz4gPC9nPiA8L3N2Zz4="><span><b>Apple Music</b> Famille<em>de la musique</em></span><strong class="num">19,99&nbsp;€<small>/mois</small></strong></li>
+        <li><img class="logo wide" alt="Deezer" src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYWxxdWVfMSIgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIgc29kaXBvZGk6ZG9jbmFtZT0iaW5kZXguc3ZnIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxMDAwIDE5MS4yIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMDAwIDE5MS4yOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+IC5zdDB7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7ZmlsbDojNDBBQjVEO30gLnN0MXtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgxOTJfMV8pO30gLnN0MntmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgxOTlfMV8pO30gLnN0M3tmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyMDZfMV8pO30gLnN0NHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyMTNfMV8pO30gLnN0NXtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyMjBfMV8pO30gLnN0NntmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyMjdfMV8pO30gLnN0N3tmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyMzRfMV8pO30gLnN0OHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyNDFfMV8pO30gLnN0OXtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOnVybCgjcmVjdDgyNDhfMV8pO30gPC9zdHlsZT4gPGcgaWQ9Imc4MjUyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLDg2Ljg0MzgxOCkiPiA8cGF0aCBpZD0icGF0aDgxNzUiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGQ9Ik0yMzQuMSw0MC4xYzAsNDAuMSwyNC43LDY0LjEsNjEuNCw2NC4xYzE4LjMsMCwzMy43LTUuMSw0Mi4zLTE4LjV2MTguNSBoMzMuNVYtODYuOGgtMzQuOHY4MS4yYy03LjktMTMuNC0yMi41LTE5LjQtNDAuOC0xOS40QzI1OS45LTI1LjEsMjM0LjEtMC42LDIzNC4xLDQwLjFMMjM0LjEsNDAuMXogTTMzNy42LDQwLjEgYzAsMjIuOS0xNS42LDM3LjItMzQuMywzNy4yYy0xOS40LDAtMzQuMy0xNC4zLTM0LjMtMzcuMmMwLTIzLjMsMTUtMzcuOSwzNC4zLTM3LjlDMzIyLDIuMiwzMzcuNiwxNywzMzcuNiw0MC4xeiIvPiA8cGF0aCBpZD0icGF0aDgxNzciIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGQ9Ik00NzkuNiw1NC45Yy00LDE0LjgtMTQuMSwyMi4yLTMwLDIyLjJjLTE4LjUsMC0zMy43LTExLjItMzQuMS0zMWg4Ny43IGMxLjEtNC45LDEuNi0xMC4xLDEuNi0xNS44YzAtMzUuNS0yNC4yLTU1LjUtNTkuOS01NS41Yy0zOC4xLDAtNjQuMywyNy4xLTY0LjMsNjMuOWMwLDQxLDI4LjksNjUuNiw2OC45LDY1LjYgYzMwLjIsMCw1MC43LTEyLjYsNTkuNy0zNy43TDQ3OS42LDU0Ljl6IE00MTUuNSwyMi45QzQxOC44LDguNiw0MzAuNywwLjIsNDQ1LDAuMmMxNS42LDAsMjYuMiw4LjQsMjYuMiwyMS42bC0wLjIsMS4xSDQxNS41eiIvPiA8cGF0aCBpZD0icGF0aDgxNzkiIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIGQ9Ik02MDguNyw1NC45Yy00LDE0LjgtMTQuMSwyMi4yLTMwLDIyLjJjLTE4LjUsMC0zMy43LTExLjItMzQuMS0zMWg4Ny43IGMxLjEtNC45LDEuNi0xMC4xLDEuNi0xNS44YzAtMzUuNS0yNC4yLTU1LjUtNTkuOS01NS41Yy0zOC4xLDAtNjQuMywyNy4xLTY0LjMsNjMuOWMwLDQxLDI4LjksNjUuNiw2OC45LDY1LjYgYzMwLjIsMCw1MC43LTEyLjYsNTkuNy0zNy43TDYwOC43LDU0Ljl6IE01NDQuNiwyMi45YzMuMy0xNC4zLDE1LjItMjIuNywyOS41LTIyLjdjMTUuNiwwLDI2LjIsOC40LDI2LjIsMjEuNmwtMC4yLDEuMUg1NDQuNnoiLz4gPHBhdGggaWQ9InBhdGg4MTgxIiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBkPSJNNzU2LjcsMTA0LjRWNzIuOWgtNzMuMWw3MS4xLTY5LjJ2LTI4LjhINjQyLjJ2MzBoNjguN0w2NDAsNzQuNHYzMEg3NTYuNyB6Ii8+IDxwYXRoIGlkPSJwYXRoODE4MyIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgZD0iTTg1OC40LDU0LjljLTQsMTQuOC0xNC4xLDIyLjItMzAsMjIuMmMtMTguNSwwLTMzLjctMTEuMi0zNC4xLTMxSDg4MiBjMS4xLTQuOSwxLjYtMTAuMSwxLjYtMTUuOGMwLTM1LjUtMjQuMi01NS41LTU5LjktNTUuNWMtMzguMSwwLTY0LjMsMjcuMS02NC4zLDYzLjljMCw0MSwyOC45LDY1LjYsNjguOSw2NS42IGMzMC4yLDAsNTAuNy0xMi42LDU5LjctMzcuN0w4NTguNCw1NC45eiBNNzk0LjMsMjIuOWMzLjMtMTQuMywxNS4yLTIyLjcsMjkuNS0yMi43YzE1LjYsMCwyNi4yLDguNCwyNi4yLDIxLjZsLTAuMiwxLjFINzk0LjN6Ii8+IDxyZWN0IGlkPSJyZWN0ODE4NSIgeD0iMTU1LjUiIHk9Ii0yNS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iNDIuOSIgaGVpZ2h0PSIyNS4xIi8+IDxsaW5lYXJHcmFkaWVudCBpZD0icmVjdDgxOTJfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iLTExMS43MjI1IiB5MT0iMjQxLjgwMzciIHgyPSItMTExLjk0MjciIHkyPSIyNTUuODI1NiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjgzMTggMCAwIC0xLjgzMTggMzgxLjgxMzQgNDc3Ljk1MjgpIj4gPHN0b3Agb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMzU4QzdCIi8+IDxzdG9wIG9mZnNldD0iMC41MjU2IiBzdHlsZT0ic3RvcC1jb2xvcjojMzNBNjVFIi8+IDwvbGluZWFyR3JhZGllbnQ+IDxyZWN0IGlkPSJyZWN0ODE5MiIgeD0iMTU1LjUiIHk9IjkuNyIgY2xhc3M9InN0MSIgd2lkdGg9IjQyLjkiIGhlaWdodD0iMjUuMSIvPiA8bGluZWFyR3JhZGllbnQgaWQ9InJlY3Q4MTk5XzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9Ii0xMjMuODkxMyIgeTE9IjIyMy42Mjc5IiB4Mj0iLTk5Ljc3MjUiIHkyPSIyMzUuOTE3MSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjgzMTggMCAwIC0xLjgzMTggMzgxLjgxMzQgNDc3Ljk1MjgpIj4gPHN0b3Agb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMjIyQjkwIi8+IDxzdG9wIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzM2N0I5OSIvPiA8L2xpbmVhckdyYWRpZW50PiA8cmVjdCBpZD0icmVjdDgxOTkiIHg9IjE1NS41IiB5PSI0NC41IiBjbGFzcz0ic3QyIiB3aWR0aD0iNDIuOSIgaGVpZ2h0PSIyNS4xIi8+IDxsaW5lYXJHcmFkaWVudCBpZD0icmVjdDgyMDZfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iLTIwOC40MzE5IiB5MT0iMjEwLjc3MjUiIHgyPSItMTg1LjAzMTkiIHkyPSIyMTAuNzcyNSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjgzMTggMCAwIC0xLjgzMTggMzgxLjgxMzQgNDc3Ljk1MjgpIj4gPHN0b3Agb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkY5OTAwIi8+IDxzdG9wIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGODAwMCIvPiA8L2xpbmVhckdyYWRpZW50PiA8cmVjdCBpZD0icmVjdDgyMDYiIHg9IjAiIHk9Ijc5LjMiIGNsYXNzPSJzdDMiIHdpZHRoPSI0Mi45IiBoZWlnaHQ9IjI1LjEiLz4gPGxpbmVhckdyYWRpZW50IGlkPSJyZWN0ODIxM18xXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSItMTgwLjEzMTkiIHkxPSIyMTAuNzcyNSIgeDI9Ii0xNTYuNzMxOSIgeTI9IjIxMC43NzI1IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuODMxOCAwIDAgLTEuODMxOCAzODEuODEzNCA0NzcuOTUyOCkiPiA8c3RvcCBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRjgwMDAiLz4gPHN0b3Agb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojQ0MxOTUzIi8+IDwvbGluZWFyR3JhZGllbnQ+IDxyZWN0IGlkPSJyZWN0ODIxMyIgeD0iNTEuOCIgeT0iNzkuMyIgY2xhc3M9InN0NCIgd2lkdGg9IjQyLjkiIGhlaWdodD0iMjUuMSIvPiA8bGluZWFyR3JhZGllbnQgaWQ9InJlY3Q4MjIwXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9Ii0xNTEuODMxOSIgeTE9IjIxMC43NzI1IiB4Mj0iLTEyOC40MzE5IiB5Mj0iMjEwLjc3MjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS44MzE4IDAgMCAtMS44MzE4IDM4MS44MTM0IDQ3Ny45NTI4KSI+IDxzdG9wIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0NDMTk1MyIvPiA8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNDEyODQiLz4gPC9saW5lYXJHcmFkaWVudD4gPHJlY3QgaWQ9InJlY3Q4MjIwIiB4PSIxMDMuNyIgeT0iNzkuMyIgY2xhc3M9InN0NSIgd2lkdGg9IjQyLjkiIGhlaWdodD0iMjUuMSIvPiA8bGluZWFyR3JhZGllbnQgaWQ9InJlY3Q4MjI3XzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9Ii0xMjMuNTU5NiIgeTE9IjIxMC43NzI1IiB4Mj0iLTEwMC4xNTk2IiB5Mj0iMjEwLjc3MjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS44MzE4IDAgMCAtMS44MzE4IDM4MS44MTM0IDQ3Ny45NTI4KSI+IDxzdG9wIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzIyMkI5MCIvPiA8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzNTU5QTYiLz4gPC9saW5lYXJHcmFkaWVudD4gPHJlY3QgaWQ9InJlY3Q4MjI3IiB4PSIxNTUuNSIgeT0iNzkuMyIgY2xhc3M9InN0NiIgd2lkdGg9IjQyLjkiIGhlaWdodD0iMjUuMSIvPiA8bGluZWFyR3JhZGllbnQgaWQ9InJlY3Q4MjM0XzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9Ii0xNTIuNzU1NSIgeTE9IjIyNi4wODExIiB4Mj0iLTEyNy41MDgzIiB5Mj0iMjMzLjQ2MzkiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS44MzE4IDAgMCAtMS44MzE4IDM4MS44MTM0IDQ3Ny45NTI4KSI+IDxzdG9wIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0NDMTk1MyIvPiA8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNDEyODQiLz4gPC9saW5lYXJHcmFkaWVudD4gPHJlY3QgaWQ9InJlY3Q4MjM0IiB4PSIxMDMuNyIgeT0iNDQuNSIgY2xhc3M9InN0NyIgd2lkdGg9IjQyLjkiIGhlaWdodD0iMjUuMSIvPiA8bGluZWFyR3JhZGllbnQgaWQ9InJlY3Q4MjQxXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9Ii0xODAuOTY0OCIgeTE9IjIzNC4zMzQxIiB4Mj0iLTE1NS44OTkiIHkyPSIyMjUuMjEwOCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjgzMTggMCAwIC0xLjgzMTggMzgxLjgxMzQgNDc3Ljk1MjgpIj4gPHN0b3Agb2Zmc2V0PSIyLjY2OTg0MWUtMDMiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkNDMDAiLz4gPHN0b3Agb2Zmc2V0PSIwLjk5OTkiIHN0eWxlPSJzdG9wLWNvbG9yOiNDRTE5MzgiLz4gPC9saW5lYXJHcmFkaWVudD4gPHJlY3QgaWQ9InJlY3Q4MjQxIiB4PSI1MS44IiB5PSI0NC41IiBjbGFzcz0ic3Q4IiB3aWR0aD0iNDIuOSIgaGVpZ2h0PSIyNS4xIi8+IDxsaW5lYXJHcmFkaWVudCBpZD0icmVjdDgyNDhfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iLTE3OC4xNjUxIiB5MT0iMjU3Ljc1MzkiIHgyPSItMTU4LjY5ODciIHkyPSIyMzkuNzkxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuODMxOCAwIDAgLTEuODMxOCAzODEuODEzNCA0NzcuOTUyOCkiPiA8c3RvcCBvZmZzZXQ9IjIuNjY5ODQxZS0wMyIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRDEwMCIvPiA8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRDVBMjIiLz4gPC9saW5lYXJHcmFkaWVudD4gPHJlY3QgaWQ9InJlY3Q4MjQ4IiB4PSI1MS44IiB5PSI5LjciIGNsYXNzPSJzdDkiIHdpZHRoPSI0Mi45IiBoZWlnaHQ9IjI1LjEiLz4gPHBhdGggaWQ9InBhdGg4MjUwIiBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiBkPSJNOTY2LjEsMTkuNmMwLDEuMywwLDMuNywwLDMuN2gzMy45YzAsMCwwLTYuNCwwLTkuOSBjMC0yMi4yLTEzLjktMzguMy0zNy4yLTM4LjNjLTE1LDAtMjUuNiw3LjMtMzEuMSwxOS40di0xOS40aC0zNXYxMjkuM2gzNVYyMS4xYzAtMTMuMiw3LjEtMjAuNSwxOC0yMC41IEM5NTkuNywwLjcsOTY2LjEsMTAuMSw5NjYuMSwxOS42eiIvPiA8L2c+IDwvc3ZnPg=="><span><b>Deezer</b> Famille<em>de la musique</em></span><strong class="num">19,99&nbsp;€<small>/mois</small></strong></li>
+        <li class="ta"><i style="background:var(--acc)"></i><span><b>Travel Advantage</b> VIP<em>vos proches voyagent 36&nbsp;% moins cher — <span data-o="subsSave">et environ 1&nbsp;426&nbsp;€ rendus par an</span></em></span><strong class="num">≈&nbsp;18&nbsp;€<small>/mois</small></strong></li>
+      </ul>
+      <p class="small narrow center" style="margin-top:1rem">Tarifs publics en France, septembre 2026, formules Premium et Famille. Travel Advantage VIP : 18,37 €/mois, soit environ 18&nbsp;€ au taux indicatif de 0,92&nbsp;€/$. Un seul de ces abonnements vous rend plus qu'il ne coûte.</p>
+    </div>
+  </section>
+
   <section id="prix" class="band-soft" data-dock-t="Prêt à ouvrir la porte ?" data-dock-s="On valide ensemble si c'est pour vous." data-dock-b="Je me lance" data-dock-go="wa">
     <div class="wrap">
       <div class="stack narrow center" data-reveal>
@@ -988,21 +1027,21 @@
       </div>
       <div class="plan best" data-reveal>
         <span class="badge">Ambassadeur Élite</span>
-        <div class="amount num">338,97 $ <small>pour démarrer</small></div>
+        <div class="amount num">311,85 € <small>pour démarrer</small></div>
         <p class="soft" style="margin-top:-.3rem"><b style="color:var(--acc-deep)">Remboursée par vos premiers proches</b> : le bonus d'accueil tombe à leur inscription, puis une part de leur renouvellement chaque mois. Votre simulation vous dit en combien de mois.</p>
-        <p class="soft">Puis 119,97 $/mois. Le voyage au tarif Élite, la licence d'ambassadeur et l'accès à la communauté.</p>
+        <p class="soft">Puis 110,37 €/mois. Le voyage au tarif Élite, la licence d'ambassadeur et l'accès à la communauté.</p>
         <table><tbody>
-          <tr><td>Premier mois Élite</td><td class="num">119,97 $</td></tr>
-          <tr><td>Activation unique</td><td class="num">120,00 $</td></tr>
-          <tr><td>Licence annuelle</td><td class="num">99,00 $</td></tr>
+          <tr><td>Premier mois Élite</td><td class="num">110,37 €</td></tr>
+          <tr><td>Activation unique</td><td class="num">110,40 €</td></tr>
+          <tr><td>Licence annuelle</td><td class="num">91,08 €</td></tr>
           <tr><td>Points fidélité</td><td>120 / mois</td></tr>
           <tr><td>Voyageurs additionnels</td><td>4</td></tr>
           <tr><td>Invitations à offrir</td><td>50 + 20 / mois</td></tr>
         </tbody></table>
         <a class="btn btn-gold" data-wa="prix" href="#">Devenir Ambassadeur Élite</a>
       </div>
-      <p class="whisper">Vous préférez d'abord tester le produit ? <a class="link" data-go="vip" href="#">Commencer en VIP à 19,97 $</a></p>
-      <p class="small narrow center" style="margin-top:.8rem">Montants relevés sur des sources publiques (septembre 2026), facturés en dollars américains, à confirmer sur le back-office avant mise en ligne. Adhésion résiliable, 14 jours de rétractation, licence annuelle.</p>
+      <p class="whisper">Vous préférez d'abord tester le produit ? <a class="link" data-go="vip" href="#">Commencer en VIP à 18,37 €</a></p>
+      <p class="small narrow center" style="margin-top:.8rem">Montants relevés sur des sources publiques (septembre 2026), facturés en dollars américains (convertis ici au taux indicatif de 0,92 €/$), à confirmer sur le back-office avant mise en ligne. Adhésion résiliable, 14 jours de rétractation, licence annuelle.</p>
     </div>
   </section>
 
@@ -1062,7 +1101,8 @@
   var usdF = new Intl.NumberFormat("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2});
   var nb = function(s){ return s.replace(/[\u202F\u00A0]/g, "\u00A0"); };
   var eur = { format:function(n){ return nb(eurF.format(n)); } };
-  var usd = function(n){ return nb(usdF.format(n)) + "\u00A0$"; };
+  var USD_EUR_RATE = .92;
+  var usd = function(n){ var v = n * USD_EUR_RATE; return "≈\u00A0" + nb(eurF.format(Math.round(v))) + "\u00A0€"; };
   var E = function(n){ return eur.format(n) + "\u00A0€"; };
   var main = document.getElementById("main");
   var $ = function(id){ return document.getElementById(id); };
@@ -1211,7 +1251,7 @@
     var big = function(n, v){ var e = el(n); if (e) countTo(e, Math.round(v)); };
     var trips = k("trips"), budget = k("budget"), pax = k("pax"), nearIn = k("near");
     var rate = .36, pct = .15, ret = .7;                 // 36 % : économie moyenne constatée sur l'hébergement
-    var BOOKABLE = .45, VIP_YEAR_USD = 239.64 + 20, USD_EUR = .92; // 19,97 $ × 12 + 20 $ d'activation (mwrlife.com/Home/Membership) // 45 % : part hébergement d'un budget voyage
+    var BOOKABLE = .45, VIP_YEAR_USD = 239.64 + 20, USD_EUR = .92; // 18,37 € × 12 + 18,40 € d'activation (mwrlife.com/Home/Membership) // 45 % : part hébergement d'un budget voyage
     var BONUS_VIP = 20, BONUS_ELITE = 40, PRICE_VIP = 19.97, PRICE_ELITE = 119.97, RENEWALS = 11;
     var AMB_COST_USD = PRICE_ELITE * 12 + 120 + 99;
     var vals = { save:0, near:0, gain:0 };
@@ -1255,6 +1295,7 @@
         ? "Votre adhésion est remboursée dès votre voyage n° " + need + "."
         : "Avec si peu de voyages, l'adhésion ne se rembourse pas encore.");
       var bar = el("bar"); if (bar) bar.style.width = Math.max(5, Math.min(100, save / (costVip * 3) * 100)) + "%";
+      set("subsSave", "et environ " + E(Math.round(save)) + " rendus par an");
       set("fSave", pl(n, "voyage") + " × " + E(b) + " × " + pl(p, "voyageur") + " × 45 % (hébergement) × 36 % = <b>" + E(Math.round(save)) + "</b>" +
         (dash ? "" : ", moins " + E(Math.round(costVip)) + " d'adhésion = <b>" + E(Math.round(netVip)) + "</b> net"), true);
       if (nearIn){
@@ -1269,7 +1310,7 @@
     }
 
     var RANKS = [["Silver",18],["Gold",72],["Platinum",175],["Jade",350]];
-    var PERKS = { Platinum:"+ un bon Life Experience de 300 $", Jade:"+ un voyage présidentiel tout compris" };
+    var PERKS = { Platinum:"+ un bon Life Experience de 276 €", Jade:"+ un voyage présidentiel tout compris" };
     function rankOf(pts){ var r = "—"; RANKS.forEach(function(x){ if (pts >= x[1]) r = x[0]; }); return r; }
     function nextRank(pts){ for (var i = 0; i < RANKS.length; i++) if (pts < RANKS[i][1]) return RANKS[i]; return null; }
     function pctFor(n){ return n <= 25 ? .10 : (n <= 100 ? .15 : .25); }
@@ -1314,9 +1355,9 @@
       set("lTotal", sign(total));
       var row = el("totalRow"); if (row) row.classList.toggle("neg", total < 0);
       set("breakeven", "Tous les mois : " + E(Math.round(vals.monthlyFull)) + " tant qu'ils sont membres, et " + E(Math.round(vals.cashEur)) + " cash à leur inscription. " + (vals.netMonthly >= 0 ? "Votre adhésion passe en autofinancement." : "Quelques proches de plus, et votre adhésion passe en autofinancement."));
-      set("fBonus", "Cash à l'inscription : bonus d'accueil " + nE + " × 40 $ + " + nV + " × 20 $ = " + usd(bonus) + ", plus Builder Bonus " + nE + " × 10 $ = " + usd(builder) + " → <b>" + usd(cash) + "</b>" + (fast > 0 ? ". Fast Start si 6 rejoignent dans vos 21 premiers jours : jusqu'à <b>" + usd(fast) + "</b> en plus" : ""), true);
-      set("fRes", "Chaque mois : (" + nE + " × 119,97 $ + " + nV + " × 19,97 $) × " + Math.round(pct * 100) + " % = <b>" + usd(monthlyFull) + "/mois</b>, tant qu'ils restent membres. Sur une première année (11 renouvellements) : " + usd(residual) + ". Paliers : " + nE + " × 6 + " + nV + " × 1 = " + pts + " points → " + (rank === "—" ? "Silver dès 18 points" : rank) + ".", true);
-      set("fCost", "119,97 $ × 12 mois + 120 $ d'activation + 99 $ de licence = <b>" + usd(AMB_COST_USD) + "</b> ≈ " + E(Math.round(costEur)), true);
+      set("fBonus", "Cash à l'inscription : bonus d'accueil " + nE + " × 36,80 € + " + nV + " × 18,40 € = " + usd(bonus) + ", plus Builder Bonus " + nE + " × 9,20 € = " + usd(builder) + " → <b>" + usd(cash) + "</b>" + (fast > 0 ? ". Fast Start si 6 rejoignent dans vos 21 premiers jours : jusqu'à <b>" + usd(fast) + "</b> en plus" : ""), true);
+      set("fRes", "Chaque mois : (" + nE + " × 110,37 € + " + nV + " × 18,37 €) × " + Math.round(pct * 100) + " % = <b>" + usd(monthlyFull) + "/mois</b>, tant qu'ils restent membres. Sur une première année (11 renouvellements) : " + usd(residual) + ". Paliers : " + nE + " × 6 + " + nV + " × 1 = " + pts + " points → " + (rank === "—" ? "Silver dès 18 points" : rank) + ".", true);
+      set("fCost", "110,37 € × 12 mois + 110,40 € d'activation + 91,08 € de licence = <b>" + usd(AMB_COST_USD) + "</b> ≈ " + E(Math.round(costEur)), true);
       set("fTotal", E(Math.round(vals.save)) + " (vos économies) + " + E(Math.round(gainEur)) + " (cash + 11 mois) − " + E(Math.round(costEur)) + " (adhésion 12 mois + frais de départ) = <b>" + sign(total) + "</b>", true);
       refreshHero();
     }
@@ -1638,6 +1679,7 @@
       { type:"info", kicker:"Life Experiences® & événements", title:"Une communauté qui <span class=\"hl\">se retrouve aux quatre coins du monde</span>.", sub:"Voyages de groupe, formations et conventions internationales — ici, la convention Elevation 2026 à Antalya.", build:function(){ return cloneFrom("#experiences .events") + '<div class="vid" style="margin-top:.8rem">' + cloneFrom("#experiences .facade") + '</div>'; } },
       { type:"info", kicker:"Présentation officielle", title:"Onze minutes qui peuvent <span class=\"hl\">changer votre année</span>.", sub:"", build:function(){ return cloneFrom("#video .vids .vid"); } },
       { type:"info", kicker:"Comment le club vous rémunère", title:"Six façons d'être <span class=\"hl\">rémunéré</span>.", sub:"Les montants se présentent avec le document officiel des revenus, lors de votre appel.", build:function(){ return cloneFrom("#leviers .acc-list"); } },
+      { type:"info", kicker:"Un abonnement, comme les autres", title:"Vos proches paient déjà pour leurs séries et leur musique. <span class=\"hl\">Pourquoi pas pour leurs voyages ?</span>", sub:"Un abonnement comme ceux qu'ils paient déjà — sauf que celui-ci leur rend plus qu'il ne coûte. C'est ce qui rend la recommandation facile.", build:function(){ return cloneFrom("#normal .subs"); } },
       { type:"info", kicker:"Rejoindre le club", title:"Votre place dans le <span class=\"hl\">club des Ambassadeurs Élite</span>.", sub:"", build:function(){ return cloneFrom("#prix .plan"); } },
       { type:"info", kicker:"Qui vous accompagne", title:"Vous ne démarrez <span class=\"hl\">jamais seul</span>.", sub:"", build:function(){ return cloneFrom("#guide .guide"); } },
       { type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de se lancer</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 4) + '</div>'; } },
@@ -1691,7 +1733,7 @@
   }
   function calcText(){
     var v = state.sim;
-    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 19,97 $ × 12 + 20 $ d'activation ≈ " + E(Math.round(v.costVip)) + " la première année. Estimation, pas un devis.";
+    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 18,37 € × 12 + 18,40 € d'activation ≈ " + E(Math.round(v.costVip)) + " la première année. Estimation, pas un devis.";
   }
   function resultHTML(){
     var v = state.sim, club = state.path === "club";
@@ -1710,7 +1752,7 @@
       '</div>';
     return h;
   }
-  var PERKS_Q = { Platinum:"+ un bon Life Experience de 300 $", Jade:"+ un voyage présidentiel tout compris" };
+  var PERKS_Q = { Platinum:"+ un bon Life Experience de 276 €", Jade:"+ un voyage présidentiel tout compris" };
   function earnLines(){
     var v = state.sim;
     return '<p class="kicker">Ce que ça vous rapporte</p>' +
@@ -1728,9 +1770,9 @@
   }
   function earnCalc(){
     var v = state.sim;
-    return "Cash à l'inscription : bonus d'accueil " + v.nE + " × 40 $ (ceux qui font comme vous) + " + v.nV + " × 20 $ (ceux qui voyagent) = " + usd(v.bonus) + ", plus Builder Bonus 10 $ par personne qui fait comme vous = " + usd(v.builder) + " → <b>" + usd(v.cash) + "</b>." +
-      (v.fast > 0 ? " Fast Start : 150 $ par paire de proches qui font comme vous dans vos 21 premiers jours, jusqu'à 450 $ → <b>" + usd(v.fast) + "</b>." : "") +
-      " Chaque mois ensuite : (" + v.nE + " × 119,97 $ + " + v.nV + " × 19,97 $) × " + Math.round(v.pct * 100) + " % = <b>" + usd(v.monthlyFullUsd) + "/mois</b>, tant qu'ils sont membres, sans limite de durée (10 % jusqu'à 25 membres, 25 % dès 101). Paliers : 6 points par personne qui fait comme vous, 1 par personne qui voyage = " + v.pts + " points ; Silver à 18, Gold à 72, Platinum à 175 (+ bon Life Experience 300 $), Jade à 350. Votre adhésion ambassadeur : 119,97 $/mois (≈ " + E(Math.round(v.memberEur)) + "), plus 120 $ d'activation et 99 $ de licence annuelle au départ (≈ " + E(Math.round(v.feesEur)) + "). Non compté : Boost Bonus (600 à 1 200 $/semaine selon le rythme), résiduels d'équipe et bonus de rang supérieurs. Barème relevé sur des sites d'ambassadeurs, à confirmer au back-office. Aucun revenu n'est garanti.";
+    return "Cash à l'inscription : bonus d'accueil " + v.nE + " × 36,80 € (ceux qui font comme vous) + " + v.nV + " × 18,40 € (ceux qui voyagent) = " + usd(v.bonus) + ", plus Builder Bonus 9,20 € par personne qui fait comme vous = " + usd(v.builder) + " → <b>" + usd(v.cash) + "</b>." +
+      (v.fast > 0 ? " Fast Start : 138 € par paire de proches qui font comme vous dans vos 21 premiers jours, jusqu'à 414 € → <b>" + usd(v.fast) + "</b>." : "") +
+      " Chaque mois ensuite : (" + v.nE + " × 110,37 € + " + v.nV + " × 18,37 €) × " + Math.round(v.pct * 100) + " % = <b>" + usd(v.monthlyFullUsd) + "/mois</b>, tant qu'ils sont membres, sans limite de durée (10 % jusqu'à 25 membres, 25 % dès 101). Paliers : 6 points par personne qui fait comme vous, 1 par personne qui voyage = " + v.pts + " points ; Silver à 18, Gold à 72, Platinum à 175 (+ bon Life Experience 276 €), Jade à 350. Votre adhésion ambassadeur : 110,37 €/mois (≈ " + E(Math.round(v.memberEur)) + "), plus 110,40 € d'activation et 91,08 € de licence annuelle au départ (≈ " + E(Math.round(v.feesEur)) + "). Non compté : Boost Bonus (600 à 1 104 €/semaine selon le rythme), résiduels d'équipe et bonus de rang supérieurs. Barème relevé sur des sites d'ambassadeurs, à confirmer au back-office. Aucun revenu n'est garanti.";
   }
   function earnHTML(){
     var v = state.sim, n = v.nE + v.nV;
@@ -1738,7 +1780,7 @@
       '<h2>' + n + ' proche' + (n > 1 ? 's' : '') + ' qui voyage' + (n > 1 ? 'nt' : '') + ' moins cher, <span class="hl">dont ' + v.nE + ' qui ' + (v.nE > 1 ? 'font' : 'fait') + ' comme vous</span>.</h2>' +
       '<div class="qres" id="qEarn">' + earnLines() + '</div>' +
       '<details class="qcalc"><summary>Comment c\'est calculé ?</summary><p id="qEarnCalc">' + earnCalc() + '</p></details>' +
-      '<p class="small">Illustration, pas une promesse : aucun revenu n\'est garanti. Les personnes qui voyagent prennent la formule voyage (VIP, 19,97 $/mois) ; celles qui font comme vous prennent la formule ambassadeur (Élite). Le détail des formules arrive à l\'écran tarif.</p>' +
+      '<p class="small">Illustration, pas une promesse : aucun revenu n\'est garanti. Les personnes qui voyagent prennent la formule voyage (VIP, 18,37 €/mois) ; celles qui font comme vous prennent la formule ambassadeur (Élite). Le détail des formules arrive à l\'écran tarif.</p>' +
       '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">Découvrir cette vie →</button><a class="btn btn-line" data-q="wa" href="#">Rejoindre le club — sur WhatsApp</a></div>';
   }
   function renderStep(){
