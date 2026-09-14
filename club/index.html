@@ -390,6 +390,7 @@
 
   /* ---------- mobile : tunnel quiz + compaction ---------- */
   .m-only{display:none}
+  @media(max-width:719px){.m-hide{display:none}}
   .simu-m{display:none;background:#fff;border:2px solid var(--acc);border-radius:22px;padding:1.4rem;margin-top:1.4rem;text-align:center;flex-direction:column;gap:.6rem}
   .simu-m .big{color:var(--acc);font-size:2.8rem}
   .quiz{position:fixed;inset:0;z-index:80;background:#fff;display:flex;flex-direction:column;overflow:hidden}
@@ -450,23 +451,60 @@
   .qcalc summary{font-family:var(--f-head);font-weight:600;color:var(--ink);cursor:pointer}
   .qcalc p{margin-top:.5rem;font-variant-numeric:tabular-nums}
   @media(min-width:720px){
-    .quiz{background:linear-gradient(160deg,var(--acc-soft) 0%,#fff 55%,var(--sand) 100%);align-items:center;padding:1.2rem 1.5rem 1.5rem;gap:.8rem}
-    .quiz-top{width:100%;max-width:46rem;border:0;padding:.4rem 0}
-    .quiz-body{flex:0 1 auto;width:100%;max-width:46rem;max-height:calc(100vh - 7rem);background:#fff;border-radius:26px;box-shadow:0 30px 70px -40px rgba(18,56,64,.4);padding:2.2rem 2.4rem;gap:1.1rem}
-    .quiz-body h2{font-size:2rem}
-    .quiz-body h1{font-size:2.4rem}
-    .qopts{grid-template-columns:repeat(3,1fr)}
-    .qopt{flex-direction:column;align-items:flex-start;justify-content:center;gap:.2rem;min-height:74px}
-    .qfoot{flex-direction:row;flex-wrap:wrap}
-    .qfoot .btn{width:auto;flex:1 1 14rem;min-height:52px}
+    .quiz{background:#fff;padding:0;gap:0;height:100dvh}
+    .quiz::before{content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(60% 70% at 85% 20%,var(--acc-soft) 0%,transparent 60%),radial-gradient(50% 60% at 10% 90%,var(--sand) 0%,transparent 60%),linear-gradient(180deg,#fff 0%,#FBFCFB 100%)}
+    .quiz-top{position:relative;width:100%;border:0;padding:1rem 2.5rem .6rem;gap:1rem}
+    .quiz-top .ic{width:44px;height:44px;background:#fff;box-shadow:0 6px 18px -8px rgba(18,56,64,.35)}
+    .qbar{height:6px}
+    .quiz-body{position:relative;flex:1;width:100%;max-width:none;padding:0;overflow:hidden;display:block}
+    .qfit{height:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding:1rem clamp(2rem,6vw,6rem) 2.2rem;box-sizing:border-box}
+    .qfit.single{grid-template-columns:1fr;justify-items:center}
+    .qfit.single .qL{max-width:56rem;text-align:center;align-items:center}
+    .qL{display:flex;flex-direction:column;gap:1.1rem;max-width:38rem;min-width:0}
+    .qR{display:flex;flex-direction:column;gap:.9rem;min-width:0}
+    .qL h1{font-size:clamp(2.4rem,3.6vw,3.4rem)}
+    .qL h2{font-size:clamp(2rem,3vw,2.8rem)}
+    .qL .lead{font-size:1.2rem}
+    .qL .kicker{font-size:.9rem}
+    .qfoot{margin-top:.6rem;flex-direction:row;flex-wrap:wrap;padding-top:0}
+    .qfoot .btn{width:auto;flex:0 1 auto;min-width:14rem;min-height:54px;padding:.9rem 1.8rem}
     .qfoot .small{flex-basis:100%}
+    .qopts{grid-template-columns:1fr;gap:.8rem}
+    .qopt{min-height:76px;font-size:1.15rem;border-radius:20px;padding:.9rem 1.4rem;box-shadow:0 10px 30px -22px rgba(18,56,64,.4)}
+    .qopt small{font-size:.9rem}
+    .stepper{gap:2rem;padding:1rem 0}
+    .stepper button{width:84px;height:84px}
+    .stepper button svg{width:30px;height:30px}
+    .stepper .sv{font-size:5rem}
+    .stepper-lbl{font-size:1.15rem}
+    .qR .vid .facade,.qR > .facade{box-shadow:0 30px 60px -30px rgba(18,56,64,.45)}
+    .qres{padding:1.6rem 1.8rem;border-radius:26px;box-shadow:0 30px 60px -30px rgba(18,56,64,.45)}
     .qres .big{font-size:3.4rem}
-    .quiz-body .journey{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-    .quiz-body .guar{grid-template-columns:repeat(2,1fr)}
-    .quiz-body .stories,.quiz-body .loop{display:grid;grid-template-columns:repeat(2,1fr)}
-    .quiz-body .grid3{display:grid;grid-template-columns:repeat(3,1fr)}
-    .quiz-body .vids{grid-template-columns:1fr 1fr;align-items:start}
-    .quiz-body .guide{grid-template-columns:.6fr 1.4fr}
+    .qcalc{background:#fff}
+    .qsum{font-size:1.05rem}
+    .qinfo .journey{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .qinfo .step{padding:1.1rem 1.1rem 1rem}
+    .qinfo .grid3{display:grid;grid-template-columns:1fr;gap:.7rem}
+    .qinfo .free{padding:1.1rem 1.3rem;flex-direction:row;align-items:center;gap:1rem}
+    .qinfo .free strong{font-size:1.2rem;flex:0 0 11rem}
+    .qinfo .stories,.qinfo .loop{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .qinfo .book{grid-template-columns:repeat(3,1fr);gap:.6rem}
+    .qinfo .book-it{padding:.9rem}
+    .qinfo .guar{grid-template-columns:repeat(4,1fr);gap:.6rem}
+    .qinfo .guar-it{padding:.9rem .5rem}
+    .qinfo .guar-it strong{font-size:1.5rem}
+    .qinfo .vids{grid-template-columns:1fr 1fr;gap:.8rem}
+    .qinfo .vid .ticks{display:none}
+    .qinfo .guide{grid-template-columns:.7fr 1.3fr;gap:1rem}
+    .qinfo .acc-list{gap:.5rem}
+    .qinfo .acc-h{padding:.85rem 1.1rem;font-size:1rem}
+    .qinfo .events li{padding:.6rem .9rem}
+    .qinfo .plan{margin:0;max-width:none;padding:1.4rem}
+    .qinfo .trust{border:0;padding:.4rem 0 0}
+    .qinfo .trust-in{justify-content:flex-start;gap:.4rem 1.2rem;font-size:.85rem}
+    .qscene{width:100%;max-width:34rem;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(18,56,64,.18))}
+    .qstep{font-family:var(--f-head);font-weight:600;font-size:.85rem;color:var(--ink-3);white-space:nowrap}
   }
   .fold{border:1px solid var(--line);border-radius:12px;padding:.6rem .9rem;margin-top:1rem}
   .fold summary{font-size:.85rem;font-weight:700;color:var(--ink-2);cursor:pointer}
@@ -583,6 +621,7 @@
   <div class="quiz-top">
     <button class="ic" type="button" id="qBack" aria-label="Écran précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="qbar"><i id="qBar"></i></div>
+    <span class="qstep m-hide" id="qStep"></span>
     <button class="quiz-skip" type="button" id="qSkip">Passer</button>
     <button class="ic" type="button" id="qClose" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
@@ -1582,7 +1621,7 @@
       { type:"info", kicker:"Ce que vous gagnez vraiment", title:"Trois libertés <span class=\"hl\">que l'argent seul n'achète pas</span>.", sub:"", build:function(){ return cloneFrom("#journee ~ section .grid3, .grid3"); } },
       { type:"info", kicker:"Life Experiences® & événements", title:"Une communauté qui <span class=\"hl\">se retrouve aux quatre coins du monde</span>.", sub:"Voyages de groupe, formations et conventions internationales — ici, la convention Elevation 2026 à Antalya.", build:function(){ return cloneFrom("#experiences .events") + '<div class="vid" style="margin-top:.8rem">' + cloneFrom("#experiences .facade") + '</div>'; } },
       { type:"info", kicker:"Présentation officielle", title:"Onze minutes qui peuvent <span class=\"hl\">changer votre année</span>.", sub:"", build:function(){ return cloneFrom("#video .vids .vid"); } },
-      { type:"info", kicker:"Comment le club vous rémunère", title:"Six façons d'être <span class=\"hl\">remercié</span>.", sub:"Les montants se présentent avec le document officiel des revenus, lors de votre appel.", build:function(){ return cloneFrom("#leviers .acc-list"); } },
+      { type:"info", kicker:"Comment le club vous rémunère", title:"Six façons d'être <span class=\"hl\">rémunéré</span>.", sub:"Les montants se présentent avec le document officiel des revenus, lors de votre appel.", build:function(){ return cloneFrom("#leviers .acc-list"); } },
       { type:"info", kicker:"Rejoindre le club", title:"Votre place dans le <span class=\"hl\">club des Ambassadeurs Élite</span>.", sub:"", build:function(){ return cloneFrom("#prix .plan"); } },
       { type:"info", kicker:"Qui vous accompagne", title:"Vous ne démarrez <span class=\"hl\">jamais seul</span>.", sub:"", build:function(){ return cloneFrom("#guide .guide"); } },
       { type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de se lancer</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 4) + '</div>'; } },
@@ -1714,6 +1753,7 @@
     }
     qBody.innerHTML = h;
     qBody.scrollTop = 0;
+    layoutDesktop(st);
     linkOther(qBody);
     bindVideos(qBody);
     bindAcc(qBody);
@@ -1723,6 +1763,49 @@
       if (WA_NUMBER){ a.setAttribute("target", "_blank"); a.setAttribute("rel", "noopener"); }
     });
   }
+  /* bureau : deux colonnes, sans défilement */
+  function layoutDesktop(st){
+    if (isMobile()) return;
+    var fit = document.createElement("div"); fit.className = "qfit";
+    var L = document.createElement("div"); L.className = "qL";
+    var R = document.createElement("div"); R.className = "qR";
+    var toRight = ".vid, .qres, .qcalc, .qinfo, .qopts, .stepper, .stepper-lbl, .qmini, .qsum";
+    [].slice.call(qBody.children).forEach(function(n){ (n.matches(toRight) ? R : L).appendChild(n); });
+    if (!R.children.length){
+      var scene = main.querySelector(".hero .scene") || main.querySelector(".hero .wall");
+      if (scene){ var c = scene.cloneNode(true); c.classList.add("qscene"); c.removeAttribute("data-reveal"); R.appendChild(c); }
+    }
+    fit.appendChild(L);
+    if (R.children.length) fit.appendChild(R); else fit.classList.add("single");
+    qBody.appendChild(fit);
+    var lbl = $("qStep"); if (lbl) lbl.textContent = "Étape " + (qi + 1) + " / " + qSteps.length;
+    fitScreen();
+  }
+  var fitTimers = [];
+  function fitScreen(){
+    var f = qBody.querySelector(".qfit"); if (!f || isMobile()) return;
+    f.style.zoom = 1;
+    var k = Math.min(1, (qBody.clientHeight / Math.max(1, f.scrollHeight)) * .985);
+    if (qBody.scrollWidth > qBody.clientWidth) k = Math.min(k, qBody.clientWidth / qBody.scrollWidth);
+    f.style.zoom = Math.max(.55, k);
+    fitTimers.forEach(clearTimeout);
+    fitTimers = [setTimeout(refit, 120), setTimeout(refit, 600), setTimeout(refit, 1500)];
+  }
+  function refit(){
+    var f = qBody.querySelector(".qfit"); if (!f || isMobile()) return;
+    f.style.zoom = 1;
+    var k = Math.min(1, (qBody.clientHeight / Math.max(1, f.scrollHeight)) * .985);
+    f.style.zoom = Math.max(.55, k);
+  }
+  var lastMode = isMobile();
+  window.addEventListener("resize", function(){
+    if (quiz.hidden) return;
+    var m = isMobile();
+    if (m !== lastMode){ lastMode = m; renderStep(); } else fitScreen();
+  });
+  qBody.addEventListener("toggle", function(){ setTimeout(refit, 30); }, true);
+  qBody.addEventListener("click", function(e){ if (e.target.closest(".acc-h")) setTimeout(refit, 350); });
+
   qBody.addEventListener("click", function(e){
     var t = e.target;
     var opt = t.closest(".qopt");
