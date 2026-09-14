@@ -733,7 +733,7 @@
           <div class="big num" data-o="save">0 €</div>
           <p style="color:var(--res-soft)">par an, sur l'hébergement de vos voyages.</p>
           <ul class="lines">
-            <li><span>Adhésion VIP sur l'année</span><b class="num" data-o="cost">—</b></li>
+            <li><span>Adhésion VIP la 1ʳᵉ année, activation comprise</span><b class="num" data-o="cost">—</b></li>
             <li class="tot"><span>Il vous reste en poche</span><b class="num" data-o="net">—</b></li>
           </ul>
           <div class="meter"><i data-o="bar"></i></div>
@@ -749,7 +749,7 @@
         <button class="btn btn-gold" type="button" data-q="open">Calculer en 30 s</button>
       </div>
       <p class="whisper" data-reveal>Certains membres ne paient plus vraiment leur adhésion : ils la font rembourser par leurs voyages… et par ceux des autres. <a class="link" data-go="club" data-from="vip" href="#">Découvrir le club privé</a></p>
-      <p class="small narrow center" style="margin-top:1rem">Estimation indicative, pas un devis : dépend des dates, destinations et disponibilités. Économie moyenne de 36&nbsp;% sur l'hébergement : comparatif de 46 hôtels face à Booking (juin 2026) publié par une ambassadrice ; sur 10&nbsp;% des hôtels, Booking était aussi cher ou moins cher. Hébergement estimé à 45&nbsp;% d'un budget voyage. Adhésion VIP 19,97&nbsp;$/mois convertie à 0,92&nbsp;€/$ (taux à actualiser).</p>
+      <p class="small narrow center" style="margin-top:1rem">Estimation indicative, pas un devis : dépend des dates, destinations et disponibilités. Économie moyenne de 36&nbsp;% sur l'hébergement : comparatif de 46 hôtels face à Booking (juin 2026) publié par une ambassadrice ; sur 10&nbsp;% des hôtels, Booking était aussi cher ou moins cher. Hébergement estimé à 45&nbsp;% d'un budget voyage. Adhésion VIP 19,97&nbsp;$/mois + 20&nbsp;$ d'activation (site officiel MWR Life), convertie à 0,92&nbsp;€/$ (taux à actualiser).</p>
     </div>
   </section>
 
@@ -819,7 +819,7 @@
     </div>
   </section>
 
-  <section id="prix" class="band-soft" data-dock-t="19,97 $ par mois, c'est tout." data-dock-s="Sans frais d'activation." data-dock-b="Je m'inscris" data-dock-go="wa">
+  <section id="prix" class="band-soft" data-dock-t="19,97 $ par mois, c'est tout." data-dock-s="Activation unique de 20 $." data-dock-b="Je m'inscris" data-dock-go="wa">
     <div class="wrap">
       <div class="stack narrow center" data-reveal>
         <p class="kicker">Tarif</p>
@@ -830,14 +830,14 @@
         <div class="amount num">19,97 $ <small>/ mois</small></div>
         <p class="soft">L'accès complet aux tarifs membres pour vous et un voyageur additionnel. Un seul séjour au tarif membre rembourse généralement l'année entière.</p>
         <table><tbody>
-          <tr><td>Frais d'activation</td><td class="num">0 $</td></tr>
+          <tr><td>Frais d'activation</td><td class="num">20 $ (une fois)</td></tr>
           <tr><td>Invitations à offrir</td><td>15 + 3 / mois</td></tr>
           <tr><td>Engagement</td><td>Aucun</td></tr>
           <tr><td>Rétractation</td><td>14 jours</td></tr>
         </tbody></table>
         <a class="btn btn-gold" data-wa="prix" href="#">Rejoindre le club VIP</a>
       </div>
-      <p class="small narrow center" style="margin-top:1.25rem">Montant relevé sur des sources publiques (septembre 2026), facturé en dollars américains, à confirmer sur le back-office avant mise en ligne.</p>
+      <p class="small narrow center" style="margin-top:1.25rem">Tarif relevé sur le site officiel MWR Life (septembre 2026), facturé en dollars américains.</p>
     </div>
   </section>
 
@@ -1032,7 +1032,7 @@
     var big = function(n, v){ var e = el(n); if (e) countTo(e, Math.round(v)); };
     var trips = k("trips"), budget = k("budget"), pax = k("pax"), nearIn = k("near");
     var rate = .36, pct = .15, ret = .7;                 // 36 % : économie moyenne constatée sur l'hébergement
-    var BOOKABLE = .45, VIP_YEAR_USD = 239.64, USD_EUR = .92; // 45 % : part hébergement d'un budget voyage
+    var BOOKABLE = .45, VIP_YEAR_USD = 239.64 + 20, USD_EUR = .92; // 19,97 $ × 12 + 20 $ d'activation (mwrlife.com/Home/Membership) // 45 % : part hébergement d'un budget voyage
     var BONUS_VIP = 20, BONUS_ELITE = 40, PRICE_VIP = 19.97, PRICE_ELITE = 119.97, RENEWALS = 11;
     var AMB_COST_USD = PRICE_ELITE * 12 + 120 + 99;
     var vals = { save:0, near:0, gain:0 };
@@ -1438,7 +1438,7 @@
         '<li class="tot"><span>Résultat estimé sur 12 mois</span><b class="num">' + sg(v.total) + '</b></li></ul>' +
         '<p class="small">Avec vos réponses : ' + v.trips + ' voyage' + (v.trips > 1 ? 's' : '') + ' à ' + E(v.budget) + ', ' + (v.nE + v.nV) + ' proche' + (v.nE + v.nV > 1 ? 's' : '') + ' qui voyagent moins cher, dont ' + v.nE + ' qui font comme vous. Estimation, pas une promesse.</p>'
       : '<ul class="lines qsum"><li><span>Vos économies de voyage, par an</span><b class="num">' + E(Math.round(v.save)) + '</b></li>' +
-        '<li><span>Adhésion VIP sur l\'année</span><b class="num">−' + E(Math.round(v.costVip)) + '</b></li>' +
+        '<li><span>Adhésion VIP la 1ʳᵉ année, activation comprise</span><b class="num">−' + E(Math.round(v.costVip)) + '</b></li>' +
         '<li class="tot"><span>Il vous reste en poche</span><b class="num">' + sg(v.netVip) + '</b></li>' +
         '<li><span>Sur trois ans</span><b class="num">' + E(Math.round(v.save * 3)) + '</b></li></ul>' +
         '<p class="small">Avec vos réponses : ' + v.trips + ' voyage' + (v.trips > 1 ? 's' : '') + ' à ' + E(v.budget) + ' pour ' + v.pax + ' voyageur' + (v.pax > 1 ? 's' : '') + '. Estimation, pas une promesse.</p>';
@@ -1475,13 +1475,13 @@
   }
   function calcText(){
     var v = state.sim;
-    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 19,97 $ × 12 ≈ " + E(Math.round(v.costVip)) + "/an. Estimation, pas un devis.";
+    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 19,97 $ × 12 + 20 $ d'activation ≈ " + E(Math.round(v.costVip)) + " la première année. Estimation, pas un devis.";
   }
   function resultHTML(){
     var v = state.sim, club = state.path === "club";
     var h = '<p class="kicker">Votre résultat</p><h2>Vous économisez environ</h2>' +
       '<div class="qres"><div class="big num">' + E(Math.round(v.save)) + '</div><p style="color:var(--res-soft)">par an, sur l\'hébergement de vos voyages.</p>' +
-      '<ul class="lines"><li><span>Adhésion VIP sur l\'année</span><b class="num">' + E(Math.round(v.costVip)) + '</b></li>' +
+      '<ul class="lines"><li><span>Adhésion VIP la 1ʳᵉ année, activation comprise</span><b class="num">' + E(Math.round(v.costVip)) + '</b></li>' +
       '<li class="tot"><span>Il vous reste en poche</span><b class="num">' + (v.netVip >= 0 ? "+" : "−") + E(Math.abs(Math.round(v.netVip))) + '</b></li>' +
       (club && v.nearN ? '<li><span>Économisés par vos ' + v.nearN + ' proche' + (v.nearN > 1 ? 's' : '') + '</span><b class="num">' + E(Math.round(v.near)) + '</b></li>' : '') +
       '</ul><p class="pay">' + (v.need <= v.trips ? "Adhésion remboursée dès votre voyage n° " + v.need + "." : "Avec si peu de voyages, l'adhésion ne se rembourse pas encore.") + '</p>' +

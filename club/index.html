@@ -877,7 +877,7 @@
               <li data-line="1">
                 <div class="rl"><span>Vos économies de voyage</span><b class="num" data-o="lSave">—</b></div>
                 <button type="button" class="more" data-more>Voir le calcul</button>
-                <div class="detail"><p data-o="fSave"></p><p class="why">45&nbsp;% : la part hébergement d'un budget voyage. 36&nbsp;% : l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Vols, locations, activités, repas et sorties ne sont pas comptés.</p></div>
+                <div class="detail"><p data-o="fSave"></p><p class="why">45&nbsp;% : la part hébergement d'un budget voyage. 36&nbsp;% : l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Vols, locations, activités, repas et sorties ne sont pas comptés. Adhésion VIP : 19,97&nbsp;$/mois + 20&nbsp;$ d'activation (site officiel).</p></div>
               </li>
               <li data-line="2" class="aside">
                 <div class="rl"><span>Économisés par vos proches<em>dans leur poche — pas compté</em></span><b class="num" data-o="lNear">—</b></div>
@@ -1211,7 +1211,7 @@
     var big = function(n, v){ var e = el(n); if (e) countTo(e, Math.round(v)); };
     var trips = k("trips"), budget = k("budget"), pax = k("pax"), nearIn = k("near");
     var rate = .36, pct = .15, ret = .7;                 // 36 % : économie moyenne constatée sur l'hébergement
-    var BOOKABLE = .45, VIP_YEAR_USD = 239.64, USD_EUR = .92; // 45 % : part hébergement d'un budget voyage
+    var BOOKABLE = .45, VIP_YEAR_USD = 239.64 + 20, USD_EUR = .92; // 19,97 $ × 12 + 20 $ d'activation (mwrlife.com/Home/Membership) // 45 % : part hébergement d'un budget voyage
     var BONUS_VIP = 20, BONUS_ELITE = 40, PRICE_VIP = 19.97, PRICE_ELITE = 119.97, RENEWALS = 11;
     var AMB_COST_USD = PRICE_ELITE * 12 + 120 + 99;
     var vals = { save:0, near:0, gain:0 };
@@ -1655,7 +1655,7 @@
         '<li><span>Votre adhésion ambassadeur</span><b>' + (v.netMonthly >= 0 ? "Autofinancée ✓" : "autofinancée à " + v.coverPct + "\u00A0%") + '</b></li></ul>' +
         '<p class="small">Avec vos réponses : ' + v.trips + ' voyage' + (v.trips > 1 ? 's' : '') + ' à ' + E(v.budget) + ', ' + (v.nE + v.nV) + ' proche' + (v.nE + v.nV > 1 ? 's' : '') + ' qui voyagent moins cher, dont ' + v.nE + ' qui font comme vous. Estimation, pas une promesse.</p>'
       : '<ul class="lines qsum"><li><span>Vos économies de voyage, par an</span><b class="num">' + E(Math.round(v.save)) + '</b></li>' +
-        '<li><span>Adhésion VIP sur l\'année</span><b class="num">−' + E(Math.round(v.costVip)) + '</b></li>' +
+        '<li><span>Adhésion VIP la 1ʳᵉ année, activation comprise</span><b class="num">−' + E(Math.round(v.costVip)) + '</b></li>' +
         '<li class="tot"><span>Il vous reste en poche</span><b class="num">' + sg(v.netVip) + '</b></li></ul>' +
         '<p class="small">Avec vos réponses : ' + v.trips + ' voyage' + (v.trips > 1 ? 's' : '') + ' à ' + E(v.budget) + ' pour ' + v.pax + ' voyageur' + (v.pax > 1 ? 's' : '') + '. Estimation, pas une promesse.</p>';
     var h = '<p class="kicker">' + (club ? "Votre nouvelle vie commence par un message" : "Votre prochain départ commence ici") + '</p>' +
@@ -1691,13 +1691,13 @@
   }
   function calcText(){
     var v = state.sim;
-    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 19,97 $ × 12 ≈ " + E(Math.round(v.costVip)) + "/an. Estimation, pas un devis.";
+    return v.trips + " voyage" + (v.trips > 1 ? "s" : "") + " × " + E(v.budget) + " × " + v.pax + " voyageur" + (v.pax > 1 ? "s" : "") + " × 45 % (part hébergement) × 36 % = <b>" + E(Math.round(v.save)) + "</b>. Le 36 % est l'économie moyenne constatée sur 46 hôtels comparés à Booking (juin 2026). Adhésion VIP : 19,97 $ × 12 + 20 $ d'activation ≈ " + E(Math.round(v.costVip)) + " la première année. Estimation, pas un devis.";
   }
   function resultHTML(){
     var v = state.sim, club = state.path === "club";
     var h = '<p class="kicker">Votre résultat</p><h2>Vous économisez environ</h2>' +
       '<div class="qres"><div class="big num">' + E(Math.round(v.save)) + '</div><p style="color:var(--res-soft)">par an, sur l\'hébergement de vos voyages.</p>' +
-      '<ul class="lines"><li><span>Adhésion VIP sur l\'année</span><b class="num">' + E(Math.round(v.costVip)) + '</b></li>' +
+      '<ul class="lines"><li><span>Adhésion VIP la 1ʳᵉ année, activation comprise</span><b class="num">' + E(Math.round(v.costVip)) + '</b></li>' +
       '<li class="tot"><span>Il vous reste en poche</span><b class="num">' + (v.netVip >= 0 ? "+" : "−") + E(Math.abs(Math.round(v.netVip))) + '</b></li>' +
       (club && v.nearN ? '<li><span>Économisés par vos ' + v.nearN + ' proche' + (v.nearN > 1 ? 's' : '') + '</span><b class="num">' + E(Math.round(v.near)) + '</b></li>' : '') +
       '</ul><p class="pay">' + (v.need <= v.trips ? "Adhésion remboursée dès votre voyage n° " + v.need + "." : "Avec si peu de voyages, l'adhésion ne se rembourse pas encore.") + '</p>' +
