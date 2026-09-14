@@ -225,7 +225,7 @@
   @media(max-width:40rem){.tabs button{font-size:.78rem;flex-direction:column;gap:.3rem;padding:.7rem .3rem}}
   .dash-body{display:grid}
   @media(min-width:52rem){.dash-body{grid-template-columns:1fr 1fr}}
-  .dash-ctl{padding:clamp(1.2rem,3vw,1.8rem);border-bottom:1px solid var(--line)}
+  .dash-ctl{padding:clamp(1.2rem,3vw,1.8rem);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,#fff 0%,var(--acc-soft) 100%)}
   @media(min-width:52rem){.dash-ctl{border-bottom:0;border-right:1px solid var(--line)}}
   .panel{display:none;flex-direction:column}
   .panel.on{display:flex}
@@ -503,6 +503,14 @@
     .qinfo .plan{margin:0;max-width:none;padding:1.4rem}
     .qinfo .trust{border:0;padding:.4rem 0 0}
     .qinfo .trust-in{justify-content:flex-start;gap:.4rem 1.2rem;font-size:.85rem}
+    .qfit.wide{grid-template-columns:1fr;align-content:center;gap:1.6rem}
+    .qfit.wide .qL{max-width:none;flex-direction:row;align-items:center;justify-content:space-between;gap:2rem}
+    .qfit.wide .qtxt{display:flex;flex-direction:column;gap:.6rem;max-width:46rem}
+    .qfit.wide .qfoot{margin:0;flex-wrap:nowrap}
+    .qfit.wide .qR .vids{grid-template-columns:1fr 1fr;gap:2.2rem;width:100%;max-width:76rem;margin:0 auto}
+    .qfit.wide .qR .vids.one{grid-template-columns:1fr;max-width:60rem}
+    .qfit.wide .qR .vid > .facade{border-radius:24px}
+    .qfit.wide .qR .vid .vid-meta b{font-size:1.15rem}
     .qscene{width:100%;max-width:34rem;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(18,56,64,.18))}
     .qstep{font-family:var(--f-head);font-weight:600;font-size:.85rem;color:var(--ink-3);white-space:nowrap}
   }
@@ -1774,6 +1782,15 @@
     if (!R.children.length){
       var scene = main.querySelector(".hero .scene") || main.querySelector(".hero .wall");
       if (scene){ var c = scene.cloneNode(true); c.classList.add("qscene"); c.removeAttribute("data-reveal"); R.appendChild(c); }
+    }
+    if (st && st.type === "info" && R.querySelector(".vids, .vid") && !R.querySelector(".events")){
+      fit.classList.add("wide");
+      var txt = document.createElement("div"); txt.className = "qtxt";
+      [].slice.call(L.children).forEach(function(n){ if (!n.classList.contains("qfoot")) txt.appendChild(n); });
+      L.insertBefore(txt, L.firstChild);
+      var vids = R.querySelector(".vids");
+      if (!vids){ vids = document.createElement("div"); vids.className = "vids"; var qi0 = R.querySelector(".qinfo") || R; [].slice.call(qi0.querySelectorAll(":scope > .vid")).forEach(function(v){ vids.appendChild(v); }); qi0.appendChild(vids); }
+      if (vids.querySelectorAll(".vid").length === 1) vids.classList.add("one");
     }
     fit.appendChild(L);
     if (R.children.length) fit.appendChild(R); else fit.classList.add("single");
