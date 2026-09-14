@@ -1,0 +1,10 @@
+# Pages d'entrée
+DirectoryIndex index.html
+Options -Indexes
+# Compression + cache raisonnable
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</IfModule>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
