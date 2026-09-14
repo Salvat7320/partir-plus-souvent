@@ -171,6 +171,18 @@
   .dest b{font-family:var(--f-head);font-size:1.2rem}
   .dest .ph{color:#fff;border-bottom-color:rgba(255,255,255,.8)}
 
+  /* abonnements du quotidien */
+  .subs{list-style:none;margin:0 auto;padding:0;max-width:44rem;display:flex;flex-direction:column;gap:.5rem}
+  .subs li{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:16px;padding:.8rem 1.1rem}
+  .subs li i{flex:none;width:14px;height:14px;border-radius:50%}
+  .subs li span{flex:1;min-width:0;line-height:1.3}
+  .subs li span b{font-family:var(--f-head);font-weight:600}
+  .subs li span em{display:block;font-style:normal;font-size:.85rem;color:var(--ink-3)}
+  .subs li strong{font-family:var(--f-head);font-weight:700;font-size:1.15rem;color:var(--ink);white-space:nowrap}
+  .subs li strong small{font-weight:600;font-size:.8rem;color:var(--ink-3)}
+  .subs li.ta{border:2px solid var(--acc);background:var(--acc-soft);padding:1rem 1.1rem;margin-top:.4rem}
+  .subs li.ta span em{color:var(--acc-deep);font-weight:600}
+  .subs li.ta strong{color:var(--acc-deep);font-size:1.35rem}
   /* guarantees */
   .guar{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
   @media(min-width:48rem){.guar{grid-template-columns:repeat(4,1fr)}}
@@ -501,6 +513,9 @@
     .qinfo .acc-h{padding:.85rem 1.1rem;font-size:1rem}
     .qinfo .events li{padding:.6rem .9rem}
     .qinfo .plan{margin:0;max-width:none;padding:1.4rem}
+    .qinfo .subs{max-width:none;gap:.4rem}
+    .qinfo .subs li{padding:.55rem 1rem}
+    .qinfo .subs li.ta{padding:.8rem 1rem}
     .qinfo .trust{border:0;padding:.4rem 0 0}
     .qinfo .trust-in{justify-content:flex-start;gap:.4rem 1.2rem;font-size:.85rem}
     .qfit.wide{grid-template-columns:1fr;align-content:center;gap:1.6rem}
@@ -819,6 +834,26 @@
     </div>
   </section>
 
+  <section id="normal" data-dock-t="Un abonnement qui vous rend de l'argent." data-dock-s="C'est le seul de la liste." data-dock-b="WhatsApp" data-dock-go="wa">
+    <div class="wrap">
+      <div class="stack narrow center" data-reveal>
+        <p class="kicker">Un abonnement, comme les autres</p>
+        <h2>Vous payez déjà pour vos séries et votre musique. <span class="hl">Pourquoi pas pour vos voyages ?</span></h2>
+        <p class="soft">Payer chaque mois pour un service qu'on utilise, c'est devenu normal. La différence avec celui-ci : il vous rend plus qu'il ne coûte.</p>
+      </div>
+      <ul class="subs mt" data-reveal>
+        <li><i style="background:#E50914"></i><span><b>Netflix</b> Standard sans pub<em>des séries et des films</em></span><strong class="num">14,99&nbsp;€<small>/mois</small></strong></li>
+        <li><i style="background:#1DB954"></i><span><b>Spotify</b> Premium<em>de la musique</em></span><strong class="num">12,14&nbsp;€<small>/mois</small></strong></li>
+        <li><i style="background:#FA243C"></i><span><b>Apple Music</b><em>de la musique</em></span><strong class="num">11,99&nbsp;€<small>/mois</small></strong></li>
+        <li><i style="background:#A238FF"></i><span><b>Deezer</b> Premium<em>de la musique</em></span><strong class="num">11,99&nbsp;€<small>/mois</small></strong></li>
+        <li><i style="background:#00A8E1"></i><span><b>Amazon Prime</b><em>des livraisons et des films</em></span><strong class="num">6,99&nbsp;€<small>/mois</small></strong></li>
+        <li><i style="background:#113CCF"></i><span><b>Disney+</b> Standard avec pub<em>des dessins animés</em></span><strong class="num">6,99&nbsp;€<small>/mois</small></strong></li>
+        <li class="ta"><i style="background:var(--acc)"></i><span><b>Travel Advantage</b> VIP<em>vos voyages 36&nbsp;% moins cher — <span data-o="subsSave">et environ 1&nbsp;426&nbsp;€ rendus par an</span></em></span><strong class="num">≈&nbsp;18&nbsp;€<small>/mois</small></strong></li>
+      </ul>
+      <p class="small narrow center" style="margin-top:1rem">Tarifs publics en France, septembre 2026. Travel Advantage VIP : 19,97&nbsp;$/mois, soit environ 18&nbsp;€ au taux indicatif de 0,92&nbsp;€/$. Un seul de ces abonnements vous rend plus qu'il ne coûte.</p>
+    </div>
+  </section>
+
   <section id="prix" class="band-soft" data-dock-t="19,97 $ par mois, c'est tout." data-dock-s="Activation unique de 20 $." data-dock-b="Je m'inscris" data-dock-go="wa">
     <div class="wrap">
       <div class="stack narrow center" data-reveal>
@@ -1071,6 +1106,7 @@
       var bar = el("bar"); if (bar) bar.style.width = Math.max(5, Math.min(100, save / (costVip * 3) * 100)) + "%";
       vals.save3 = save * 3;
       set("dream", "Sur trois ans, c'est " + E(Math.round(save * 3)) + " : de quoi vous offrir le voyage que vous repoussez, sans toucher à votre budget.");
+      set("subsSave", "et environ " + E(Math.round(save)) + " rendus par an");
       set("fSave", pl(n, "voyage") + " × " + E(b) + " × " + pl(p, "voyageur") + " × 45 % (hébergement) × 36 % = <b>" + E(Math.round(save)) + "</b>" +
         (dash ? "" : ", moins " + E(Math.round(costVip)) + " d'adhésion = <b>" + E(Math.round(netVip)) + "</b> net"), true);
       if (nearIn){
@@ -1410,6 +1446,7 @@
       { type:"info", kicker:"Comment ça marche", title:"Tout ce que vous réservez déjà, <span class=\"hl\">au tarif membre</span>.", sub:"Une seule application, les mêmes hôtels, vols et croisières — le prix change, pas le voyage.", build:function(){ return cloneFrom("#reserver .book"); } },
       { type:"info", kicker:"Vidéos officielles MWR Life", title:"Voir avant de <span class=\"hl\">croire</span>.", sub:"Deux minutes d'introduction en français, et l'interview de l'entreprise sur BFM TV.", build:function(){ return '<div class="vids">' + cloneMany("#video .vid", 2) + '</div>'; } },
       { type:"info", kicker:"Vos garanties", title:"Vous ne prenez <span class=\"hl\">aucun risque</span>.", sub:"", build:function(){ return cloneFrom(".guar") + trustHTML(); } },
+      { type:"info", kicker:"Un abonnement, comme les autres", title:"Vous payez déjà pour vos séries et votre musique. <span class=\"hl\">Pourquoi pas pour vos voyages ?</span>", sub:"Payer chaque mois pour un service qu'on utilise, c'est devenu normal. La différence avec celui-ci : il vous rend plus qu'il ne coûte.", build:function(){ return cloneFrom("#normal .subs"); } },
       { type:"info", kicker:"Tarif", title:"Moins cher qu'<span class=\"hl\">un repas au restaurant</span>.", sub:"", build:function(){ return cloneFrom("#prix .plan"); } },
       { type:"info", kicker:"Questions fréquentes", title:"Vous vous demandez sûrement…", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 4) + '</div>'; } },
       { type:"final" }
