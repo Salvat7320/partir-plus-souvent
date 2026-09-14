@@ -1554,7 +1554,8 @@
   });
 
   /* ---------- éléments à fournir ---------- */
-  $("phToggle").addEventListener("click", function(){
+  var phBtn = $("phToggle");
+  if (phBtn) phBtn.addEventListener("click", function(){
     var on = document.body.classList.toggle("show-ph");
     this.textContent = on ? "Ne plus surligner" : "Surligner les éléments à fournir";
   });
