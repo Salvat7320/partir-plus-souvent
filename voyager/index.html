@@ -1094,7 +1094,9 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (alive) build(); });
     function slot(k){ return { x:-k * .32 + .5, y:k * .22 - .3, z:-k * .9, r:-k * .12 + .08 }; }
     function onMove(e){ var r = host.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; }
-    window.addEventListener("pointermove", onMove);
+    function onLeave(){ mx = 0; my = 0; }
+    host.addEventListener("pointermove", onMove);
+    host.addEventListener("pointerleave", onLeave);
     (function frame(now){
       if (!alive) return;
       var t = Math.max(0, (now - t0) / 1000);
@@ -1110,7 +1112,7 @@
     })(t0);
     var ro = new ResizeObserver(function(){ var w = host.clientWidth, h = host.clientHeight; if (!w || !h) return; renderer.setSize(w, h); cam.aspect = w / h; cam.updateProjectionMatrix(); });
     ro.observe(host);
-    return function(){ alive = false; ro.disconnect(); window.removeEventListener("pointermove", onMove); renderer.dispose(); host.classList.remove("on"); if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement); };
+    return function(){ alive = false; ro.disconnect(); host.removeEventListener("pointermove", onMove); host.removeEventListener("pointerleave", onLeave); renderer.dispose(); host.classList.remove("on"); if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement); };
   }
   function bindPlane(){
     var g = main.querySelector("[data-globe]"), stop = g ? initGlobe(g) : null;
