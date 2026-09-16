@@ -127,7 +127,7 @@
   .globe canvas{display:block;width:100%!important;height:100%!important}
   .globe.on{display:block}
   .globe.on + .scene{display:none}
-  @media(max-width:719px){.globe{width:min(100%,34svh)}}
+  @media(max-width:719px){.globe{width:min(100%,36svh)}.quiz-body .globe{margin:.2rem auto}}
   @keyframes sunpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
   @keyframes drift{from{transform:translateX(0)}to{transform:translateX(38px)}}
   .sun{transform-origin:330px 170px;animation:sunpulse 5s ease-in-out infinite}
@@ -1573,7 +1573,7 @@
     var h1 = hero.querySelector("h1").innerHTML, lead = hero.querySelector(".lead").textContent;
     var chips = [].map.call(hero.querySelectorAll(".chips li"), function(li){ return "<li>" + li.textContent + "</li>"; }).join("");
     return '<p class="kicker">' + kick + '</p><h1 style="font-size:2rem">' + h1 + '</h1><p class="lead">' + lead + '</p>' +
-      (club ? '<div class="vid"><div role="button" tabindex="0" class="facade" data-video="oj7x4584gWs" aria-label="Lire : Vidéo d\'introduction MWR Life"><span class="play"></span><span class="facade-cap"><span>1:59</span><span>Français</span></span></div></div>' : '') +
+      (club ? '<div class="vid"><div role="button" tabindex="0" class="facade" data-video="oj7x4584gWs" aria-label="Lire : Vidéo d\'introduction MWR Life"><span class="play"></span><span class="facade-cap"><span>1:59</span><span>Français</span></span></div></div>' : '<div class="globe" data-intro-globe aria-hidden="true"></div>') +
       '<ul class="chips">' + chips + '</ul>' +
       '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">' + (club ? "Voir ce que ça change pour moi · 30 s" : "Calculer mes économies · 30 s") + '</button>' +
       '<button type="button" class="btn btn-line" data-q="close">Voir la page complète</button></div>';
@@ -1660,6 +1660,12 @@
     qBody.innerHTML = h;
     qBody.scrollTop = 0;
     layoutDesktop(st);
+    var ig = qBody.querySelector("[data-intro-globe]");
+    if (ig){
+      var stopG = initGlobe(ig);
+      if (stopG) qAnims.push(stopG);
+      else { var sc = main.querySelector(".hero .scene"); if (sc){ var cl = sc.cloneNode(true); cl.classList.add("qscene"); cl.removeAttribute("data-reveal"); ig.replaceWith(cl); qAnims.push(animateScene(cl)); } else ig.remove(); }
+    }
     linkOther(qBody);
     bindVideos(qBody);
     bindAcc(qBody);
@@ -1675,17 +1681,12 @@
     var fit = document.createElement("div"); fit.className = "qfit";
     var L = document.createElement("div"); L.className = "qL";
     var R = document.createElement("div"); R.className = "qR";
-    var toRight = ".vid, .qres, .qcalc, .qinfo, .qopts, .stepper, .stepper-lbl, .qmini, .qsum";
+    var toRight = ".vid, .qres, .qcalc, .qinfo, .qopts, .stepper, .stepper-lbl, .qmini, .qsum, .globe";
     [].slice.call(qBody.children).forEach(function(n){ (n.matches(toRight) ? R : L).appendChild(n); });
+    var ig = R.querySelector("[data-intro-globe]"); if (ig) ig.classList.add("qscene");
     if (!R.children.length){
-      var g = document.createElement("div"); g.className = "globe qscene"; R.appendChild(g);
-      var stopG = initGlobe(g);
-      if (stopG) qAnims.push(stopG);
-      else {
-        g.remove();
-        var scene = main.querySelector(".hero .scene") || main.querySelector(".hero .wall");
-        if (scene){ var c = scene.cloneNode(true); c.classList.add("qscene"); c.removeAttribute("data-reveal"); R.appendChild(c); qAnims.push(animateScene(c)); }
-      }
+      var scene = main.querySelector(".hero .scene") || main.querySelector(".hero .wall");
+      if (scene){ var c = scene.cloneNode(true); c.classList.add("qscene"); c.removeAttribute("data-reveal"); R.appendChild(c); qAnims.push(animateScene(c)); }
     }
     if (st && st.type === "info" && R.querySelector(".vids, .vid") && !R.querySelector(".events")){
       fit.classList.add("wide");
