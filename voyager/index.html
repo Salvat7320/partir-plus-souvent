@@ -532,7 +532,8 @@
     .qfit.wide .qtxt{display:flex;flex-direction:column;gap:.6rem;max-width:46rem}
     .qfit.wide .qfoot{margin:0;flex-wrap:nowrap}
     .qfit.wide .qR .vids{grid-template-columns:1fr 1fr;gap:2.2rem;width:100%;max-width:76rem;margin:0 auto}
-    .qfit.wide .qR .vids.one{grid-template-columns:1fr;max-width:60rem}
+    .qfit.wide .qR .vids.one{grid-template-columns:1fr;max-width:min(60rem,92vh)}
+    .qfit.wide .qR .vids{max-width:min(76rem,150vh)}
     .qfit.wide .qR .vid > .facade{border-radius:24px}
     .qfit.wide .qR .vid .vid-meta b{font-size:1.15rem}
     .qscene{width:100%;max-width:34rem;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(18,56,64,.18))}
@@ -1697,20 +1698,24 @@
     fitScreen();
   }
   var fitTimers = [], qAnims = [];
-  function fitScreen(){
-    var f = qBody.querySelector(".qfit"); if (!f || isMobile()) return;
-    f.style.zoom = 1;
-    var k = Math.min(1, (qBody.clientHeight / Math.max(1, f.scrollHeight)) * .985);
-    if (qBody.scrollWidth > qBody.clientWidth) k = Math.min(k, qBody.clientWidth / qBody.scrollWidth);
-    f.style.zoom = Math.max(.55, k);
-    fitTimers.forEach(clearTimeout);
-    fitTimers = [setTimeout(refit, 120), setTimeout(refit, 600), setTimeout(refit, 1500)];
+  function contentHeight(f){
+    var top = Infinity, bot = -Infinity;
+    [].forEach.call(f.children, function(c){ var r = c.getBoundingClientRect(); if (!r.height) return; top = Math.min(top, r.top); bot = Math.max(bot, r.bottom); });
+    return bot > top ? bot - top : f.scrollHeight;
   }
   function refit(){
     var f = qBody.querySelector(".qfit"); if (!f || isMobile()) return;
     f.style.zoom = 1;
-    var k = Math.min(1, (qBody.clientHeight / Math.max(1, f.scrollHeight)) * .985);
-    f.style.zoom = Math.max(.55, k);
+    var cs = getComputedStyle(f), pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    var avail = qBody.clientHeight - pad;
+    var k = Math.min(1, (avail / Math.max(1, contentHeight(f))) * .97);
+    if (f.scrollWidth > qBody.clientWidth) k = Math.min(k, qBody.clientWidth / f.scrollWidth);
+    f.style.zoom = Math.max(.5, k);
+  }
+  function fitScreen(){
+    refit();
+    fitTimers.forEach(clearTimeout);
+    fitTimers = [setTimeout(refit, 120), setTimeout(refit, 600), setTimeout(refit, 1500)];
   }
   var lastMode = isMobile();
   window.addEventListener("resize", function(){
