@@ -1436,7 +1436,7 @@
 
   /* ---------- vidéos en façade ---------- */
   /* Lecture intégrée YouTube ; si la page qui héberge le site l'interdit
-     (cas de l'aperçu Claude), on revient à la miniature avec lecture sur YouTube. */
+     (cas de certains aperçus), on revient à la miniature avec lecture sur YouTube. */
   var embedBlocked = false;
   document.addEventListener("securitypolicyviolation", function(e){
     var d = (e.violatedDirective || e.effectiveDirective || "");
