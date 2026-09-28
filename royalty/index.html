@@ -1576,7 +1576,7 @@
   function finalHTML(){
     var v = state.sim, sp = spendTotal(), c = clubCostEur();
     var recap = '<ul class="lines qsum">' +
-      '<li><span>Réseau, formations, accompagnement, payés séparément</span><b class="num">' + E(Math.round(sp)) + '/an</b></li>' +
+      '<li><span>Ce que vous payez déjà, à la pièce (réseau, formations, accompagnement)</span><b class="num">' + E(Math.round(sp)) + '/an</b></li>' +
       '<li><span>Vos économies de voyage</span><b class="num">' + E(Math.round(v.save)) + '/an</b></li>' +
       '<li><span>Ce que le club vous verse, chaque mois</span><b class="num">' + E(Math.round(v.monthlyFull)) + '/mois</b></li>' +
       '<li class="tot"><span>Le club, les 5 piliers réunis</span><b class="num">≈ ' + E(Math.round(c.month)) + '/mois</b></li></ul>' +
@@ -1730,11 +1730,11 @@
     return '<p class="kicker">Le compte</p>' +
       '<h2>Ce n\'est pas une adhésion pour voyager. <span class="hl">C\'est une adhésion pour vivre.</span></h2>' +
       '<p class="soft">Vous payez déjà trois piliers à la pièce. Le club vous ouvre les cinq, dont deux qui vous rapportent.</p>' +
-      '<div class="qres"><p class="kicker">Séparément, aujourd\'hui</p><div class="big num">' + E(Math.round(sp)) + '</div><p style="color:var(--res-soft)">par an, pour le réseau, les formations et l\'accompagnement.</p>' +
-      '<ul class="lines"><li><span>Vos économies de voyage</span><b class="num">' + E(Math.round(v.save)) + '/an</b></li>' +
-      '<li><span>Ce que le club vous verse</span><b class="num">' + E(Math.round(v.monthlyFull)) + '/mois</b></li>' +
-      '<li class="tot"><span>Le club, les cinq piliers</span><b class="num">≈ ' + E(Math.round(c.month)) + '/mois</b></li></ul>' +
-      '<p class="pay">Élite pour tout avoir, Élite Turbo pour aller plus vite.</p></div>' +
+      '<div class="qres"><p class="kicker">D\'après vos réponses</p><div class="big num">' + E(Math.round(sp)) + '</div><p style="color:var(--res-soft)">par an, ce que vous payez déjà, à la pièce : ' + E(qVal("spNet")) + ' de réseau, ' + E(qVal("spTrain")) + ' de formations et ' + E(qVal("spCoach")) + ' d\'accompagnement.</p>' +
+      '<ul class="lines"><li><span>En plus, vos économies de voyage</span><b class="num">' + E(Math.round(v.save)) + '/an</b></li>' +
+      '<li><span>En plus, ce que le club vous verse</span><b class="num">' + E(Math.round(v.monthlyFull)) + '/mois</b></li>' +
+      '<li class="tot"><span>Le club, les cinq piliers réunis</span><b class="num">≈ ' + E(Math.round(c.month)) + '/mois</b></li></ul>' +
+      '<p class="pay">Une seule adhésion remplace ces trois dépenses, et vous rapporte.</p></div>' +
       '<details class="qcalc"><summary>Comment c\'est calculé ?</summary><p>Réseau ' + E(qVal("spNet")) + ' + formations ' + E(qVal("spTrain")) + ' + accompagnement ' + E(qVal("spCoach")) + ' = <b>' + E(Math.round(sp)) + '</b> par an, d\'après vos réponses. Club : ' + ELITE_MONTH_USD + ' $/mois convertis à 0,92 €/$ = ≈ ' + E(Math.round(c.month)) + '/mois, soit ≈ ' + E(Math.round(c.year)) + '/an, plus ≈ ' + E(Math.round(c.start - c.month)) + ' de frais de départ (hypothèse Élite Travel Advantage, à confirmer). Estimation, pas un devis.</p></details>' +
       '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">Voir les deux formules →</button><a class="btn btn-line" data-elite href="#">Rejoindre le club · Élite</a></div>';
   }
