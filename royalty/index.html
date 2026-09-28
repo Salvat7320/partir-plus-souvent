@@ -703,6 +703,42 @@
     body[data-path="royalty"] .quiz-body .plan .btn{width:100%;min-height:48px;padding:.7rem 1rem}
   }
   html.is-mobile body[data-path="royalty"] .qinfo .plans{grid-template-columns:1fr}
+  /* mobile : tenir dans l'écran sans défilement */
+  @media(max-width:719px){
+    body[data-path="royalty"] .quiz-body{padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom));gap:.6rem}
+    body[data-path="royalty"] .quiz-body h1{font-size:1.85rem!important;line-height:1.08}
+    body[data-path="royalty"] .quiz-body h2{font-size:1.42rem;line-height:1.15}
+    body[data-path="royalty"] .quiz-body .lead,body[data-path="royalty"] .quiz-body p.soft{font-size:.93rem;line-height:1.42}
+    body[data-path="royalty"] .quiz-body .kicker{font-size:.7rem}
+    body[data-path="royalty"] .quiz-body .chips,body[data-path="royalty"] .quiz-body .vid,body[data-path="royalty"] .quiz-body .story-ph,body[data-path="royalty"] .qres .why{display:none}
+    body[data-path="royalty"] .qres{padding:.85rem 1rem;gap:.35rem;border-radius:18px}
+    body[data-path="royalty"] .qres .mini{font-size:1.6rem}
+    body[data-path="royalty"] .qres .mini small{font-size:.85rem}
+    body[data-path="royalty"] .qres .big{font-size:2.2rem}
+    body[data-path="royalty"] .qres .stepper.sm{padding:.1rem 0;gap:.6rem}
+    body[data-path="royalty"] .qres .stepper.sm button{width:38px;height:38px}
+    body[data-path="royalty"] .qres .stepper.sm .sv{font-size:1.6rem}
+    body[data-path="royalty"] .qres .stepper-lbl{font-size:.8rem;margin:0}
+    body[data-path="royalty"] .qres .lines li,body[data-path="royalty"] .qsum li{padding:.3rem 0;font-size:.88rem}
+    body[data-path="royalty"] .qres .pay,body[data-path="royalty"] .qres p{font-size:.88rem;line-height:1.35}
+    body[data-path="royalty"] .qadj{padding:.3rem .6rem;font-size:.85rem}
+    body[data-path="royalty"] .qadj button{width:32px;height:32px}
+    body[data-path="royalty"] .qfoot{gap:.4rem;padding-top:.3rem}
+    body[data-path="royalty"] .qfoot .btn{min-height:44px;padding:.6rem 1rem;font-size:.93rem}
+    body[data-path="royalty"] .qcalc{padding:.45rem .8rem;font-size:.82rem}
+    body[data-path="royalty"] .qsum{padding:.15rem .8rem}
+    body[data-path="royalty"] .qsum li.tot b{font-size:1.05rem}
+    body[data-path="royalty"] .quiz-body .plan{padding:.9rem .9rem;gap:.45rem}
+    body[data-path="royalty"] .quiz-body .plan p.soft,body[data-path="royalty"] .quiz-body .plan .tag{display:none}
+    body[data-path="royalty"] .quiz-body .plan .amount{font-size:1.9rem}
+    body[data-path="royalty"] .quiz-body .plan td{padding:.28rem 0;font-size:.88rem}
+    body[data-path="royalty"] .quiz-body .plan .btn{min-height:42px;padding:.55rem 1rem;font-size:.92rem}
+    body[data-path="royalty"] .qinfo .journey{gap:.5rem}
+    body[data-path="royalty"] .qinfo .step{padding:.9rem .9rem .8rem}
+    body[data-path="royalty"] .qinfo .acc-h{font-size:1rem;padding:.7rem .8rem}
+    body[data-path="royalty"] .qrecap{font-size:.9rem;padding:.55rem .8rem}
+    body[data-path="royalty"] .qfoot .m-hide{display:none}
+  }
   body[data-path="royalty"] .qsum li b,body[data-path="royalty"] .qres .lines li b{white-space:nowrap}
   body[data-path="royalty"] .big,body[data-path="royalty"] .mini,body[data-path="royalty"] .amount,body[data-path="royalty"] .stepper .sv,body[data-path="royalty"] .contrast b,body[data-path="royalty"] .num,body[data-path="royalty"] .pill-n,body[data-path="royalty"] h1,body[data-path="royalty"] h2,body[data-path="royalty"] h3{font-feature-settings:"lnum" 1,"tnum" 1;font-variant-numeric:lining-nums tabular-nums}
   body[data-path="royalty"] .qsum li,body[data-path="royalty"] .qres .lines li{gap:.8rem}
@@ -1509,7 +1545,7 @@
     ];
     PILLAR_ORDER.forEach(function(n, i){ st.push({ type:"pillar", p:PILLARS[n - 1], i:i }); if (PILLARS[n - 1].calc === "travel") st.push({ type:"vip", side:true }); });
     st.push({ type:"recap" });
-    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"", build:function(){ return cloneFrom("#adhesion .plans"); } });
+    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"", build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span>Élite Turbo : la même chose, plus 240 points fidélité par mois au lieu de 120. <span class="ph">Prix à confirmer.</span></span></div><a class="btn btn-line" data-turbo href="#" style="width:100%">Devenir membre Élite Turbo</a>'; return cloneFrom("#adhesion .plans"); } });
     st.push({ type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de rejoindre</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 5) + '</div>'; } });
     st.push({ type:"final" });
     return st;
@@ -1600,7 +1636,7 @@
       '<div class="qfoot"><a class="btn btn-gold" data-elite href="#">Devenir membre Élite</a>' +
       '<a class="btn btn-line" data-turbo href="#">Élite Turbo · démarrage accéléré</a>' +
       '<a class="btn btn-line" data-q="wa" href="#">En parler sur WhatsApp</a>' +
-      '<button type="button" class="btn btn-line" data-q="close">Voir la page complète</button></div>';
+      '<button type="button" class="btn btn-line m-hide" data-q="close">Voir la page complète</button></div>';
   }
   function qCount(){ return qSteps.filter(isQ).length; }
   function qNum(){ var n = 0; for (var i = 0; i <= qi; i++) if (isQ(qSteps[i])) n++; return n; }
@@ -1614,7 +1650,7 @@
       '<ul class="chips">' + chips + '</ul>' +
       '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">Découvrir les 5 piliers · 2 min</button>' +
       '<a class="btn btn-line" data-vip href="#vip">Je veux juste voyager moins cher</a>' +
-      '<button type="button" class="btn btn-line" data-q="close">Voir la page complète</button></div>';
+      '<button type="button" class="btn btn-line m-hide" data-q="close">Voir la page complète</button></div>';
   }
   function quizWa(){
     var v = state.sim, club = state.path === "club";
