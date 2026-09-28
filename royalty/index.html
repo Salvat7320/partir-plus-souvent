@@ -693,6 +693,18 @@
   body[data-path="royalty"] .qres .mini{font-family:var(--f-head);font-weight:700;font-size:2.1rem;line-height:1.05}
   body[data-path="royalty"] .qres .mini small{font-family:var(--f-body);font-size:.95rem;font-weight:600;opacity:.9;display:block}
   html.is-mobile body[data-path="royalty"] .hero{min-height:auto}
+  body[data-path="royalty"] .prows{margin-top:1.8rem;border-top:1px solid var(--line)}
+  body[data-path="royalty"] .prow{width:100%;display:flex;align-items:center;gap:1rem;padding:1.05rem .3rem;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);text-align:left;cursor:pointer;font-family:var(--f-body);transition:background .18s ease}
+  body[data-path="royalty"] .prow:hover{background:rgba(212,175,90,.06)}
+  body[data-path="royalty"] .prow>span:nth-child(2){flex:1;min-width:0}
+  body[data-path="royalty"] .prow b{font-family:var(--f-head);font-weight:700;font-size:1.3rem;display:block;line-height:1.15}
+  body[data-path="royalty"] .prow .hook{display:block;color:var(--ink-2);font-size:.92rem;line-height:1.35;margin-top:.15rem}
+  body[data-path="royalty"] .prow .chev{color:var(--gold);font-size:1.3rem;flex:none}
+  body[data-path="royalty"] .prow .pill-n{margin:0}
+  body[data-path="royalty"] .hero .link{font-size:.95rem}
+  body[data-path="royalty"] section{padding:clamp(3rem,7vw,5rem) 0}
+  .dock{transition:transform .3s ease}
+  body.dock-off .dock{transform:translateY(120%)}
   body[data-path="royalty"] .amount .ph{font-size:.5em;font-style:italic;letter-spacing:0}
   @media(max-width:719px){
     body[data-path="royalty"] .qinfo .plans,body[data-path="royalty"] .plans{grid-template-columns:1fr;gap:1rem}
@@ -802,9 +814,9 @@
         <p class="kicker">Club Royalty · Entrepreneurs &amp; voyageurs</p>
         <h1>Être. Faire. Avoir. <span class="hl">Tout ce que vous désirez.</span></h1>
         <p class="lead">Un club d'entrepreneurs et de voyageurs unis par trois valeurs : loyauté, partage, excellence. Cinq piliers pour bâtir un projet qui vous ressemble, voyager plus souvent et gagner votre liberté. Ici, personne n'avance seul.</p>
-        <div class="row">
+        <div class="row" style="align-items:center;gap:1.1rem">
           <a class="btn btn-gold" href="#simu">Découvrir les 5 piliers</a>
-          <a class="btn btn-line" data-vip href="#vip">Je veux juste voyager moins cher</a>
+          <a class="link" data-vip href="#vip">Je veux juste voyager moins cher</a>
         </div>
         <ul class="chips">
           <li>2 000+ membres formés</li>
@@ -824,132 +836,24 @@
     </div>
   </header>
 
-  <div class="trust">
-    <div class="wrap trust-in">
-      <span><b>2 000+</b> membres formés</span>
-      <span><b>15+</b> formations</span>
-      <span>Support <b>24/7</b></span>
-      <span><b>98 %</b> de satisfaction<sup>*</sup></span>
-    </div>
-  </div>
-
-  <section id="histoire" data-dock-t="D'une rencontre à un club." data-dock-s="Deux minutes pour comprendre l'esprit Royalty." data-dock-b="Découvrir" data-dock-go="#simu">
-    <div class="wrap">
-      <div class="stack narrow center" data-reveal>
-        <p class="kicker">Notre histoire</p>
-        <h2>Ce que chacun payait séparément, <span class="hl">réuni sous un même toit</span>.</h2>
-      </div>
-      <div class="journey mt" data-reveal>
-        <div class="step"><span class="when">Le constat</span><h3>Avancer seul coûte cher</h3><p class="soft">Trois entrepreneurs, une même envie : voyager plus, entreprendre autrement, et ne plus payer chaque brique de leur vie à part.</p></div>
-        <div class="step"><span class="when">La vision</span><h3>Cinq piliers, un club</h3><p class="soft">Réunir le voyage, le revenu, le réseau, la formation et l'accompagnement dans une seule adhésion, pensée pour les gens ambitieux.</p></div>
-        <div class="step"><span class="when">Le club</span><h3>Une famille de 2 000 membres</h3><p class="soft">Unis par la loyauté, le partage et l'excellence. Chacun avance à son rythme, soutenu par un collectif engagé.</p></div>
-        <div class="step"><span class="when">Vous</span><h3>La suite s'écrit avec vous</h3><p class="soft">Être, faire et avoir tout ce que vous désirez. Ce n'est pas un slogan, c'est le programme.</p></div>
-      </div>
-      <p class="story-ph narrow center mt ph">Ici, l'histoire vraie du club en cinq lignes : la rencontre, le déclic, la première année. À fournir.</p>
-    </div>
-  </section>
-
-  <section id="piliers" class="band-soft" data-dock-t="Lequel est fait pour vous ?" data-dock-s="Ouvrez un pilier, le calcul se fait tout seul." data-dock-b="Découvrir" data-dock-go="#simu">
+  <section id="piliers" data-dock-t="Cinq piliers, un seul club." data-dock-s="Touchez un pilier pour voir ce qu'il vous rapporte." data-dock-b="Découvrir" data-dock-go="#simu">
     <div class="wrap narrow">
       <div class="stack center" data-reveal>
         <p class="kicker">Les 5 piliers du club</p>
         <h2>Chaque pilier <span class="hl">se rentabilise</span>. Ensemble, ils changent une vie.</h2>
-        <p class="soft">Ouvrez celui qui vous parle. Vous verrez à chaque fois ce qu'il vous coûte ailleurs, et ce qu'il vous rapporte ici.</p>
+        <p class="soft">Touchez celui qui vous parle : vous verrez ce qu'il vous coûte ailleurs, et ce qu'il vous rapporte ici.</p>
       </div>
-      <div class="acc-list mt" data-reveal>
-        <div class="acc"><button class="acc-h" type="button" aria-expanded="false"><span><span class="pill-n">1</span>Voyage</span><span class="acc-x">+</span></button><div class="acc-b"><div>
-          <p>Les mêmes hôtels, vols et croisières, au tarif membre : en moyenne 36 % de moins sur l'hébergement, avec une garantie prix de 150 %. Le seul pilier qui se rembourse dès votre premier départ.</p>
-          <ul class="inc"><li>+2 M d'hôtels</li><li>600 000 membres</li><li>4,8/5 Trustpilot</li><li>Garantie prix 150 %</li></ul>
-          <div class="contrast"><div class="there"><b>Ailleurs</b>Le prix public, à chaque réservation.</div><div class="here"><b>Ici</b>Le tarif membre, à vie, et un revenu si vous partagez.</div></div>
-          <div class="row" style="margin-top:.9rem"><a class="btn btn-line" data-vip href="#vip">Seulement voyager moins cher · VIP</a><a class="btn btn-gold" data-elite href="#">Tout le club · Élite</a></div>
-        </div></div></div>
-        <div class="acc"><button class="acc-h" type="button" aria-expanded="false"><span><span class="pill-n">2</span>Revenus résiduels</span><span class="acc-x">+</span></button><div class="acc-b"><div>
-          <p>Chaque personne que vous faites entrer dans le club vous rapporte un bonus à son inscription, puis une part de son abonnement chaque mois, tant qu'elle reste membre. Le pilier qui finance tous les autres.</p>
-          <ul class="inc"><li>Bonus à l'inscription</li><li>Revenu mensuel récurrent</li><li>Paliers et bonus de rang</li></ul>
-          <div class="contrast"><div class="there"><b>Ailleurs</b>Un revenu qui s'arrête quand vous vous arrêtez.</div><div class="here"><b>Ici</b>Un revenu qui continue tant que vos membres voyagent.</div></div>
-          <div class="row" style="margin-top:.9rem"><a class="btn btn-gold" data-elite href="#">Rejoindre le club · Élite</a></div>
-        </div></div></div>
-        <div class="acc"><button class="acc-h" type="button" aria-expanded="false"><span><span class="pill-n">3</span>Communauté &amp; réseautage</span><span class="acc-x">+</span></button><div class="acc-b"><div>
-          <p>Un réseau de plus de 2 000 entrepreneurs, une carte des membres, des Bootcamps Leadership à l'international et des Life Experiences au tarif membre. Ce que vous payez aujourd'hui en salons, déplacements et repas d'affaires, le club vous l'ouvre en une adhésion.</p>
-          <ul class="inc"><li>+2 000 membres</li><li>Bootcamps Leadership</li><li>Life Experiences</li><li>Carte des membres</li></ul>
-          <div class="contrast"><div class="there"><b>Ailleurs</b>Salons, séminaires, déplacements : à la pièce, sans suite.</div><div class="here"><b>Ici</b>La communauté incluse. Des bootcamps de 350 à 500 € tout compris, hébergement et formations inclus.</div></div>
-          <div class="row" style="margin-top:.9rem"><a class="btn btn-gold" data-elite href="#">Rejoindre le club · Élite</a></div>
-        </div></div></div>
-        <div class="acc"><button class="acc-h" type="button" aria-expanded="false"><span><span class="pill-n">4</span>Formations</span><span class="acc-x">+</span></button><div class="acc-b"><div>
-          <p>Une Academy avec les formations, les documents et les outils marketing, des formations hebdomadaires, des certifications et des bootcamps. Une seule formation payée à part coûte souvent plus qu'une année de club.</p>
-          <ul class="inc"><li>Academy</li><li>Formations hebdomadaires</li><li>Certifications</li></ul>
-          <div class="contrast"><div class="there"><b>Ailleurs</b>Une formation, un prix. Puis la suivante.</div><div class="here"><b>Ici</b>Academy et formations hebdomadaires, incluses.</div></div>
-          <div class="row" style="margin-top:.9rem"><a class="btn btn-gold" data-elite href="#">Rejoindre le club · Élite</a></div>
-        </div></div></div>
-        <div class="acc"><button class="acc-h" type="button" aria-expanded="false"><span><span class="pill-n">5</span>Développement personnel</span><span class="acc-x">+</span></button><div class="acc-b"><div>
-          <p>Des coachs experts, entrepreneurs qui ont déjà fait le chemin : confiance en soi, vision, mindset, communication. Séances de 30 minutes ou d'une heure, à l'unité ou en pack, avec des offres réservées aux membres du club.</p>
-          <ul class="inc"><li>Coachs experts</li><li>Séances 30 min ou 1 h</li><li>Offres membres</li></ul>
-          <div class="contrast"><div class="there"><b>Ailleurs</b>Un coach au plein tarif, sans le réseau derrière.</div><div class="here"><b>Ici</b>Des tarifs membres, des packs, et un club qui vous suit.</div></div>
-          <div class="row" style="margin-top:.9rem"><a class="btn btn-gold" data-elite href="#">Rejoindre le club · Élite</a></div>
-        </div></div></div>
+      <div class="prows" data-reveal>
+        <button type="button" class="prow" data-pillar="1"><span class="pill-n">1</span><span><b>Voyage</b><span class="hook">Les mêmes voyages, 36 % moins cher.</span></span><span class="chev">→</span></button>
+        <button type="button" class="prow" data-pillar="2"><span class="pill-n">2</span><span><b>Revenus résiduels</b><span class="hook">Un revenu qui continue tant que vos membres voyagent.</span></span><span class="chev">→</span></button>
+        <button type="button" class="prow" data-pillar="3"><span class="pill-n">3</span><span><b>Communauté &amp; réseautage</b><span class="hook">2 000 entrepreneurs, une seule adhésion.</span></span><span class="chev">→</span></button>
+        <button type="button" class="prow" data-pillar="4"><span class="pill-n">4</span><span><b>Formations</b><span class="hook">L'Academy et les formations hebdomadaires, incluses.</span></span><span class="chev">→</span></button>
+        <button type="button" class="prow" data-pillar="5"><span class="pill-n">5</span><span><b>Développement personnel</b><span class="hook">Des coachs experts, au tarif membre.</span></span><span class="chev">→</span></button>
       </div>
     </div>
   </section>
 
-  <section id="simu" data-dock-t="Faites le compte." data-dock-s="Ce que vous payez séparément, face au club." data-dock-b="Calculer" data-dock-go="#simu">
-    <div class="wrap">
-      <div class="stack narrow center" data-reveal>
-        <p class="kicker">Le calcul</p>
-        <h2>Ce que vous payez déjà, séparément. <span class="hl">Ce que le club réunit.</span></h2>
-        <p class="soft">Deux minutes, cinq questions. Le calcul se fait sur votre écran, rien n'est envoyé.</p>
-      </div>
-      <div data-sim data-earn hidden aria-hidden="true">
-        <input type="range" data-k="trips" min="1" max="10" value="2" tabindex="-1">
-        <input type="range" data-k="budget" min="400" max="8000" step="100" value="2200" tabindex="-1">
-        <input type="range" data-k="pax" min="1" max="6" value="2" tabindex="-1">
-        <input type="range" data-k="near" min="0" max="15" value="0" tabindex="-1">
-        <input type="range" data-k="nAll" min="1" max="60" value="5" tabindex="-1">
-        <input type="range" data-k="nElite" min="0" max="60" value="5" tabindex="-1">
-        <input type="range" data-k="nVip" min="0" max="60" value="0" tabindex="-1">
-        <input type="range" data-k="spNet" min="0" max="6000" step="100" value="600" tabindex="-1">
-        <input type="range" data-k="spTrain" min="0" max="6000" step="100" value="500" tabindex="-1">
-        <input type="range" data-k="spCoach" min="0" max="6000" step="100" value="400" tabindex="-1">
-        <input type="range" data-k="pilier" min="1" max="5" value="1" tabindex="-1">
-      </div>
-      <div class="plan best mt" data-mirror data-reveal style="max-width:34rem;margin-left:auto;margin-right:auto;text-align:center">
-        <p class="kicker">Votre calcul</p>
-        <div class="big num" data-m="save">—</div>
-        <p class="soft" data-m="line">Cinq questions, deux minutes.</p>
-        <button class="btn btn-gold" type="button" data-q="open">Faire le calcul</button>
-      </div>
-      <p class="small narrow center" style="margin-top:1.25rem">Estimations, pas des promesses. Économie moyenne de 36 % sur l'hébergement : comparatif de 46 hôtels face à Booking (juin 2026). Barème de rémunération relevé sur des sources publiques, à confirmer par le club. Aucun revenu n'est garanti.</p>
-    </div>
-  </section>
-
-  <section id="vip" class="band-soft" data-dock-t="Seulement voyager moins cher ?" data-dock-s="La formule VIP, sans le reste du club." data-dock-b="Voir" data-dock-go="#vip">
-    <div class="wrap">
-      <div class="stack narrow center" data-reveal>
-        <p class="kicker">Seulement voyager moins cher</p>
-        <h2>Les mêmes voyages, 36 % moins cher. <span class="hl">Rien d'autre.</span></h2>
-        <p class="soft">La formule VIP vous donne le tarif membre sur plus de 2 millions d'hôtels, les vols et les croisières, sans le reste du club. Si un jour les piliers vous attirent, la porte Élite reste ouverte.</p>
-      </div>
-      <div class="guar mt" data-reveal>
-        <div class="guar-it"><strong>150 %</strong><span>Moins cher ailleurs ? La différence remboursée, plus 50 %.</span></div>
-        <div class="guar-it"><strong>0</strong><span>Engagement. Mensuel, résiliable quand vous voulez.</span></div>
-        <div class="guar-it"><strong>14 j</strong><span>Satisfait ou intégralement remboursé.</span></div>
-        <div class="guar-it"><strong>24/7</strong><span>Assistance voyage, où que vous soyez.</span></div>
-      </div>
-      <div class="plan best mt" data-reveal style="max-width:34rem;margin-left:auto;margin-right:auto">
-        <span class="badge">VIP</span>
-        <div class="amount num">18,37 € <small>/mois</small></div>
-        <p class="soft">Activation unique de 18,40 €. Le tarif membre sur tout ce que vous réservez déjà, et rien d'autre à payer.</p>
-        <table><tbody>
-          <tr><td>Hôtels, vols, croisières</td><td>tarif membre</td></tr>
-          <tr><td>Garantie prix</td><td>150 %</td></tr>
-          <tr><td>Engagement</td><td>aucun</td></tr>
-        </tbody></table>
-        <div class="row"><a class="btn btn-gold" data-vip-join href="#cta">S'inscrire en VIP</a><a class="btn btn-line" href="#simu">Découvrir tout le club</a></div>
-      </div>
-      <p class="small narrow center" style="margin-top:1rem">Tarif VIP publié sur mwrlife.com (19,97 $/mois et 20 $ d'activation), converti au taux indicatif de 0,92 €/$.</p>
-    </div>
-  </section>
-
-  <section id="adhesion" class="band-sand" data-dock-t="Prêt à ouvrir la porte ?" data-dock-s="Élite ou Élite Turbo : on choisit ensemble." data-dock-b="Devenir membre" data-dock-go="wa">
+  <section id="adhesion" class="band-sand" data-dock-hide data-dock-t="Prêt à ouvrir la porte ?" data-dock-s="Élite ou Élite Turbo." data-dock-b="Devenir membre" data-dock-go="wa">
     <div class="wrap">
       <div class="stack narrow center" data-reveal>
         <p class="kicker">Rejoindre le club</p>
@@ -960,7 +864,7 @@
         <div class="plan best">
           <span class="badge">Élite</span>
           <div class="amount num">≈ 102 €<small>/mois</small></div>
-          <p class="soft"><span class="tag soft ph">hypothèse à confirmer</span> Adhésion Élite : le voyage au tarif membre, la licence qui rémunère, le réseau, les formations et l'accompagnement.</p>
+          <p class="soft"><span class="tag soft ph">hypothèse à confirmer</span> Le voyage au tarif membre, la licence qui rémunère, le réseau, les formations et l'accompagnement.</p>
           <table><tbody>
             <tr><td>Premier mois</td><td class="num">≈ 102 €</td></tr>
             <tr><td>Activation unique</td><td class="num">≈ 102 €</td></tr>
@@ -983,7 +887,7 @@
         </div>
       </div>
       <p class="whisper center" style="margin-top:1.4rem">Vous voulez seulement voyager moins cher ? <a class="link" data-vip href="#vip">La formule VIP, 18,37 €/mois</a></p>
-      <p class="small narrow center" style="margin-top:.8rem">Montants Élite : hypothèse fondée sur l'adhésion Élite Travel Advantage (119,97 $/mois, 120 $ d'activation, 99 $ de licence, convertis au taux indicatif de 0,92 €/$), à remplacer par la grille du club.</p>
+      <p class="small narrow center" style="margin-top:.8rem">Montants Élite : hypothèse fondée sur l'adhésion Élite Travel Advantage (119,97 $/mois, 120 $ d'activation, 99 $ de licence, au taux indicatif de 0,92 €/$), à remplacer par la grille du club. Estimations, pas des promesses : aucun revenu n'est garanti.</p>
     </div>
   </section>
 
@@ -1003,16 +907,28 @@
     </div>
   </section>
 
-  <section id="cta" data-dock-t="Être, faire, avoir." data-dock-s="Ça commence par un message." data-dock-b="Devenir membre" data-dock-go="wa">
-    <div class="wrap">
-      <div class="final" data-reveal>
-        <p class="kicker">Prêt à transformer votre vie ?</p>
-        <h2>Votre place dans le <span class="hl2">Club Royalty</span>.</h2>
-        <p>Rejoignez une communauté d'entrepreneurs passionnés et développez votre projet, votre réseau et vos voyages.</p>
-        <div class="row" style="justify-content:center"><a class="btn" style="background:#fff;color:#141518" data-form href="#">Je deviens membre</a><a class="btn btn-line" style="border-color:#fff;color:#fff" data-wa="final" href="#">En parler sur WhatsApp</a></div>
-      </div>
+  <!-- sources utilisées par le tunnel, jamais affichées sur la page -->
+  <div hidden aria-hidden="true">
+    <div class="journey">
+      <div class="step"><span class="when">Le constat</span><h3>Avancer seul coûte cher</h3><p class="soft">Trois entrepreneurs, une même envie : voyager plus, entreprendre autrement, et ne plus payer chaque brique de leur vie à part.</p></div>
+      <div class="step"><span class="when">La vision</span><h3>Cinq piliers, un club</h3><p class="soft">Réunir le voyage, le revenu, le réseau, la formation et l'accompagnement dans une seule adhésion, pensée pour les gens ambitieux.</p></div>
+      <div class="step"><span class="when">Le club</span><h3>Une famille de 2 000 membres</h3><p class="soft">Unis par la loyauté, le partage et l'excellence. Chacun avance à son rythme, soutenu par un collectif engagé.</p></div>
+      <div class="step"><span class="when">Vous</span><h3>La suite s'écrit avec vous</h3><p class="soft">Être, faire et avoir tout ce que vous désirez. Ce n'est pas un slogan, c'est le programme.</p></div>
     </div>
-  </section>
+    <div data-sim data-earn>
+      <input type="range" data-k="trips" min="1" max="10" value="2" tabindex="-1">
+      <input type="range" data-k="budget" min="400" max="8000" step="100" value="2200" tabindex="-1">
+      <input type="range" data-k="pax" min="1" max="6" value="2" tabindex="-1">
+      <input type="range" data-k="near" min="0" max="15" value="0" tabindex="-1">
+      <input type="range" data-k="nAll" min="1" max="60" value="5" tabindex="-1">
+      <input type="range" data-k="nElite" min="0" max="60" value="5" tabindex="-1">
+      <input type="range" data-k="nVip" min="0" max="60" value="0" tabindex="-1">
+      <input type="range" data-k="spNet" min="0" max="6000" step="100" value="600" tabindex="-1">
+      <input type="range" data-k="spTrain" min="0" max="6000" step="100" value="500" tabindex="-1">
+      <input type="range" data-k="spCoach" min="0" max="6000" step="100" value="400" tabindex="-1">
+      <input type="range" data-k="pilier" min="1" max="5" value="1" tabindex="-1">
+    </div>
+  </div>
 </template>
 
 <script>
@@ -1075,7 +991,7 @@
 
   function waHref(){
     var key = state.path === "royalty" ? "royalty" : state.path === "club" ? (state.from === "vip" ? "clubFromVip" : "club") : "vip";
-    return WA_NUMBER ? "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA[key]) : "#cta";
+    return WA_NUMBER ? "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA[key]) : "#adhesion";
   }
 
   function setURL(){
@@ -1497,6 +1413,7 @@
       var r = s.getBoundingClientRect();
       if (r.top <= mid && r.bottom > mid) current = s;
     });
+    document.body.classList.toggle("dock-off", !!(current && current.hasAttribute("data-dock-hide")));
     if (current){
       setDock({ t:current.getAttribute("data-dock-t"), s:current.getAttribute("data-dock-s"), b:current.getAttribute("data-dock-b"), go:current.getAttribute("data-dock-go") });
     } else if (scrollY < 200){
@@ -1661,7 +1578,7 @@
     var ans = " Mes réponses : " + v.trips + " voyage(s)/an, budget " + E(v.budget) + ", " + v.pax + " voyageur(s) → environ " + E(Math.round(v.save)) + " d'économies par an.";
     if (club && v.nearN) ans += " Proches concernés : " + v.nearN + ".";
     if (club && v.nE !== undefined) ans += " Objectif : " + (v.nE + v.nV) + " personne(s) à faire voyager moins cher, dont " + v.nE + " futur(s) ambassadeur(s).";
-    return WA_NUMBER ? "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA[key] + ans) : "#cta";
+    return WA_NUMBER ? "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA[key] + ans) : "#adhesion";
   }
   function calcText(){
     var v = state.sim;
@@ -1809,11 +1726,18 @@
       '<p class="soft">La formule VIP vous donne le tarif membre sur plus de 2 millions d\'hôtels, les vols et les croisières, sans le reste du club. Si un jour les piliers vous attirent, la porte Élite reste ouverte.</p>' +
       '<ul class="chips"><li>Garantie prix 150 %</li><li>Sans engagement</li><li>14 jours pour changer d\'avis</li><li>Assistance 24/7</li></ul>' +
       vipCalc() +
-      '<div class="qfoot"><a class="btn btn-gold" data-vip-join href="#cta">S\'inscrire en VIP · 18,37 €/mois</a><button type="button" class="btn btn-line" data-q="next">Découvrir tout le club →</button></div>';
+      '<div class="qfoot"><a class="btn btn-gold" data-vip-join href="#adhesion">S\'inscrire en VIP · 18,37 €/mois</a><button type="button" class="btn btn-line" data-q="next">Découvrir tout le club →</button></div>';
   }
   function mainCount(){ var n = 0; qSteps.forEach(function(x){ if (!x.side) n++; }); return n; }
   function mainPos(){ var n = 0; for (var i = 0; i <= qi; i++) if (!qSteps[i].side) n++; return n; }
   function vipIndex(){ for (var i = 0; i < qSteps.length; i++) if (qSteps[i].type === "vip") return i; return -1; }
+  document.addEventListener("click", function(e){
+    var pb = e.target.closest("[data-pillar]"); if (!pb) return;
+    var n = +pb.getAttribute("data-pillar");
+    if (quiz.hidden) openQuiz(true);
+    for (var i = 0; i < qSteps.length; i++) if (qSteps[i].type === "pillar" && qSteps[i].p.n === n){ qi = i; break; }
+    renderStep(); track("pillar_open", { pilier:n });
+  });
   document.addEventListener("click", function(e){
     var a = e.target.closest("[data-vip]"); if (!a) return;
     e.preventDefault();
@@ -1822,7 +1746,7 @@
     track("vip_screen", { from: a.closest("#quiz") ? "quiz" : "page" });
   });
   function bindRoyalty(root){
-    var map = [["data-vip-join", VIP_URL || "#cta", "vip_join"], ["data-elite", ELITE_URL || FORM_URL, "elite"], ["data-turbo", TURBO_URL || FORM_URL, "turbo"], ["data-form", FORM_URL, "form"]];
+    var map = [["data-vip-join", VIP_URL || "#adhesion", "vip_join"], ["data-elite", ELITE_URL || FORM_URL, "elite"], ["data-turbo", TURBO_URL || FORM_URL, "turbo"], ["data-form", FORM_URL, "form"]];
     map.forEach(function(m){
       (root || main).querySelectorAll("[" + m[0] + "]").forEach(function(a){
         if (a.getAttribute("data-bound")) return;
@@ -1958,7 +1882,7 @@
     else if (act === "close"){ e.preventDefault(); closeQuiz(); }
     else if (act === "wa"){
       track("cta_whatsapp", { where:"quiz" });
-      if (!WA_NUMBER){ e.preventDefault(); closeQuiz(); var c = main.querySelector("#cta"); if (c) c.scrollIntoView(); }
+      if (!WA_NUMBER){ e.preventDefault(); closeQuiz(); var c = main.querySelector("#adhesion"); if (c) c.scrollIntoView(); }
     }
   });
   $("qBack").addEventListener("click", function(){ if (qi > 0){ var pv = qi - 1; while (pv > 0 && qSteps[pv].side) pv--; qi = pv; renderStep(); } });
