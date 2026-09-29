@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Cormorant+Garamond:wght@600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Roboto:wght@400;500;700&family=Sora:wght@300;400;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
 <style>
   :root{
     --white:#FFFFFF;
@@ -628,7 +628,7 @@
 
   /* ===================== thème Club Royalty : noir & or ===================== */
   body[data-path="royalty"]{
-    --f-head:"Cormorant Garamond","Georgia","Times New Roman",serif;
+    --f-head:"Roboto","Helvetica Neue",Arial,sans-serif;--f-body:"Sora","Helvetica Neue",Arial,sans-serif;--f-brand:"Times New Roman",Times,Georgia,serif;
     --gold:#D4AF5A;--gold-deep:#E9CF8A;
     --acc:#D4AF5A;--acc-deep:#E9CF8A;--acc-soft:#1A1B21;
     --res-a:#9A7422;--res-b:#3A2A09;--res-soft:#F0DFAE;--res-hi:#FFF1C9;
@@ -636,16 +636,18 @@
     --white:#0B0C10;--sky:#12141A;--sand:#15130E;--card:#14161C;
     background:#0B0C10;color:var(--ink);
   }
-  body[data-path="royalty"] h1,body[data-path="royalty"] h2,body[data-path="royalty"] h3{letter-spacing:0}
-  body[data-path="royalty"] h1{font-size:clamp(2.6rem,6.5vw,4.4rem);line-height:1.02}
-  body[data-path="royalty"] h2{font-size:clamp(1.9rem,4.4vw,2.8rem)}
-  body[data-path="royalty"] h3{font-size:1.35rem}
+  body[data-path="royalty"] h1,body[data-path="royalty"] h2,body[data-path="royalty"] h3{letter-spacing:-.01em;font-weight:700}
+  body[data-path="royalty"] h1{font-size:clamp(2.2rem,5.4vw,3.5rem);line-height:1.08}
+  body[data-path="royalty"] h2{font-size:clamp(1.55rem,3.6vw,2.3rem);line-height:1.15}
+  body[data-path="royalty"] h3{font-size:1.15rem}
+  body[data-path="royalty"]{font-size:1rem;line-height:1.6}
+  body[data-path="royalty"] .lead{font-weight:300}
   body[data-path="royalty"] .kicker{font-family:var(--f-body);letter-spacing:.2em}
-  body[data-path="royalty"] .btn{font-family:var(--f-body)}
+  body[data-path="royalty"] .btn{font-family:var(--f-body);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.85rem}
   body[data-path="royalty"] .btn-gold,body[data-path="royalty"] .btn-acc{color:#141518}
   body[data-path="royalty"] .btn-gold{box-shadow:0 12px 28px -12px rgba(212,175,90,.6)}
   body[data-path="royalty"] .top{background:rgba(11,12,16,.92)}
-  body[data-path="royalty"] .brand{font-family:var(--f-head);font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase}
+  body[data-path="royalty"] .brand{font-family:var(--f-brand);font-weight:700;font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
   body[data-path="royalty"] .brand i{background:var(--gold);box-shadow:14px 0 0 rgba(255,255,255,.25)}
   body[data-path="royalty"] .trust,body[data-path="royalty"] .card,body[data-path="royalty"] .book-it,body[data-path="royalty"] .subs li,
   body[data-path="royalty"] .guar-it,body[data-path="royalty"] .step,body[data-path="royalty"] .events li,body[data-path="royalty"] .loop-it,
@@ -668,7 +670,7 @@
   body[data-path="royalty"] .tile span{color:rgba(255,255,255,.75)}
   body[data-path="royalty"] .qopt[aria-pressed="true"]{background:rgba(212,175,90,.14)}
   body[data-path="royalty"] .pill-n{display:inline-grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);font-family:var(--f-head);font-weight:700;font-size:1.15rem;margin-right:.7rem;flex:none}
-  body[data-path="royalty"] .acc-h{font-family:var(--f-head);font-size:1.3rem}
+  body[data-path="royalty"] .acc-h{font-family:var(--f-head);font-size:1.05rem;font-weight:500}
   body[data-path="royalty"] .acc-b .inc{list-style:none;padding:0;margin:.6rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem}
   body[data-path="royalty"] .acc-b .inc li{font-size:.85rem;font-weight:600;color:var(--gold);background:rgba(212,175,90,.1);border-radius:100px;padding:.3rem .75rem}
   body[data-path="royalty"] .contrast{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.9rem}
@@ -693,6 +695,11 @@
   body[data-path="royalty"] .qres .mini{font-family:var(--f-head);font-weight:700;font-size:2.1rem;line-height:1.05}
   body[data-path="royalty"] .qres .mini small{font-family:var(--f-body);font-size:.95rem;font-weight:600;opacity:.9;display:block}
   html.is-mobile body[data-path="royalty"] .hero{min-height:auto}
+  body[data-path="royalty"] .quiz-body .qlegal{font-size:.8rem;line-height:1.45;color:var(--ink-3);margin-top:.5rem}
+  body[data-path="royalty"] .quiz-body details.qlegal{color:var(--ink-2)}
+  @media(max-width:719px){body[data-path="royalty"] .quiz-body:has(.qinfo .plans) .qfoot [data-q=wa]{display:none}}
+  html.is-mobile body[data-path="royalty"] .quiz-body:has(.qinfo .plans) .qfoot [data-q=wa]{display:none}
+  body[data-path="royalty"] .quiz-body details.qlegal summary{font-family:var(--f-body);font-size:.85rem;color:var(--gold)}
   body[data-path="royalty"] .step::before{color:#141518;background:var(--gold);font-family:var(--f-body);font-weight:800;font-size:1rem;line-height:1}
   /* ===== dosages de couleur : ?theme=or (Royalty pur) · défaut (Royalty + touches bordeaux) · ?theme=bordeaux (bordeaux dominant) ===== */
   body[data-path="royalty"]{--bdx:#5E2828;--bdx-deep:#3A1515;--bdx-mid:#6A2C2C;--bdx-light:#8A4444;--bdx-soft:rgba(94,40,40,.30)}
@@ -735,7 +742,7 @@
   body[data-path="royalty"] .prow{width:100%;display:flex;align-items:center;gap:1rem;padding:1.05rem .3rem;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);text-align:left;cursor:pointer;font-family:var(--f-body);transition:background .18s ease}
   body[data-path="royalty"] .prow:hover{background:rgba(212,175,90,.06)}
   body[data-path="royalty"] .prow>span:nth-child(2){flex:1;min-width:0}
-  body[data-path="royalty"] .prow b{font-family:var(--f-head);font-weight:700;font-size:1.3rem;display:block;line-height:1.15}
+  body[data-path="royalty"] .prow b{font-family:var(--f-head);font-weight:700;font-size:1.1rem;display:block;line-height:1.2}
   body[data-path="royalty"] .prow .hook{display:block;color:var(--ink-2);font-size:.92rem;line-height:1.35;margin-top:.15rem}
   body[data-path="royalty"] .prow .chev{color:var(--gold);font-size:1.3rem;flex:none}
   body[data-path="royalty"] .prow .pill-n{margin:0}
@@ -756,9 +763,9 @@
   /* mobile : tenir dans l'écran sans défilement */
   @media(max-width:719px){
     body[data-path="royalty"] .quiz-body{padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom));gap:.6rem}
-    body[data-path="royalty"] .quiz-body h1{font-size:1.85rem!important;line-height:1.08}
-    body[data-path="royalty"] .quiz-body h2{font-size:1.42rem;line-height:1.15}
-    body[data-path="royalty"] .quiz-body .lead,body[data-path="royalty"] .quiz-body p.soft{font-size:.93rem;line-height:1.42}
+    body[data-path="royalty"] .quiz-body h1{font-size:1.7rem!important;line-height:1.12}
+    body[data-path="royalty"] .quiz-body h2{font-size:1.3rem;line-height:1.2}
+    body[data-path="royalty"] .quiz-body .lead,body[data-path="royalty"] .quiz-body p.soft{font-size:.88rem;line-height:1.45}
     body[data-path="royalty"] .quiz-body .kicker{font-size:.7rem}
     body[data-path="royalty"] .quiz-body .chips,body[data-path="royalty"] .quiz-body .story-ph,body[data-path="royalty"] .qres .why{display:none}
     body[data-path="royalty"] .quiz-body .vid{flex:1 1 auto;display:flex;min-height:110px;max-height:46vh}
@@ -778,7 +785,7 @@
     body[data-path="royalty"] .qadj{padding:.3rem .6rem;font-size:.85rem}
     body[data-path="royalty"] .qadj button{width:32px;height:32px}
     body[data-path="royalty"] .qfoot{gap:.4rem;padding-top:.3rem}
-    body[data-path="royalty"] .qfoot .btn{min-height:44px;padding:.6rem 1rem;font-size:.93rem}
+    body[data-path="royalty"] .qfoot .btn{min-height:44px;padding:.6rem 1rem;font-size:.8rem}
     body[data-path="royalty"] .qcalc{padding:.45rem .8rem;font-size:.82rem}
     body[data-path="royalty"] .qsum{padding:.15rem .8rem}
     body[data-path="royalty"] .qsum li.tot b{font-size:1.05rem}
@@ -1512,7 +1519,7 @@
     ];
     PILLAR_ORDER.forEach(function(n, i){ st.push({ type:"pillar", p:PILLARS[n - 1], i:i }); if (PILLARS[n - 1].calc === "travel") st.push({ type:"vip", side:true }); });
     st.push({ type:"recap" });
-    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span>Élite Turbo : la même chose, plus l\'add-on Turbo (points doublés, accès anticipé aux Life Experiences). 541,82 € pour démarrer.</span></div><a class="btn btn-line" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l\'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#" style="width:100%">Écrire à Mathilda · Turbo</a>'; return cloneFrom("#adhesion .plans"); } });
+    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span>Élite Turbo : points doublés et accès anticipé aux Life Experiences. 541,82 € pour démarrer.</span></div><a class="btn btn-line" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l\'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#" style="width:100%">Écrire à Mathilda · Turbo</a>' + legalHTML(true); return cloneFrom("#adhesion .plans") + legalHTML(false); } });
     st.push({ type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de rejoindre</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 5) + '</div>'; } });
     st.push({ type:"final" });
     return st;
@@ -1801,6 +1808,12 @@
         a.addEventListener("click", function(e){ track("cta_" + m[2], { pilier:qVal("pilier") }); if (m[1].charAt(0) === "#"){ e.preventDefault(); closeQuiz(); var t = main.querySelector(m[1]); if (t) t.scrollIntoView(); } });
       });
     });
+  }
+  function legalHTML(mobile){
+    var p = main.querySelector("#adhesion p.small"), t = p ? p.innerHTML : "";
+    return mobile
+      ? '<details class="qcalc qlegal"><summary>Entrepreneur ? Compte société, montants et conditions</summary><p>' + t + '</p></details>'
+      : '<p class="small qlegal">' + t + '</p>';
   }
   function bindPricing(){
     var off = LICENCE_OFFERTE, LIC = 91.08;
