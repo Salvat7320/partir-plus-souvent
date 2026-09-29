@@ -695,6 +695,39 @@
   body[data-path="royalty"] .qres .mini{font-family:var(--f-head);font-weight:700;font-size:2.1rem;line-height:1.05}
   body[data-path="royalty"] .qres .mini small{font-family:var(--f-body);font-size:.95rem;font-weight:600;opacity:.9;display:block}
   html.is-mobile body[data-path="royalty"] .hero{min-height:auto}
+  body[data-path="royalty"] .plan .amount small{display:block;font-size:.85rem;font-weight:600;color:var(--ink-2);margin-top:.15rem}
+  /* règles : une action principale, secondaire en lien ; espacement 8 px ; rien de coupé */
+  body[data-path="royalty"] .qaside{border-left:3px solid var(--gold);padding:.5rem 0 .5rem 1rem;font-size:1.05rem;line-height:1.5;color:var(--ink)}
+  body[data-path="royalty"] .qaside b{color:var(--gold)}
+  body[data-path="royalty"] .qnote{font-size:.9rem;line-height:1.5;color:var(--ink-2)}
+  body[data-path="royalty"] .qclose{background:none;border:0;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:var(--f-body);font-size:.9rem;padding:.4rem 0}
+  body[data-path="royalty"] .qres .minis{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.25rem}
+  body[data-path="royalty"] .qrecap{gap:1rem}
+  body[data-path="royalty"] .qrecap .link{flex:none;color:var(--gold)}
+  @media(min-width:720px){
+    body[data-path="royalty"] .qfoot{flex-direction:row;flex-wrap:wrap;align-items:center;gap:1rem}
+    body[data-path="royalty"] .qfoot .btn{width:auto;min-height:48px}
+    body[data-path="royalty"] .qfoot .btn-line{background:none;border:0;color:var(--gold);text-decoration:underline;text-underline-offset:3px;padding:.6rem .2rem;box-shadow:none;letter-spacing:.04em}
+    body[data-path="royalty"] .qfoot .btn-line:hover{transform:none;color:var(--gold-deep)}
+    body[data-path="royalty"] .qfoot .qclose{flex-basis:100%;text-align:left;padding:0}
+  }
+  @media(max-width:719px){
+    body[data-path="royalty"] .quiz-body{gap:.75rem}
+    body[data-path="royalty"] .qfoot{gap:.25rem;padding-top:.5rem;align-items:center}
+    body[data-path="royalty"] .qfoot .btn-line{background:none;border:0;color:var(--gold);text-decoration:underline;text-underline-offset:3px;min-height:44px;font-size:.8rem;box-shadow:none}
+    body[data-path="royalty"] .qres{padding:1rem;gap:.5rem}
+    body[data-path="royalty"] .qaside{font-size:.9rem;line-height:1.45;padding:.2rem 0 .2rem .85rem}
+    body[data-path="royalty"] .quiz-body .plan .btn{font-size:.78rem;letter-spacing:.03em}
+    body[data-path="royalty"] .quiz-body .journey{display:grid;grid-template-columns:1fr;gap:.5rem;overflow:visible;margin:0;padding:0;scroll-snap-type:none}
+    body[data-path="royalty"] .quiz-body .journey>*{flex:none;width:auto}
+    body[data-path="royalty"] .quiz-body .journey .step{padding:.55rem .8rem .6rem 3rem;border-radius:14px}
+    body[data-path="royalty"] .quiz-body .journey .step::before{position:absolute;left:.75rem;top:.8rem;width:1.7rem;height:1.7rem;font-size:.85rem}
+    body[data-path="royalty"] .quiz-body .journey .step h3{font-size:.95rem;line-height:1.2;margin-top:.1rem}
+    body[data-path="royalty"] .quiz-body .journey .step p{font-size:.78rem;line-height:1.35}
+    body[data-path="royalty"] .quiz-body .journey .step .when{font-size:.62rem}
+  }
+  html.is-mobile body[data-path="royalty"] .quiz-body .journey{display:grid;grid-template-columns:1fr;gap:.5rem;overflow:visible;margin:0;padding:0;scroll-snap-type:none}
+  html.is-mobile body[data-path="royalty"] .quiz-body .journey>*{flex:none;width:auto}
   body[data-path="royalty"] .quiz-body .qlegal{font-size:.8rem;line-height:1.45;color:var(--ink-3);margin-top:.5rem}
   body[data-path="royalty"] .quiz-body details.qlegal{color:var(--ink-2)}
   @media(max-width:719px){body[data-path="royalty"] .quiz-body:has(.qinfo .plans) .qfoot [data-q=wa]{display:none}}
@@ -922,7 +955,7 @@
             <tr><td>Points fidélité</td><td>120 / mois</td></tr>
             <tr><td>Voyageurs additionnels</td><td>4</td></tr>
           </tbody></table>
-          <a class="btn btn-gold" data-wa="elite" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l'adhésion Élite du Club Royalty, on peut en parler ?" href="#">Écrire à Mathilda · Élite</a>
+          <a class="btn btn-gold" data-wa="elite" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l'adhésion Élite du Club Royalty, on peut en parler ?" href="#">Écrire à Mathilda</a>
         </div>
         <div class="plan">
           <span class="badge">Élite Turbo · 5 piliers</span>
@@ -936,11 +969,12 @@
             <tr><td>Licence annuelle d'ambassadeur</td><td class="num" data-lic-cell>91,08 €</td></tr>
             <tr><td>Points fidélité</td><td>240 / mois</td></tr>
           </tbody></table>
-          <a class="btn btn-line" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#">Écrire à Mathilda · Turbo</a>
+          <a class="btn btn-line" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#">Écrire à Mathilda</a>
         </div>
       </div>
       <p class="whisper center" style="margin-top:1.4rem">Tu veux seulement voyager moins cher ? <a class="link" data-vip href="#vip">La formule VIP, 18,37 €/mois</a> · Tu préfères t'inscrire directement ? <a class="link" data-elite href="#">Le lien d'inscription</a></p>
-      <p class="small narrow center" style="margin-top:.8rem">Entrepreneur ? Tu peux t'inscrire en compte société : factures centralisées sur la plateforme, et des voyages qui peuvent passer en frais professionnels selon ta situation, à valider avec ton comptable. Montants facturés en dollars (119,97 $/mois, 120 $ d'activation, 99 $/an de licence, 249,97 $ de mise à niveau Turbo), convertis au taux indicatif de 0,92 €/$. Sans la licence, l'adhésion Élite ouvre quatre piliers, sans les revenus résiduels. Estimations, pas des promesses : aucun revenu n'est garanti.</p>
+      <div class="qaside narrow" data-adv style="margin:1.5rem auto 0"><b>Entrepreneur ?</b> Tu peux t'inscrire en compte société : tes factures sont centralisées sur la plateforme, et tes voyages peuvent passer en frais professionnels selon ta situation, à valider avec ton comptable.</div>
+      <p class="small narrow center" data-legal style="margin-top:1rem">Montants facturés en dollars (119,97 $/mois, 120 $ d'activation, 99 $/an de licence, 249,97 $ de mise à niveau Turbo), convertis au taux indicatif de 0,92 €/$. Sans la licence, l'adhésion Élite ouvre quatre piliers, sans les revenus résiduels. Estimations, pas des promesses : aucun revenu n'est garanti.</p>
     </div>
   </section>
 
@@ -1519,7 +1553,8 @@
     ];
     PILLAR_ORDER.forEach(function(n, i){ st.push({ type:"pillar", p:PILLARS[n - 1], i:i }); if (PILLARS[n - 1].calc === "travel") st.push({ type:"vip", side:true }); });
     st.push({ type:"recap" });
-    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span>Élite Turbo : points doublés et accès anticipé aux Life Experiences. 541,82 € pour démarrer.</span></div><a class="btn btn-line" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l\'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#" style="width:100%">Écrire à Mathilda · Turbo</a>' + legalHTML(true); return cloneFrom("#adhesion .plans") + legalHTML(false); } });
+    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", aside:function(){ return cloneFrom("#adhesion [data-adv]") + (isMobile() ? '' : '<p class="qnote">' + legalText() + '</p>'); },
+      build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span><b>Élite Turbo</b> : points doublés, accès anticipé aux Life Experiences. 541,82 € pour démarrer.</span><a class="link" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l\'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#">Écrire</a></div><details class="qcalc qlegal"><summary>Montants et conditions</summary><p>' + legalText() + '</p></details>'; return cloneFrom("#adhesion .plans"); } });
     st.push({ type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de rejoindre</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 5) + '</div>'; } });
     st.push({ type:"final" });
     return st;
@@ -1609,7 +1644,7 @@
       recap + '<ul class="chips">' + [].map.call(main.querySelectorAll(".hero .chips li"), function(li){ return "<li>" + li.textContent + "</li>"; }).join("") + '</ul>' +
       '<div class="qfoot"><a class="btn btn-gold" data-q="wa" href="#">Écrire à Mathilda sur WhatsApp</a>' +
       '<a class="btn btn-line" data-elite href="#">Je m\'inscris directement</a>' +
-      '<button type="button" class="btn btn-line m-hide" data-q="close">Voir la page complète</button></div>';
+      '<button type="button" class="qclose m-hide" data-q="close">Voir la page complète</button></div>';
   }
   function qCount(){ return qSteps.filter(isQ).length; }
   function qNum(){ var n = 0; for (var i = 0; i <= qi; i++) if (isQ(qSteps[i])) n++; return n; }
@@ -1622,8 +1657,8 @@
       '<div class="vid"><div class="facade warm" style="cursor:default" aria-hidden="true"><span class="play"></span><span class="facade-cap"><span class="ph">Vidéo de Mathilda, à fournir</span></span></div></div>' +
       '<ul class="chips">' + chips + '</ul>' +
       '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">Découvrir les 5 piliers · 2 min</button>' +
-      '<a class="btn btn-line" data-vip href="#vip">Je veux juste voyager moins cher</a>' +
-      '<button type="button" class="btn btn-line m-hide" data-q="close">Voir la page complète</button></div>';
+      '<a class="btn btn-line" data-vip href="#vip">Voyager moins cher · VIP</a>' +
+      '<button type="button" class="qclose m-hide" data-q="close">Voir la page complète</button></div>';
   }
   function quizWa(){
     var v = state.sim, club = state.path === "club";
@@ -1687,11 +1722,11 @@
   }
   /* ---------- Club Royalty : piliers, contraste, récapitulatif ---------- */
   var PILLARS = [
-    { n:1, name:"Réseautage & communauté", title:"2 000 entrepreneurs, <span class=\"hl\">une seule adhésion</span>.", why:"Plus de 2 000 entrepreneurs, une carte des membres, des Bootcamps Leadership à l'international de 350 à 500 € tout compris, et des Life Experiences au tarif membre. Ce que tu paies aujourd'hui en salons, déplacements et repas d'affaires, le club te l'ouvre d'un coup.", inc:["+2 000 membres","Bootcamps Leadership","Life Experiences"], calc:{ k:"spNet", q:"Combien dépenses-tu par an pour rencontrer du monde ?", sub:"Événements, déplacements, réseaux, repas d'affaires.", lbl:"par an, aujourd'hui" } },
-    { n:2, name:"Revenus résiduels", title:"Un revenu qui <span class=\"hl\">continue sans toi</span>.", why:"Chaque personne que tu fais entrer dans le club te rapporte un bonus à son inscription, puis une part de son abonnement chaque mois, tant qu'elle reste membre. C'est la licence d'ambassadeur, comprise dans l'adhésion 5 piliers, qui ouvre ce pilier.", inc:["Bonus à l'inscription","Revenu mensuel","Paliers de rang"], calc:"earn" },
-    { n:3, name:"Voyage", title:"Les mêmes voyages, <span class=\"hl\">36 % moins cher</span>.", why:"Les mêmes hôtels, vols et croisières au tarif membre, avec une garantie prix de 150 %. Entrepreneur ? Tu peux t'inscrire en compte société : factures centralisées, et des voyages qui peuvent passer en frais professionnels selon ta situation, à valider avec ton comptable.", inc:["+2 M d'hôtels","4,8/5 Trustpilot","Compte société"], calc:"travel" },
-    { n:4, name:"Formations", title:"L'Academy et les formations, <span class=\"hl\">incluses</span>.", why:"Une Academy avec les formations, les documents et les outils marketing, des formations hebdomadaires, des certifications et des bootcamps. Une seule formation payée à part coûte souvent plus qu'une année de club.", inc:["Academy","Formations hebdomadaires","Certifications"], calc:{ k:"spTrain", q:"Combien dépenses-tu par an en formations ?", sub:"Cours en ligne, séminaires, certifications.", lbl:"par an, aujourd'hui" } },
-    { n:5, name:"Développement personnel", title:"Un coach, <span class=\"hl\">au tarif membre</span>.", why:"Des coachs experts, entrepreneurs qui ont déjà fait le chemin : confiance en soi, vision, mindset, communication. Séances de 30 minutes ou d'une heure, à l'unité ou en pack, avec des offres réservées aux membres du club.", inc:["Coachs experts","30 min ou 1 h","Offres membres"], calc:{ k:"spCoach", q:"Combien dépenses-tu par an en coaching ou accompagnement ?", sub:"Coach, mentor, programmes.", lbl:"par an, aujourd'hui" } }
+    { n:1, name:"Réseautage & communauté", title:"2 000 entrepreneurs, <span class=\"hl\">une seule adhésion</span>.", why:"Plus de 2 000 entrepreneurs, une carte des membres, des Bootcamps Leadership à l'international et des Life Experiences au tarif membre. Ce que tu paies aujourd'hui en salons et déplacements, le club te l'ouvre d'un coup.", inc:["+2 000 membres","Bootcamps Leadership","Life Experiences"], calc:{ k:"spNet", q:"Combien dépenses-tu par an pour rencontrer du monde ?", sub:"Événements, déplacements, réseaux, repas d'affaires.", lbl:"par an, aujourd'hui" } },
+    { n:2, name:"Revenus résiduels", title:"Un revenu qui <span class=\"hl\">continue sans toi</span>.", why:"Chaque personne que tu fais entrer te rapporte un bonus à son inscription, puis une part de son abonnement chaque mois, tant qu'elle reste membre. La licence d'ambassadeur, comprise dans l'adhésion 5 piliers, ouvre ce pilier.", inc:["Bonus à l'inscription","Revenu mensuel","Paliers de rang"], calc:"earn" },
+    { n:3, name:"Voyage", title:"Les mêmes voyages, <span class=\"hl\">36 % moins cher</span>.", why:"Les mêmes hôtels, vols et croisières au tarif membre, garantie prix 150 %. Entrepreneur ? Inscris-toi en compte société : factures centralisées, voyages en frais professionnels selon ta situation, à valider avec ton comptable.", inc:["+2 M d'hôtels","4,8/5 Trustpilot","Compte société"], calc:"travel" },
+    { n:4, name:"Formations", title:"L'Academy et les formations, <span class=\"hl\">incluses</span>.", why:"Une Academy avec formations, documents et outils marketing, des formations hebdomadaires, des certifications et des bootcamps. Une seule formation payée à part coûte souvent plus qu'une année de club.", inc:["Academy","Formations hebdomadaires","Certifications"], calc:{ k:"spTrain", q:"Combien dépenses-tu par an en formations ?", sub:"Cours en ligne, séminaires, certifications.", lbl:"par an, aujourd'hui" } },
+    { n:5, name:"Développement personnel", title:"Un coach, <span class=\"hl\">au tarif membre</span>.", why:"Des coachs experts, entrepreneurs qui ont déjà fait le chemin : confiance, vision, mindset, communication. Séances de 30 min ou 1 h, à l'unité ou en pack, à tarif membre.", inc:["Coachs experts","30 min ou 1 h","Offres membres"], calc:{ k:"spCoach", q:"Combien dépenses-tu par an en coaching ou accompagnement ?", sub:"Coach, mentor, programmes.", lbl:"par an, aujourd'hui" } }
   ];
   function clubCostEur(){ return { month:ELITE_MONTH_USD * USD_EUR_RATE, year:ELITE_MONTH_USD * 12 * USD_EUR_RATE, start:ELITE_START_USD * USD_EUR_RATE }; }
   function spendTotal(){ return qVal("spNet") + qVal("spTrain") + qVal("spCoach"); }
@@ -1714,8 +1749,8 @@
     } else if (p.calc === "earn"){
       h += '<p class="kicker">Ce que ça te rapporte</p>' +
         stepperHTML("nAll", v.nE, "personne(s) que tu feras rejoindre le club", false, 1) +
-        '<div class="mini">' + E(Math.round(v.cashEur)) + '<small>à leur inscription</small></div>' +
-        '<div class="mini">+ ' + E(Math.round(v.monthlyFull)) + '<small>chaque mois, tant qu\'elles restent membres</small></div>' +
+        '<div class="minis"><div class="mini">' + E(Math.round(v.cashEur)) + '<small>à leur inscription</small></div>' +
+        '<div class="mini">+ ' + E(Math.round(v.monthlyFull)) + '<small>par mois, tant qu\'elles restent</small></div></div>' +
         '<p class="why">Hypothèse : chacune prend la formule Élite. Bonus et part mensuelle relevés sur des sources publiques, à confirmer au back-office. Aucun revenu n\'est garanti.</p>';
     } else {
       var k = p.calc.k, cur = qVal(k), before = spendBefore(st.i);
@@ -1809,12 +1844,7 @@
       });
     });
   }
-  function legalHTML(mobile){
-    var p = main.querySelector("#adhesion p.small"), t = p ? p.innerHTML : "";
-    return mobile
-      ? '<details class="qcalc qlegal"><summary>Entrepreneur ? Compte société, montants et conditions</summary><p>' + t + '</p></details>'
-      : '<p class="small qlegal">' + t + '</p>';
-  }
+  function legalText(){ var p = main.querySelector("#adhesion [data-legal]"); return p ? p.innerHTML : ""; }
   function bindPricing(){
     var off = LICENCE_OFFERTE, LIC = 91.08;
     main.querySelectorAll("[data-lic-badge]").forEach(function(e){ e.hidden = !off; });
@@ -1850,7 +1880,7 @@
     else if (st.type === "vip"){ h = vipHTML(); }
     else if (st.type === "info"){
       var isLastInfo = qSteps[qi + 1] && qSteps[qi + 1].type === "final";
-      h = '<p class="kicker">' + st.kicker + '</p><h2>' + st.title + '</h2>' + (st.sub ? '<p class="soft">' + st.sub + '</p>' : '') +
+      h = '<p class="kicker">' + st.kicker + '</p><h2>' + st.title + '</h2>' + (st.sub ? '<p class="soft">' + st.sub + '</p>' : '') + (st.aside ? st.aside() : '') +
         '<div class="qinfo">' + st.build() + '</div>' +
         '<div class="qfoot"><button type="button" class="btn btn-gold" data-q="next">' + (isLastInfo ? "Dernière étape →" : "Continuer →") + '</button>' +
         '<a class="btn btn-line" data-q="wa" href="#">' + (state.path === "club" ? "En parler sur WhatsApp" : "Poser une question sur WhatsApp") + '</a></div>';
@@ -1981,6 +2011,7 @@
   var qs = new URLSearchParams(location.search);
   if (qs.get("theme")) document.body.setAttribute("data-theme", qs.get("theme"));
   render("royalty", qs.get("from") || "", true);
+  if (qs.get("step")){ var _n = Math.max(0, Math.min(qSteps.length - 1, (+qs.get("step") || 1) - 1)); var _c = 0; for (var _i = 0; _i < qSteps.length; _i++){ if (!qSteps[_i].side) _c++; if (_c === _n + 1){ qi = _i; break; } } renderStep(); }
 })();
 </script>
 
