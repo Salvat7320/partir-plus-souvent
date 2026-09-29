@@ -822,12 +822,25 @@
     body[data-path="royalty"] .qcalc{padding:.45rem .8rem;font-size:.82rem}
     body[data-path="royalty"] .qsum{padding:.15rem .8rem}
     body[data-path="royalty"] .qsum li.tot b{font-size:1.05rem}
-    body[data-path="royalty"] .quiz-body .plan{padding:.9rem .9rem;gap:.45rem}
-    body[data-path="royalty"] .quiz-body .plan p.soft,body[data-path="royalty"] .quiz-body .plan .tag{display:none}
-    body[data-path="royalty"] .quiz-body .plan .amount{font-size:1.9rem}
-    body[data-path="royalty"] .quiz-body .plan td{padding:.2rem 0;font-size:.86rem}
-    body[data-path="royalty"] .quiz-body .plan{gap:.35rem}
-    body[data-path="royalty"] .quiz-body .plan .badge{font-size:.7rem}
+    body[data-path="royalty"] .quiz-body .plans{gap:1.25rem;margin-top:.75rem}
+    body[data-path="royalty"] .quiz-body .plan{padding:2rem 1.25rem 1.5rem;gap:.85rem}
+    body[data-path="royalty"] .quiz-body .plan .tag{display:none}
+    body[data-path="royalty"] .quiz-body .plan p.soft{display:block;font-size:.92rem;line-height:1.5}
+    body[data-path="royalty"] .quiz-body .plan .amount{font-size:2.1rem}
+    body[data-path="royalty"] .quiz-body .plan td{padding:.45rem 0;font-size:.92rem}
+    body[data-path="royalty"] .quiz-body .plan .badge{font-size:.72rem}
+    body[data-path="royalty"] .quiz-body .qinfo .qaside{margin-top:1.5rem;font-size:.98rem;line-height:1.5;padding:.3rem 0 .3rem 1rem}
+    body[data-path="royalty"] .quiz-body .qinfo details.qlegal{margin-top:1rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc]{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:.75rem;min-height:0;padding:1.25rem 1.1rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm{gap:1.1rem;padding:.2rem 0}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm button{width:48px;height:48px}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm .sv{font-size:2.2rem;min-width:2ch}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper-lbl{font-size:.9rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .mini{font-size:1.9rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .mini small{font-size:.88rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj{padding:.55rem .8rem;font-size:.95rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj button{width:44px;height:44px}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .lines li{font-size:.92rem;padding:.45rem 0}
     body[data-path="royalty"] .quiz-body .plan .btn{min-height:42px;padding:.55rem 1rem;font-size:.92rem}
     body[data-path="royalty"] .qinfo .journey{gap:.5rem}
     body[data-path="royalty"] .qinfo .step{padding:.9rem .9rem .8rem}
@@ -1553,8 +1566,8 @@
     ];
     PILLAR_ORDER.forEach(function(n, i){ st.push({ type:"pillar", p:PILLARS[n - 1], i:i }); if (PILLARS[n - 1].calc === "travel") st.push({ type:"vip", side:true }); });
     st.push({ type:"recap" });
-    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", aside:function(){ return cloneFrom("#adhesion [data-adv]") + (isMobile() ? '' : '<p class="qnote">' + legalText() + '</p>'); },
-      build:function(){ if (isMobile()) return '<div class="plans">' + cloneFrom("#adhesion .plan.best") + '</div><div class="qrecap"><span><b>Élite Turbo</b> : points doublés, accès anticipé aux Life Experiences. 541,82 € pour démarrer.</span><a class="link" data-wa="turbo" data-wa-msg="Bonjour Mathilda ! Je suis intéressé(e) par l\'adhésion Élite Turbo du Club Royalty, on peut en parler ?" href="#">Écrire</a></div><details class="qcalc qlegal"><summary>Montants et conditions</summary><p>' + legalText() + '</p></details>'; return cloneFrom("#adhesion .plans"); } });
+    st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Dans les deux cas, on commence par en parler avec Mathilda.", aside:function(){ return isMobile() ? '' : cloneFrom("#adhesion [data-adv]") + '<p class="qnote">' + legalText() + '</p>'; },
+      build:function(){ if (isMobile()) return cloneFrom("#adhesion .plans") + cloneFrom("#adhesion [data-adv]") + '<details class="qcalc qlegal"><summary>Montants et conditions</summary><p>' + legalText() + '</p></details>'; return cloneFrom("#adhesion .plans"); } });
     st.push({ type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de rejoindre</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 5) + '</div>'; } });
     st.push({ type:"final" });
     return st;
@@ -1768,7 +1781,7 @@
     var chips = '<ul class="chips">' + p.inc.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
     var foot = '<div class="qfoot">' +
       (p.calc === "travel"
-        ? '<button type="button" class="btn btn-gold" data-q="next">' + (last ? "Faire le compte →" : "Pilier suivant →") + '</button><a class="btn btn-line" data-vip href="#vip">Je veux seulement voyager moins cher · VIP</a>'
+        ? '<button type="button" class="btn btn-gold" data-q="next">' + (last ? "Faire le compte →" : "Pilier suivant →") + '</button><a class="btn btn-line" data-vip href="#vip">Voyager moins cher · VIP</a>'
         : '<button type="button" class="btn btn-gold" data-q="next">' + (last ? "Faire le compte →" : "Pilier suivant →") + '</button><a class="btn btn-line" data-q="wa" href="#">En parler à Mathilda</a>') +
       '</div>';
     return '<p class="kicker">Pilier ' + (st.i + 1) + ' / ' + PILLAR_ORDER.length + ' · ' + p.name + '</p><h2>' + p.title + '</h2><p class="soft">' + p.why + '</p>' + chips + pillarCalc(st) + foot;
