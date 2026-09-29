@@ -831,16 +831,24 @@
     body[data-path="royalty"] .quiz-body .plan .badge{font-size:.72rem}
     body[data-path="royalty"] .quiz-body .qinfo .qaside{margin-top:1.5rem;font-size:.98rem;line-height:1.5;padding:.3rem 0 .3rem 1rem}
     body[data-path="royalty"] .quiz-body .qinfo details.qlegal{margin-top:1rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc]{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:.75rem;min-height:0;padding:1.25rem 1.1rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm{gap:1.1rem;padding:.2rem 0}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm button{width:48px;height:48px}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm .sv{font-size:2.2rem;min-width:2ch}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper-lbl{font-size:.9rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .mini{font-size:1.9rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .mini small{font-size:.88rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj{padding:.55rem .8rem;font-size:.95rem}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj button{width:44px;height:44px}
-    body[data-path="royalty"] .quiz-body [data-pcalc] .lines li{font-size:.92rem;padding:.45rem 0}
+    body[data-path="royalty"] .quiz-body [data-pcalc]{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;min-height:0;padding:1.4rem 1.2rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .kicker{font-size:.72rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepblk{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm{gap:1.4rem;padding:0}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm button{width:56px;height:56px}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm button svg{width:22px;height:22px}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper.sm .sv{font-size:2.8rem;min-width:2ch}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .stepper-lbl{font-size:.95rem;margin:0}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .mini{font-size:2.3rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .mini small{font-size:.9rem;margin-top:.15rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .minis{gap:1.2rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj{padding:.7rem .9rem;font-size:.9rem;align-items:center}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj span:first-child{flex:1;line-height:1.3}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj span:first-child b{display:block;font-size:1.35rem;margin-top:.1rem}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .qadj button{width:46px;height:46px}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .lines{width:100%}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .lines li{font-size:.98rem;padding:.6rem 0}
+    body[data-path="royalty"] .quiz-body [data-pcalc] .lines li.tot b{font-size:1.1rem}
     body[data-path="royalty"] .quiz-body .plan .btn{min-height:42px;padding:.55rem 1rem;font-size:.92rem}
     body[data-path="royalty"] .qinfo .journey{gap:.5rem}
     body[data-path="royalty"] .qinfo .step{padding:.9rem .9rem .8rem}
@@ -1735,11 +1743,11 @@
   }
   /* ---------- Club Royalty : piliers, contraste, récapitulatif ---------- */
   var PILLARS = [
-    { n:1, name:"Réseautage & communauté", title:"2 000 entrepreneurs, <span class=\"hl\">une seule adhésion</span>.", why:"Plus de 2 000 entrepreneurs, une carte des membres, des Bootcamps Leadership à l'international et des Life Experiences au tarif membre. Ce que tu paies aujourd'hui en salons et déplacements, le club te l'ouvre d'un coup.", inc:["+2 000 membres","Bootcamps Leadership","Life Experiences"], calc:{ k:"spNet", q:"Combien dépenses-tu par an pour rencontrer du monde ?", sub:"Événements, déplacements, réseaux, repas d'affaires.", lbl:"par an, aujourd'hui" } },
+    { n:1, name:"Réseautage & communauté", title:"2 000 entrepreneurs, <span class=\"hl\">une seule adhésion</span>.", why:"Plus de 2 000 entrepreneurs, une carte des membres, des Bootcamps Leadership à l'international et des Life Experiences au tarif membre. Ce que tu paies aujourd'hui en salons et déplacements, le club te l'ouvre d'un coup.", inc:["+2 000 membres","Bootcamps Leadership","Life Experiences"], calc:{ k:"spNet", q:"Combien dépenses-tu par an en réseautage ?", sub:"Événements, déplacements, réseaux, repas d'affaires.", lbl:"par an, aujourd'hui" } },
     { n:2, name:"Revenus résiduels", title:"Un revenu qui <span class=\"hl\">continue sans toi</span>.", why:"Chaque personne que tu fais entrer te rapporte un bonus à son inscription, puis une part de son abonnement chaque mois, tant qu'elle reste membre. La licence d'ambassadeur, comprise dans l'adhésion 5 piliers, ouvre ce pilier.", inc:["Bonus à l'inscription","Revenu mensuel","Paliers de rang"], calc:"earn" },
     { n:3, name:"Voyage", title:"Les mêmes voyages, <span class=\"hl\">36 % moins cher</span>.", why:"Les mêmes hôtels, vols et croisières au tarif membre, garantie prix 150 %. Entrepreneur ? Inscris-toi en compte société : factures centralisées, voyages en frais professionnels selon ta situation, à valider avec ton comptable.", inc:["+2 M d'hôtels","4,8/5 Trustpilot","Compte société"], calc:"travel" },
     { n:4, name:"Formations", title:"L'Academy et les formations, <span class=\"hl\">incluses</span>.", why:"Une Academy avec formations, documents et outils marketing, des formations hebdomadaires, des certifications et des bootcamps. Une seule formation payée à part coûte souvent plus qu'une année de club.", inc:["Academy","Formations hebdomadaires","Certifications"], calc:{ k:"spTrain", q:"Combien dépenses-tu par an en formations ?", sub:"Cours en ligne, séminaires, certifications.", lbl:"par an, aujourd'hui" } },
-    { n:5, name:"Développement personnel", title:"Un coach, <span class=\"hl\">au tarif membre</span>.", why:"Des coachs experts, entrepreneurs qui ont déjà fait le chemin : confiance, vision, mindset, communication. Séances de 30 min ou 1 h, à l'unité ou en pack, à tarif membre.", inc:["Coachs experts","30 min ou 1 h","Offres membres"], calc:{ k:"spCoach", q:"Combien dépenses-tu par an en coaching ou accompagnement ?", sub:"Coach, mentor, programmes.", lbl:"par an, aujourd'hui" } }
+    { n:5, name:"Développement personnel", title:"Un coach, <span class=\"hl\">au tarif membre</span>.", why:"Des coachs experts, entrepreneurs qui ont déjà fait le chemin : confiance, vision, mindset, communication. Séances de 30 min ou 1 h, à l'unité ou en pack, à tarif membre.", inc:["Coachs experts","30 min ou 1 h","Offres membres"], calc:{ k:"spCoach", q:"Combien dépenses-tu par an en coaching ?", sub:"Coach, mentor, programmes.", lbl:"par an, aujourd'hui" } }
   ];
   function clubCostEur(){ return { month:ELITE_MONTH_USD * USD_EUR_RATE, year:ELITE_MONTH_USD * 12 * USD_EUR_RATE, start:ELITE_START_USD * USD_EUR_RATE }; }
   function spendTotal(){ return qVal("spNet") + qVal("spTrain") + qVal("spCoach"); }
@@ -1749,7 +1757,7 @@
     return t;
   }
   function stepperHTML(k, val, lbl, eur, step){
-    return '<div class="stepper sm" data-st="' + k + '"' + (eur ? ' data-eur' : '') + '><button type="button" data-d="-' + step + '" aria-label="Moins">' + ICO.minus + '</button><span class="sv num" data-sv>' + (eur ? E(val) : val) + '</span><button type="button" data-d="' + step + '" aria-label="Plus">' + ICO.plus + '</button></div><p class="stepper-lbl">' + lbl + '</p>';
+    return '<div class="stepblk"><div class="stepper sm" data-st="' + k + '"' + (eur ? ' data-eur' : '') + '><button type="button" data-d="-' + step + '" aria-label="Moins">' + ICO.minus + '</button><span class="sv num" data-sv>' + (eur ? E(val) : val) + '</span><button type="button" data-d="' + step + '" aria-label="Plus">' + ICO.plus + '</button></div><p class="stepper-lbl">' + lbl + '</p></div>';
   }
   function pillarCalc(st){
     var p = st.p, v = state.sim, c = clubCostEur(), h = '<div class="qres" data-pcalc>';
