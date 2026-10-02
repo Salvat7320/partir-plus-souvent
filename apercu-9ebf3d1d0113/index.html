@@ -1054,11 +1054,13 @@
   body[data-path="royalty"] .mhint{margin:0;font-size:.78rem;color:var(--ink-3)}
   /* preuves en carrousel 3D */
   body[data-path="royalty"] .cflow{position:relative;height:350px;width:100%;perspective:1000px;touch-action:pan-y;user-select:none;-webkit-user-select:none;margin-top:.25rem}
-  body[data-path="royalty"] .cf-item{position:absolute;left:50%;top:4px;width:196px;height:336px;margin-left:-98px;border:0;padding:0;border-radius:16px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s,filter .6s;box-shadow:0 22px 40px -22px rgba(0,0,0,.6);cursor:pointer;background:#111}
+  body[data-path="royalty"] .cf-item{position:absolute;left:50%;top:50%;width:244px;height:auto;max-height:340px;margin-left:-122px;border:0;padding:0;border-radius:16px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s,filter .6s;box-shadow:0 22px 40px -22px rgba(0,0,0,.6);cursor:pointer;background:#111}
   body[data-path="royalty"] .cf-item[aria-current="true"]{cursor:zoom-in}
   body[data-path="royalty"] .cflow{overflow-x:clip;overflow-y:visible}
-  @media(max-width:519px){body[data-path="royalty"] .cflow{height:326px}body[data-path="royalty"] .cf-item{width:178px;height:312px;margin-left:-89px}}
-  body[data-path="royalty"] .cf-item img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;pointer-events:none}
+  @media(max-width:519px){body[data-path="royalty"] .cflow{height:326px}body[data-path="royalty"] .cf-item{width:228px;max-height:316px;margin-left:-114px}body[data-path="royalty"] .cf-item.long{height:316px}}
+  body[data-path="royalty"] .cf-item img{width:100%;height:auto;display:block;pointer-events:none}
+  body[data-path="royalty"] .cf-item.long{height:340px}
+  body[data-path="royalty"] .cf-item.long{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
   body[data-path="royalty"] .cf-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:.5rem}
   body[data-path="royalty"] .cf-nav button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--acc);background:var(--card);color:var(--acc);font-size:1.1rem;cursor:pointer}
   body[data-path="royalty"] .cf-l{font-size:.85rem;color:var(--ink-2);min-width:50px;text-align:center}
@@ -2139,16 +2141,19 @@
   }
   function layFlow(box){
     var flow = box && box.querySelector("[data-cflow]"); if (!flow) return;
-    var items = [].slice.call(flow.querySelectorAll(".cf-item")), cur = +box.getAttribute("data-cur") || 0, w = flow.clientWidth || 320, narrow = w < 520, step = narrow ? w * .24 : Math.min(150, w * .3), lim = narrow ? 1 : 2;
+    var items = [].slice.call(flow.querySelectorAll(".cf-item")), cur = +box.getAttribute("data-cur") || 0, w = flow.clientWidth || 320, narrow = w < 520, step = narrow ? w * .2 : Math.min(160, w * .3), lim = narrow ? 1 : 2;
     items.forEach(function(it, i){
       var o = i - cur, a = Math.abs(o);
-      it.style.transform = "translateX(" + (o * step) + "px) translateZ(" + (-a * 140) + "px) rotateY(" + (o === 0 ? 0 : (o > 0 ? -40 : 40)) + "deg)";
+      it.style.transform = "translateY(-50%) translateX(" + (o * step) + "px) translateZ(" + (-a * 140) + "px) rotateY(" + (o === 0 ? 0 : (o > 0 ? -40 : 40)) + "deg)";
       it.style.zIndex = 10 - a; it.style.opacity = a > lim ? 0 : 1; it.style.visibility = a > lim ? "hidden" : ""; it.style.filter = a ? "brightness(.82)" : "none";
       it.tabIndex = a > lim ? -1 : 0; it.setAttribute("aria-current", o === 0 ? "true" : "false");
     });
+    items.forEach(function(it){ var im = it.querySelector("img"); if (im && im.complete) cfLong(im); });
     var l = box.querySelector(".cf-l"); if (l) l.textContent = (cur + 1) + " / " + items.length;
     var cap = box.querySelector(".pcap"), list = proofList(box.getAttribute("data-tab")); if (cap && list[cur]) cap.innerHTML = capHTML(list[cur]);
   }
+  function cfLong(img){ var it = img.closest(".cf-item"); if (!it || !img.naturalWidth) return; it.classList.toggle("long", img.naturalHeight / img.naturalWidth * it.clientWidth > parseFloat(getComputedStyle(it).maxHeight) + 2); }
+  document.addEventListener("load", function(e){ if (e.target.matches && e.target.matches(".cf-item img")) cfLong(e.target); }, true);
   function flowGo(box, n){ var c = box.querySelectorAll(".cf-item").length; box.setAttribute("data-cur", Math.max(0, Math.min(c - 1, n))); layFlow(box); }
   var swipeFlow = null, swipeX = 0;
   document.addEventListener("pointerdown", function(e){ var f = e.target.closest("[data-cflow]"); swipeFlow = f; swipeX = e.clientX; });
