@@ -1013,6 +1013,7 @@
   @keyframes tsway{0%,100%{transform:perspective(800px) rotateX(4deg) rotateY(-7deg)}50%{transform:perspective(800px) rotateX(-3deg) rotateY(7deg)}}
   body[data-path="royalty"] .glare{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,236,190,.5),transparent 55%);opacity:var(--go,0);transition:opacity .4s;pointer-events:none;mix-blend-mode:soft-light;z-index:2}
   body[data-path="royalty"] .plan .glare{mix-blend-mode:normal;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(233,207,138,.22),transparent 50%)}
+  body[data-path="royalty"] .qghost,body[data-path="royalty"] .qghost *{animation:none!important;transition:none!important}
   body[data-path="royalty"] .rise{animation:rise .32s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 30ms)}
   @keyframes rise{from{opacity:.45;transform:translateY(10px)}to{opacity:1;transform:none}}
   body[data-path="royalty"] .nflash{animation:nflash .8s ease-out}
@@ -2351,7 +2352,8 @@
     if (!st) return;
     quiz.classList.toggle("on-intro", st.type === "intro");
     if (st.type === "intro") makeParticles(quiz, function(){ return !quiz.hidden && quiz.classList.contains("on-intro"); }).start();
-    if (!reduce){
+    var xf = quiz._xf; quiz._xf = false;
+    if (!reduce && !xf){
       var nodes = isMobile() ? [].slice.call(qBody.children) : [].slice.call(qBody.querySelectorAll(".qfit > .qL > *, .qfit > .qR > *"));
       nodes.forEach(function(n, i){ n.classList.add("rise"); n.style.setProperty("--i", Math.min(i, 5)); });
     }
@@ -2368,10 +2370,13 @@
     g.removeAttribute("id"); g.classList.add("qghost"); g.setAttribute("aria-hidden", "true");
     g.querySelectorAll("[id]").forEach(function(n){ n.removeAttribute("id"); });
     g.style.cssText = "position:absolute;left:" + (r.left - qr.left) + "px;top:" + (r.top - qr.top) + "px;width:" + r.width + "px;height:" + r.height + "px;margin:0;overflow:hidden;z-index:3;pointer-events:none;background:" + getComputedStyle(quiz).backgroundColor;
+    g.querySelectorAll(".rise").forEach(function(n){ n.classList.remove("rise"); });
     quiz.appendChild(g); g.scrollTop = qBody.scrollTop;
-    g.animate([{ opacity:1 }, { opacity:0 }], { duration:280, easing:"ease-in", fill:"forwards" });
-    setTimeout(function(){ if (g.parentNode) g.parentNode.removeChild(g); }, 520);
-    requestAnimationFrame(function(){ try { qBody.animate([{ opacity:0 }, { opacity:1 }], { duration:340, easing:"ease-out" }); } catch(e){} });
+    g.animate([{ opacity:1, transform:"translateY(0)" }, { opacity:0, transform:"translateY(-12px)" }], { duration:260, easing:"cubic-bezier(.4,0,1,1)", fill:"forwards" });
+    var an = null;
+    try { an = qBody.animate([{ opacity:0, transform:"translateY(16px)" }, { opacity:1, transform:"translateY(0)" }], { duration:420, delay:140, easing:"cubic-bezier(.2,.8,.2,1)", fill:"backwards" }); } catch(e){}
+    quiz._xf = true;
+    setTimeout(function(){ if (g.parentNode) g.parentNode.removeChild(g); try { if (an && an.playState !== "finished") an.finish(); } catch(e){} }, 900);
   }
   function bindPricing(){
     main.querySelectorAll("[data-proofhost]").forEach(function(h){ h.innerHTML = proofBox("voyage"); });
