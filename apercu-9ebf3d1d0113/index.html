@@ -894,6 +894,40 @@
   body[data-path="royalty"] .qvip .vinc li::before{content:"✓";position:absolute;left:0;top:0;color:#EBD199;font-weight:700}
   body[data-path="royalty"] .qvip .vsave{font-size:.9rem;line-height:1.45;color:#F2DCD3;border-top:1px solid rgba(255,255,255,.18);padding-top:.75rem;margin:.1rem 0 0}
   body[data-path="royalty"] .qvip .vsave b{color:#fff}
+  body[data-path="royalty"] .ptabs{display:flex;gap:.4rem;background:var(--acc-soft);padding:.3rem;border-radius:100px;width:max-content;max-width:100%;margin:0 auto 1rem}
+  body[data-path="royalty"] .ptabs button{border:0;background:transparent;font-family:var(--f-body);font-weight:700;font-size:.85rem;color:var(--ink-2);padding:.55rem 1rem;border-radius:100px;cursor:pointer;min-height:40px}
+  body[data-path="royalty"] .ptabs button span{opacity:.6;font-weight:600;margin-left:.15rem}
+  body[data-path="royalty"] .ptabs button[aria-selected="true"]{background:var(--acc);color:#fff;box-shadow:0 6px 16px -10px rgba(75,19,20,.7)}
+  body[data-path="royalty"] .ptabs button[aria-selected="true"] span{opacity:.85}
+  body[data-path="royalty"] .pgal{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.25rem .1rem 1rem;scrollbar-width:thin}
+  body[data-path="royalty"] .pcard{flex:0 0 min(78%,280px);scroll-snap-align:start;margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 30px -24px rgba(75,19,20,.45)}
+  body[data-path="royalty"] .pimg{position:relative;display:block;border:0;padding:0;margin:0;background:#111;cursor:zoom-in;height:320px;overflow:hidden}
+  body[data-path="royalty"] .pimg img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  body[data-path="royalty"] .pzoom{position:absolute;right:.6rem;bottom:.6rem;background:rgba(255,255,255,.94);color:#2A1718;font-size:.75rem;font-weight:700;padding:.3rem .65rem;border-radius:100px}
+  body[data-path="royalty"] .pcard figcaption{padding:.9rem 1rem 1rem;display:flex;flex-direction:column;gap:.2rem}
+  body[data-path="royalty"] .pcard b{font-family:var(--f-head);font-size:1rem;color:var(--acc)}
+  body[data-path="royalty"] .pwhat{font-size:.92rem;font-weight:600;color:var(--ink);line-height:1.35}
+  body[data-path="royalty"] .pwhen{font-size:.78rem;color:var(--ink-3)}
+  body[data-path="royalty"] .pnote{font-size:.8rem;line-height:1.45;color:var(--ink-2);margin-top:.3rem}
+  body[data-path="royalty"] .pswipe{font-size:.8rem;color:var(--ink-3);text-align:right;margin:0}
+  body[data-path="royalty"] .pdisc{font-size:.8rem;line-height:1.45;color:var(--ink-2);border-left:2px solid var(--gold);padding-left:.7rem;margin:.6rem 0 0}
+  body[data-path="royalty"] .qplink{display:flex;align-items:center;gap:.8rem;width:100%;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:.6rem .9rem .6rem .6rem;cursor:pointer;font-family:var(--f-body);font-weight:700;font-size:.9rem;color:var(--acc);text-align:left;min-height:56px}
+  body[data-path="royalty"] .qplink:hover{border-color:var(--gold)}
+  body[data-path="royalty"] .qplink .pth{display:flex;flex:none}
+  body[data-path="royalty"] .qplink .pth img{width:34px;height:44px;object-fit:cover;object-position:top;border-radius:6px;border:2px solid var(--card);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+  body[data-path="royalty"] .qplink .pth img+img{margin-left:-12px}
+  body[data-path="royalty"] .qplink i{margin-left:auto;font-style:normal;font-size:1.2rem}
+  .plight{position:fixed;inset:0;z-index:300;background:rgba(18,8,9,.94);overflow:auto;padding:3.5rem 1rem 2rem;-webkit-overflow-scrolling:touch}
+  .plight[hidden]{display:none}
+  .plight img{display:block;width:min(100%,720px);height:auto;margin:0 auto;border-radius:12px}
+  .plight .plx{position:fixed;top:.8rem;right:.8rem;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#2A1718;font-size:1.6rem;line-height:1;cursor:pointer;z-index:1}
+  body.plight-open{overflow:hidden}
+  @media(min-width:720px){
+    body[data-path="royalty"] .qinfo .ptabs{margin:0 0 1rem}
+    body[data-path="royalty"] .qinfo .pcard{flex:0 0 250px}
+    body[data-path="royalty"] .qinfo .pimg{height:300px}
+    body[data-path="royalty"] #preuves .pgal{justify-content:center}
+  }
   body[data-path="royalty"] .qturbo{font-size:.9rem;line-height:1.5;color:var(--ink-2);margin-top:1rem}
   body[data-path="royalty"] .quiz-body .qturbo{text-align:left;margin:.25rem 0 0}
 
@@ -1058,6 +1092,17 @@
         <button type="button" class="prow" data-pillar="4"><span class="pill-n">4</span><span><b>Formations</b><span class="hook">L'Academy et les formations hebdomadaires, incluses.</span></span><span class="chev">→</span></button>
         <button type="button" class="prow" data-pillar="5"><span class="pill-n">5</span><span><b>Développement personnel</b><span class="hook">Des coachs experts, au tarif membre.</span></span><span class="chev">→</span></button>
       </div>
+    </div>
+  </section>
+
+  <section id="preuves" class="band-soft" data-dock-t="Ils l'ont vécu." data-dock-s="Captures à l'appui." data-dock-b="Découvrir" data-dock-go="#simu">
+    <div class="wrap">
+      <div class="stack narrow center" data-reveal>
+        <p class="kicker">Preuves</p>
+        <h2>Ils l'ont vécu. <span class="hl">Captures à l'appui.</span></h2>
+        <p class="soft">Des captures réelles, partagées par des membres dans le groupe privé du club. Touche une capture pour l'agrandir.</p>
+      </div>
+      <div class="mt" data-proofhost data-reveal></div>
     </div>
   </section>
 
@@ -1676,6 +1721,7 @@
     ];
     PILLAR_ORDER.forEach(function(n, i){ st.push({ type:"pillar", p:PILLARS[n - 1], i:i }); if (PILLARS[n - 1].calc === "travel") st.push({ type:"vip", side:true }); });
     st.push({ type:"recap" });
+    st.push({ type:"proofs" });
     st.push({ type:"info", kicker:"Rejoindre le club", title:"Une seule porte ouvre les cinq piliers. <span class=\"hl\">Deux façons de la franchir.</span>", sub:"Choisis ta porte d'entrée : client, ou ambassadeur avec ta licence.", aside:function(){ return isMobile() ? '' : cloneFrom("#adhesion [data-adv]") + '<p class="qnote">' + legalText() + '</p>'; },
       build:function(){ if (isMobile()) return cloneFrom("#adhesion .plans") + cloneFrom("#adhesion .qturbo") + cloneFrom("#adhesion [data-adv]") + '<details class="qcalc qlegal"><summary>Montants et conditions</summary><p>' + legalText() + '</p></details>'; return cloneFrom("#adhesion .plans") + cloneFrom("#adhesion .qturbo"); } });
     st.push({ type:"info", kicker:"Questions fréquentes", title:"Ce qu'on nous demande <span class=\"hl\">avant de rejoindre</span>.", sub:"", build:function(){ return '<div class="acc-list">' + cloneMany("#faq .acc", 5) + '</div>'; } });
@@ -1988,23 +2034,79 @@
     return '<details class="qcalc qsrc"><summary>D\'où vient le chiffre de 36 % ?</summary><p>Comparatif de 46 hôtels entre Travel Advantage et Booking, publié en mai 2026 par Lysiane Tendil, ambassadrice MWR Life rémunérée sur les abonnements : 36 % d\'économie moyenne, plus de 50 % dans les meilleurs cas, et sur 4 hôtels sur 46, Booking était aussi cher ou moins cher. La méthode n\'est pas détaillée par l\'auteure. Les prix varient selon les dates, les destinations et les chambres : ton économie peut être plus forte ou plus faible. <a href="https://traveladvantage.team/blog/travel-advantage-avis-2026" target="_blank" rel="noopener">Lire le comparatif</a></p></details>';
   }
   function extraHTML(p){
-    if (p.calc === "travel") return srcHTML() +
-      '<div class="qtesti"><p class="kicker">Ils l\'ont vécu</p>' +
-      '<blockquote>« Pour 3 nuits à Malaga, 99 € d\'économie. »<cite>Pauline E.</cite></blockquote>' +
-      '<blockquote>« 4 891 $ économisés sur mes voyages depuis novembre 2024, et trois Life Experiences. »<cite>Cassandra D.</cite></blockquote></div>';
-    if (p.calc === "earn") return '<div class="qtesti"><p class="kicker">Paiements reçus par des membres · 19 août 2026</p>' +
-      '<blockquote>« Ça m\'apporte de la stabilité. »<cite>Maude C. · 113 $ reçus</cite></blockquote>' +
-      '<blockquote>« Franchement, c\'est un plaisir d\'être payé chaque semaine. »<cite>Thibaut R. · 744 $ reçus</cite></blockquote>' +
-      '<blockquote>« J\'ai pu offrir un séjour complet en Grèce à mes petits frères et sœurs. »<cite>Sarah A. · 1 788 $ reçus</cite></blockquote>' +
-      '<p class="qdisc">Résultats individuels, qui dépendent de l\'activité de chacun et ne sont pas représentatifs. Aucun revenu n\'est garanti.</p></div>' +
-      '<details class="qcalc"><summary>Comment c\'est calculé ?</summary><p>Pour chaque personne qui prend l\'adhésion Élite avec licence : 40 $ de bonus d\'accueil et 10 $ de Builder Bonus, soit environ 46 € à son inscription. Puis 10 % de son abonnement de 119,97 $, soit environ 11 € chaque mois tant qu\'elle reste membre (10 % jusqu\'à 25 membres, 25 % dès 101). Barème relevé sur des sources publiques : la référence reste le plan de rémunération officiel MWR Life. Aucun revenu n\'est garanti.</p></details>';
+    if (p.calc === "travel") return srcHTML() + proofLink("voyage", "Voir les économies en captures");
+    if (p.calc === "earn") return '<details class="qcalc"><summary>Comment c\'est calculé ?</summary><p>Pour chaque personne qui prend l\'adhésion Élite avec licence : 40 $ de bonus d\'accueil et 10 $ de Builder Bonus, soit environ 46 € à son inscription. Puis 10 % de son abonnement de 119,97 $, soit environ 11 € chaque mois tant qu\'elle reste membre (10 % jusqu\'à 25 membres, 25 % dès 101). Barème relevé sur des sources publiques : la référence reste le plan de rémunération officiel MWR Life. Aucun revenu n\'est garanti.</p></details>' + proofLink("revenus", "Voir les paiements reçus par des membres");
+    if (p.n === 1) return proofLink("reseau", "Voir ce qu\'en disent les membres");
     return '';
   }
+  /* ---------- preuves en captures d'écran ---------- */
+  var PROOFS = [
+    { t:"voyage", img:"voyage-pauline-malaga.jpg", who:"Pauline E.", what:"99 € économisés, 3 nuits à Malaga", when:"Octobre 2026", note:"Même hôtel, mêmes dates, 2 adultes : 392 € sur le site de l\'hôtel, 293 € via Travel Advantage." },
+    { t:"voyage", img:"voyage-brice-dubai.jpg", who:"Brice M.", what:"1 nuit 4 étoiles à Dubaï Marina", when:"Septembre 2026", note:"Même hôtel, même date, 1 adulte, petit-déjeuner : 297 € sur Booking, 102 € via Travel Advantage, 91 € après points fidélité." },
+    { t:"voyage", img:"voyage-cassandra.jpg", who:"Cassandra D.", what:"4 891 $ économisés depuis novembre 2024", when:"Août 2026", note:"Montant cumulé déclaré par la membre." },
+    { t:"revenus", img:"revenus-sarah.jpg", who:"Sarah A.", what:"1 788 $ de commissions reçues", when:"19 août 2026" },
+    { t:"revenus", img:"revenus-maude-thibaut.jpg", who:"Maude C. et Thibaut R.", what:"113 $ et 744 $ de commissions reçues", when:"19 août 2026" },
+    { t:"reseau", img:"reseau-fiona.jpg", who:"Fiona C.", what:"Plus de clients pour son activité", when:"Septembre 2026" },
+    { t:"reseau", img:"reseau-conseiller.jpg", who:"Conseiller en patrimoine, membre du club", what:"7 membres accompagnés grâce au réseau", when:"2026" }
+  ];
+  var PROOF_TABS = [["voyage","Voyage"],["revenus","Revenus"],["reseau","Réseau"]];
+  var PROOF_DIR = "royalty-preuves/";
+  var proofTab = "voyage", proofsFrom = -1;
+  function proofBox(tab){
+    var list = PROOFS.filter(function(x){ return x.t === tab; });
+    var tabs = '<div class="ptabs" role="tablist">' + PROOF_TABS.map(function(t){
+      var n = PROOFS.filter(function(x){ return x.t === t[0]; }).length;
+      return '<button type="button" role="tab" data-ptab="' + t[0] + '" aria-selected="' + (t[0] === tab) + '">' + t[1] + ' <span>' + n + '</span></button>';
+    }).join('') + '</div>';
+    var cards = list.map(function(x){
+      return '<figure class="pcard"><button type="button" class="pimg" data-plight="' + PROOF_DIR + x.img + '" aria-label="Agrandir la capture de ' + x.who + '"><img src="' + PROOF_DIR + x.img + '" alt="Capture partagée par ' + x.who + '" loading="lazy"><span class="pzoom">Agrandir</span></button>' +
+        '<figcaption><b>' + x.who + '</b><span class="pwhat">' + x.what + '</span><span class="pwhen">' + x.when + '</span>' + (x.note ? '<span class="pnote">' + x.note + '</span>' : '') + '</figcaption></figure>';
+    }).join('');
+    var disc = tab === "revenus" ? '<p class="pdisc">Résultats individuels, qui dépendent de l\'activité de chacun et ne sont pas représentatifs. Aucun revenu n\'est garanti.</p>' : '';
+    return '<div class="pbox" data-proofbox>' + tabs + '<div class="pgal">' + cards + '</div>' + (list.length > 1 ? '<p class="pswipe">Glisse pour voir les autres →</p>' : '') + disc + '</div>';
+  }
+  function proofLink(tab, label){
+    var th = PROOFS.filter(function(x){ return x.t === tab; }).slice(0, 2).map(function(x){ return '<img src="' + PROOF_DIR + x.img + '" alt="" loading="lazy">'; }).join('');
+    return '<button type="button" class="qplink" data-goproof="' + tab + '"><span class="pth">' + th + '</span><span>' + label + '</span><i aria-hidden="true">→</i></button>';
+  }
+  function proofsIndex(){ for (var i = 0; i < qSteps.length; i++) if (qSteps[i].type === "proofs") return i; return -1; }
+  function proofsHTML(){
+    var side = proofsFrom >= 0;
+    return '<p class="kicker">Preuves</p><h2>Ils l\'ont vécu. <span class="hl">Captures à l\'appui.</span></h2>' +
+      '<p class="soft">Des captures réelles, partagées par des membres dans le groupe privé du club. Touche une capture pour l\'agrandir.</p>' +
+      '<div class="qinfo">' + proofBox(proofTab) + '</div>' +
+      '<div class="qfoot">' + (side
+        ? '<button type="button" class="btn btn-gold" data-q="proofback">← Revenir au parcours</button><button type="button" class="btn btn-line" data-q="next">Voir les formules →</button>'
+        : '<button type="button" class="btn btn-gold" data-q="next">Voir les deux formules →</button><a class="btn btn-line" data-q="wa" href="#">En parler à Mathilda</a>') + '</div>';
+  }
+  document.addEventListener("click", function(e){
+    var t = e.target.closest("[data-ptab]");
+    if (t){ var box = t.closest("[data-proofbox]"); proofTab = t.getAttribute("data-ptab"); var tmp = document.createElement("div"); tmp.innerHTML = proofBox(proofTab); box.replaceWith(tmp.firstElementChild); if (!quiz.hidden) fitScreen(); track("proof_tab", { tab:proofTab }); return; }
+    var g = e.target.closest("[data-goproof]");
+    if (g){ e.preventDefault(); proofTab = g.getAttribute("data-goproof"); if (quiz.hidden){ openQuiz(true); proofsFrom = -1; } else proofsFrom = qi; var i = proofsIndex(); if (i >= 0){ qi = i; renderStep(); } track("proof_open", { tab:proofTab }); return; }
+    var b = e.target.closest('[data-q="proofback"]');
+    if (b){ e.preventDefault(); var to = proofsFrom; proofsFrom = -1; qi = Math.max(0, to); renderStep(); return; }
+    var z = e.target.closest("[data-plight]");
+    if (z){ e.preventDefault(); openLight(z.getAttribute("data-plight")); }
+  });
+  function openLight(src){
+    var lb = document.getElementById("plight");
+    if (!lb){
+      lb = document.createElement("div"); lb.id = "plight"; lb.className = "plight"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true");
+      lb.innerHTML = '<button type="button" class="plx" aria-label="Fermer">×</button><img alt="Capture d\'écran agrandie">';
+      lb.addEventListener("click", function(ev){ if (ev.target === lb || ev.target.closest(".plx")) closeLight(); });
+      document.body.appendChild(lb);
+    }
+    lb.querySelector("img").src = src; lb.hidden = false; lb.scrollTop = 0; document.body.classList.add("plight-open");
+  }
+  function closeLight(){ var lb = document.getElementById("plight"); if (lb){ lb.hidden = true; document.body.classList.remove("plight-open"); } }
+  document.addEventListener("keydown", function(e){ var lb = document.getElementById("plight"); if (e.key === "Escape" && lb && !lb.hidden){ e.stopPropagation(); closeLight(); } }, true);
   function startEur(k){
     var usd = ({ client:239.97, amb:338.97 })[k] - (LICENCE_OFFERTE && k === "amb" ? 99 : 0);
     return nb(new Intl.NumberFormat("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2}).format(usd * USD_EUR_RATE)) + " €";
   }
   function bindPricing(){
+    main.querySelectorAll("[data-proofhost]").forEach(function(h){ h.innerHTML = proofBox("voyage"); });
     var off = LICENCE_OFFERTE, LIC = 91.08;
     main.querySelectorAll("[data-lic-badge]").forEach(function(e){ e.hidden = !off; });
     main.querySelectorAll("[data-lic-cell]").forEach(function(e){ e.innerHTML = off ? '<s style="opacity:.6">91,08 €</s> offerte' : '91,08 €'; });
@@ -2037,6 +2139,7 @@
     else if (st.type === "recap"){ h = recapHTML(); }
     else if (st.type === "story"){ h = storyHTML(); }
     else if (st.type === "vip"){ h = vipHTML(); }
+    else if (st.type === "proofs"){ h = proofsHTML(); }
     else if (st.type === "info"){
       var isLastInfo = qSteps[qi + 1] && qSteps[qi + 1].type === "final";
       h = '<p class="kicker">' + st.kicker + '</p><h2>' + st.title + '</h2>' + (st.sub ? '<p class="soft">' + st.sub + '</p>' : '') + (st.aside ? st.aside() : '') +
