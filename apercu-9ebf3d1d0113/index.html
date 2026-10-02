@@ -1013,8 +1013,8 @@
   @keyframes tsway{0%,100%{transform:perspective(800px) rotateX(4deg) rotateY(-7deg)}50%{transform:perspective(800px) rotateX(-3deg) rotateY(7deg)}}
   body[data-path="royalty"] .glare{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,236,190,.5),transparent 55%);opacity:var(--go,0);transition:opacity .4s;pointer-events:none;mix-blend-mode:soft-light;z-index:2}
   body[data-path="royalty"] .plan .glare{mix-blend-mode:normal;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(233,207,138,.22),transparent 50%)}
-  body[data-path="royalty"] .rise{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 55ms)}
-  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  body[data-path="royalty"] .rise{animation:rise .32s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 30ms)}
+  @keyframes rise{from{opacity:.45;transform:translateY(10px)}to{opacity:1;transform:none}}
   body[data-path="royalty"] .nflash{animation:nflash .8s ease-out}
   @keyframes nflash{0%{text-shadow:0 0 0 rgba(240,210,154,0)}35%{text-shadow:0 0 18px rgba(240,210,154,.95),0 0 4px rgba(255,255,255,.8);color:#FFF1C9}100%{text-shadow:0 0 0 rgba(240,210,154,0)}}
   body[data-path="royalty"] .pfx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
@@ -2353,7 +2353,7 @@
     if (st.type === "intro") makeParticles(quiz, function(){ return !quiz.hidden && quiz.classList.contains("on-intro"); }).start();
     if (!reduce){
       var nodes = isMobile() ? [].slice.call(qBody.children) : [].slice.call(qBody.querySelectorAll(".qfit > .qL > *, .qfit > .qR > *"));
-      nodes.forEach(function(n, i){ n.classList.add("rise"); n.style.setProperty("--i", Math.min(i, 8)); });
+      nodes.forEach(function(n, i){ n.classList.add("rise"); n.style.setProperty("--i", Math.min(i, 5)); });
     }
     if (st.type === "pillar" || st.type === "recap") animNums(qBody, null);
   }
