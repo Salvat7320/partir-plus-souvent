@@ -2125,6 +2125,7 @@
   var PROOF_TABS = [["voyage","Voyage"],["revenus","Revenus"],["reseau","Réseau"]];
   var PROOF_DIR = "royalty-preuves/";
   var proofTab = "voyage", proofsFrom = -1;
+  var PROOF_DIM = {"reseau-conseiller.jpg": [900, 1159], "reseau-fiona.jpg": [900, 756], "revenus-maude-thibaut.jpg": [738, 990], "revenus-sarah.jpg": [900, 753], "voyage-brice-dubai.jpg": [900, 1448], "voyage-cassandra-life.jpg": [900, 1441], "voyage-cassandra.jpg": [900, 1068], "voyage-pauline-malaga.jpg": [900, 1428]};
   function proofList(tab){ return PROOFS.filter(function(x){ return x.t === tab; }); }
   function capHTML(x){ return x ? '<b>' + x.who + '</b><span class="pwhat">' + x.what + '</span><span class="pwhen">' + x.when + '</span>' + (x.note ? '<span class="pnote">' + x.note + '</span>' : '') + '<span class="ptap">Touche la capture pour l\'agrandir</span>' : ''; }
   function proofBox(tab){
@@ -2133,7 +2134,7 @@
       return '<button type="button" role="tab" data-ptab="' + t[0] + '" aria-selected="' + (t[0] === tab) + '">' + t[1] + ' <span>' + proofList(t[0]).length + '</span></button>';
     }).join('') + '</div>';
     var items = list.map(function(x, i){
-      return '<button type="button" class="cf-item" data-cfi="' + i + '" data-src="' + PROOF_DIR + x.img + '" aria-label="Capture de ' + x.who + '"><img src="' + PROOF_DIR + x.img + '" alt="Capture partagée par ' + x.who + '" loading="lazy"></button>';
+      return '<button type="button" class="cf-item" data-cfi="' + i + '" data-src="' + PROOF_DIR + x.img + '" aria-label="Capture de ' + x.who + '"><img src="' + PROOF_DIR + x.img + '" alt="Capture partagée par ' + x.who + '"' + (PROOF_DIM[x.img] ? ' width="' + PROOF_DIM[x.img][0] + '" height="' + PROOF_DIM[x.img][1] + '"' : '') + ' loading="lazy"></button>';
     }).join('');
     var nav = list.length > 1 ? '<div class="cf-nav"><button type="button" data-cfstep="-1" aria-label="Capture précédente">←</button><span class="cf-l">1 / ' + list.length + '</span><button type="button" data-cfstep="1" aria-label="Capture suivante">→</button></div>' : '';
     var disc = tab === "revenus" ? '<p class="pdisc">Résultats individuels, qui dépendent de l\'activité de chacun et ne sont pas représentatifs. Aucun revenu n\'est garanti.</p>' : '';
@@ -2148,11 +2149,11 @@
       it.style.zIndex = 10 - a; it.style.opacity = a > lim ? 0 : 1; it.style.visibility = a > lim ? "hidden" : ""; it.style.filter = a ? "brightness(.82)" : "none";
       it.tabIndex = a > lim ? -1 : 0; it.setAttribute("aria-current", o === 0 ? "true" : "false");
     });
-    items.forEach(function(it){ var im = it.querySelector("img"); if (im && im.complete) cfLong(im); });
+    items.forEach(function(it){ var im = it.querySelector("img"); if (im) cfLong(im); });
     var l = box.querySelector(".cf-l"); if (l) l.textContent = (cur + 1) + " / " + items.length;
     var cap = box.querySelector(".pcap"), list = proofList(box.getAttribute("data-tab")); if (cap && list[cur]) cap.innerHTML = capHTML(list[cur]);
   }
-  function cfLong(img){ var it = img.closest(".cf-item"); if (!it || !img.naturalWidth) return; it.classList.toggle("long", img.naturalHeight / img.naturalWidth * it.clientWidth > parseFloat(getComputedStyle(it).maxHeight) + 2); }
+  function cfLong(img){ var it = img.closest(".cf-item"); var iw = +img.getAttribute("width") || img.naturalWidth, ih = +img.getAttribute("height") || img.naturalHeight; if (!it || !iw) return; it.classList.toggle("long", ih / iw * it.clientWidth > parseFloat(getComputedStyle(it).maxHeight) + 2); }
   document.addEventListener("load", function(e){ if (e.target.matches && e.target.matches(".cf-item img")) cfLong(e.target); }, true);
   function flowGo(box, n){ var c = box.querySelectorAll(".cf-item").length; box.setAttribute("data-cur", Math.max(0, Math.min(c - 1, n))); layFlow(box); }
   var swipeFlow = null, swipeX = 0;
