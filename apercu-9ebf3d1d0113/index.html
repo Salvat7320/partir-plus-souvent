@@ -1812,7 +1812,7 @@
   }
   function closeQuiz(silent){
     if (quiz.hidden) return;
-    quiz.hidden = true; document.body.classList.remove("quiz-open"); unlockPage();
+    quiz.hidden = true; document.body.classList.remove("quiz-open"); unlockPage(); lastQi = -1;
     var _hh = main.querySelector(".hero-club"); if (_hh && _hh._pt && _hh._vis) setTimeout(function(){ _hh._pt.start(); }, 0);
     updateMirror();
     if (!silent) track("quiz_close", { step:qi });
@@ -2357,6 +2357,22 @@
     }
     if (st.type === "pillar" || st.type === "recap") animNums(qBody, null);
   }
+  /* fondu enchaîné entre deux écrans du parcours : l'ancien s'efface par-dessus le nouveau, jamais d'écran vide */
+  var lastQi = -1;
+  function crossGhost(){
+    var same = lastQi === qi, first = lastQi < 0; lastQi = qi;
+    if (same || first || reduce || quiz.hidden || !qBody.firstChild || !qBody.animate) return;
+    var r = qBody.getBoundingClientRect(), qr = quiz.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    var g = qBody.cloneNode(true);
+    g.removeAttribute("id"); g.classList.add("qghost"); g.setAttribute("aria-hidden", "true");
+    g.querySelectorAll("[id]").forEach(function(n){ n.removeAttribute("id"); });
+    g.style.cssText = "position:absolute;left:" + (r.left - qr.left) + "px;top:" + (r.top - qr.top) + "px;width:" + r.width + "px;height:" + r.height + "px;margin:0;overflow:hidden;z-index:3;pointer-events:none;background:" + getComputedStyle(quiz).backgroundColor;
+    quiz.appendChild(g); g.scrollTop = qBody.scrollTop;
+    g.animate([{ opacity:1 }, { opacity:0 }], { duration:280, easing:"ease-in", fill:"forwards" });
+    setTimeout(function(){ if (g.parentNode) g.parentNode.removeChild(g); }, 520);
+    requestAnimationFrame(function(){ try { qBody.animate([{ opacity:0 }, { opacity:1 }], { duration:340, easing:"ease-out" }); } catch(e){} });
+  }
   function bindPricing(){
     main.querySelectorAll("[data-proofhost]").forEach(function(h){ h.innerHTML = proofBox("voyage"); });
     var off = LICENCE_OFFERTE, LIC = 91.08;
@@ -2370,6 +2386,7 @@
   }
   function renderStep(){
     var st = qSteps[qi];
+    crossGhost();
     qBar.style.width = Math.round(((mainPos() - 1) / (mainCount() - 1)) * 100) + "%";
     $("qBack").style.visibility = qi > 0 ? "visible" : "hidden";
     $("qSkip").hidden = !(isQ(st) || st.type === "info" || st.type === "pillar" || st.type === "story");
