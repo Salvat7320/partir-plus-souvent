@@ -920,7 +920,7 @@
   .plight{position:fixed;inset:0;z-index:300;background:rgba(18,8,9,.94);overflow:auto;padding:3.5rem 1rem 2rem;-webkit-overflow-scrolling:touch}
   .plight[hidden]{display:none}
   .plight img{display:block;width:min(100%,720px);height:auto;margin:0 auto;border-radius:12px}
-  .plight .plx{position:fixed;top:.8rem;right:.8rem;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#2A1718;font-size:1.6rem;line-height:1;cursor:pointer;z-index:1}
+  .plight .plx{position:fixed;top:.8rem;right:.8rem;width:44px;height:44px;min-width:0;padding:0;box-sizing:border-box;aspect-ratio:1;display:grid;place-items:center;-webkit-appearance:none;appearance:none;border-radius:50%;border:0;box-shadow:0 6px 18px rgba(0,0,0,.35);background:#fff;color:#2A1718;font-size:1.6rem;line-height:1;cursor:pointer;z-index:1}
   body.plight-open{overflow:hidden}
   @media(min-width:720px){
     body[data-path="royalty"] .qinfo .ptabs{margin:0 auto 1rem}
@@ -1069,6 +1069,9 @@
   body[data-path="royalty"] .ptap{font-size:.75rem;color:var(--ink-3);margin-top:.3rem}
   body[data-path="royalty"] .pbox .pdisc{max-width:26rem;margin:.75rem auto 0}
   @media(prefers-reduced-motion:reduce){body[data-path="royalty"] .rise,body[data-path="royalty"] .mcard,body[data-path="royalty"] .tile{animation:none!important}}
+  /* iPhone : parcours collé aux 4 bords, défilement interne contenu */
+  body[data-path="royalty"] .quiz{height:auto!important;top:0;bottom:0;overscroll-behavior:none}
+  body[data-path="royalty"] .quiz-body,body[data-path="royalty"] .plight{overscroll-behavior:contain}
 </style>
 
 </head>
@@ -1802,13 +1805,14 @@
   }
   function openQuiz(skipIntro){
     qSteps = buildSteps(); qi = skipIntro ? 1 : 0;
+    if (quiz.hidden) lockPage();
     quiz.hidden = false; document.body.classList.add("quiz-open");
     renderStep(); track("quiz_open");
     return true;
   }
   function closeQuiz(silent){
     if (quiz.hidden) return;
-    quiz.hidden = true; document.body.classList.remove("quiz-open");
+    quiz.hidden = true; document.body.classList.remove("quiz-open"); unlockPage();
     var _hh = main.querySelector(".hero-club"); if (_hh && _hh._pt && _hh._vis) setTimeout(function(){ _hh._pt.start(); }, 0);
     updateMirror();
     if (!silent) track("quiz_close", { step:qi });
@@ -2193,6 +2197,18 @@
     var z = e.target.closest("[data-plight]");
     if (z){ e.preventDefault(); openLight(z.getAttribute("data-plight")); }
   });
+  /* verrou de défilement fiable sur iPhone : la page derrière ne bouge plus */
+  var lockY = 0, lockN = 0;
+  function lockPage(){
+    if (lockN++) return;
+    lockY = window.scrollY || window.pageYOffset || 0;
+    var b = document.body.style; b.position = "fixed"; b.top = -lockY + "px"; b.left = "0"; b.right = "0"; b.width = "100%";
+  }
+  function unlockPage(){
+    if (!lockN || --lockN) return;
+    var b = document.body.style; b.position = b.top = b.left = b.right = b.width = "";
+    var se = document.documentElement.style, sb = se.scrollBehavior; se.scrollBehavior = "auto"; window.scrollTo(0, lockY); se.scrollBehavior = sb;
+  }
   function openLight(src){
     var lb = document.getElementById("plight");
     if (!lb){
@@ -2201,9 +2217,9 @@
       lb.addEventListener("click", function(ev){ if (ev.target === lb || ev.target.closest(".plx")) closeLight(); });
       document.body.appendChild(lb);
     }
-    lb.querySelector("img").src = src; lb.hidden = false; lb.scrollTop = 0; document.body.classList.add("plight-open");
+    lb.querySelector("img").src = src; if (lb.hidden !== false) lockPage(); lb.hidden = false; lb.scrollTop = 0; document.body.classList.add("plight-open");
   }
-  function closeLight(){ var lb = document.getElementById("plight"); if (lb){ lb.hidden = true; document.body.classList.remove("plight-open"); } }
+  function closeLight(){ var lb = document.getElementById("plight"); if (lb && !lb.hidden){ lb.hidden = true; document.body.classList.remove("plight-open"); unlockPage(); } }
   document.addEventListener("keydown", function(e){ var lb = document.getElementById("plight"); if (e.key === "Escape" && lb && !lb.hidden){ e.stopPropagation(); closeLight(); } }, true);
   function startEur(k){
     var usd = ({ client:239.97, amb:338.97 })[k] - (LICENCE_OFFERTE && k === "amb" ? 99 : 0);
