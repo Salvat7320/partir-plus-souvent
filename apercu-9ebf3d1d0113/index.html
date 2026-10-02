@@ -2298,14 +2298,17 @@
   function numOf(t){ var d = String(t || "").replace(/[^\d]/g, ""); return d ? +d : 0; }
   function snapNums(root){ var m = {}; root.querySelectorAll("[data-cnt]").forEach(function(el){ m[el.getAttribute("data-cnt")] = numOf(el.textContent); }); return m; }
   function animNums(root, prev){
-    if (reduce) return;
+    if (reduce || document.hidden) return;
     root.querySelectorAll("[data-cnt]").forEach(function(el){
       var k = el.getAttribute("data-cnt"), to = numOf(el.textContent), from = prev ? (prev[k] != null ? prev[k] : to) : 0;
       if (from === to) return;
-      var t0 = performance.now(); el.textContent = E(from);
+      var t0 = performance.now(), done = false, run = (el._run || 0) + 1; el._run = run; el.textContent = E(from);
+      setTimeout(function(){ if (!done && el._run === run){ done = true; el.textContent = E(to); } }, 900);
       (function f(now){
+        if (done || el._run !== run) return;
         var q = Math.min(1, (now - t0) / 650), e = 1 - Math.pow(1 - q, 3);
         el.textContent = E(Math.round(from + (to - from) * e));
+        if (q >= 1) done = true;
         if (q < 1) requestAnimationFrame(f);
         else if (prev){ el.classList.remove("nflash"); void el.offsetWidth; el.classList.add("nflash"); }
       })(t0);
