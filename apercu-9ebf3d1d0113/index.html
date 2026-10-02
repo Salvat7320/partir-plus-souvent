@@ -2217,9 +2217,9 @@
       lb.addEventListener("click", function(ev){ if (ev.target === lb || ev.target.closest(".plx")) closeLight(); });
       document.body.appendChild(lb);
     }
-    lb.querySelector("img").src = src; if (lb.hidden !== false) lockPage(); lb.hidden = false; lb.scrollTop = 0; document.body.classList.add("plight-open");
+    lb.querySelector("img").src = src; if (!lb._open){ lb._open = true; lockPage(); } lb.hidden = false; lb.scrollTop = 0; document.body.classList.add("plight-open");
   }
-  function closeLight(){ var lb = document.getElementById("plight"); if (lb && !lb.hidden){ lb.hidden = true; document.body.classList.remove("plight-open"); unlockPage(); } }
+  function closeLight(){ var lb = document.getElementById("plight"); if (lb && lb._open){ lb._open = false; lb.hidden = true; document.body.classList.remove("plight-open"); unlockPage(); } }
   document.addEventListener("keydown", function(e){ var lb = document.getElementById("plight"); if (e.key === "Escape" && lb && !lb.hidden){ e.stopPropagation(); closeLight(); } }, true);
   function startEur(k){
     var usd = ({ client:239.97, amb:338.97 })[k] - (LICENCE_OFFERTE && k === "amb" ? 99 : 0);
