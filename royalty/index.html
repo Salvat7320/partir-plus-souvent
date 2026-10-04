@@ -1072,6 +1072,13 @@
   /* iPhone : parcours collé aux 4 bords, défilement interne contenu */
   body[data-path="royalty"] .quiz{height:auto!important;top:0;bottom:0;overscroll-behavior:none}
   body[data-path="royalty"] .quiz-body,body[data-path="royalty"] .plight{overscroll-behavior:contain}
+  /* pause des animations invisibles : même rendu, beaucoup moins de calcul */
+  .fx-off,.fx-off *,.fx-off::before,.fx-off::after,.fx-off *::before,.fx-off *::after,
+  html.fx-hidden *,html.fx-hidden *::before,html.fx-hidden *::after,
+  body.quiz-open #main,body.quiz-open #main *,body.quiz-open #main *::before,body.quiz-open #main *::after{animation-play-state:paused!important}
+  /* reflet des boutons : même mouvement, déplacé par transformation (plus de recalcul de mise en page à chaque image) */
+  @keyframes royalSheen2{0%,72%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
+  body[data-path="royalty"][data-theme="blanc"] .btn-gold::after{left:-60%!important;animation-name:royalSheen2!important;will-change:transform}
 </style>
 
 </head>
@@ -2278,34 +2285,37 @@
   function makeParticles(host, active){
     if (host._pt) return host._pt;
     var cv = document.createElement("canvas"); cv.className = "pfx"; cv.setAttribute("aria-hidden", "true"); host.insertBefore(cv, host.firstChild);
-    var ctx = cv.getContext("2d"), dpr = Math.min(2, window.devicePixelRatio || 1), W = 0, H = 0, P = [], mx = -999, my = -999, running = false;
+    var ctx = cv.getContext("2d"), dpr = Math.min(1.5, window.devicePixelRatio || 1), W = 0, H = 0, P = [], mx = -999, my = -999, running = false, lastF = 0;
+    var spr = document.createElement("canvas"); spr.width = spr.height = 32;
+    (function(){ var c = spr.getContext("2d"), g = c.createRadialGradient(16, 16, 0, 16, 16, 16); g.addColorStop(0, "rgba(184,146,74,1)"); g.addColorStop(.45, "rgba(212,175,90,.5)"); g.addColorStop(1, "rgba(212,175,90,0)"); c.fillStyle = g; c.fillRect(0, 0, 32, 32); })();
     function np(){ return { x:Math.random() * W, y:Math.random() * H, r:.7 + Math.random() * 2, vy:-(.12 + Math.random() * .3), vx:(Math.random() - .5) * .16, ph:Math.random() * 6.28, sp:.012 + Math.random() * .02 }; }
     function size(){
       var r = host.getBoundingClientRect(); W = r.width; H = r.height;
       cv.width = Math.max(1, Math.round(W * dpr)); cv.height = Math.max(1, Math.round(H * dpr)); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var N = Math.round(Math.max(22, Math.min(56, W * H / 8000))); while (P.length < N) P.push(np()); P.length = N;
+      var N = Math.round(Math.max(16, Math.min(34, W * H / 12000))); while (P.length < N) P.push(np()); P.length = N;
     }
     function draw(move){
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < P.length; i++){
         var p = P[i];
         if (move){
-          p.ph += p.sp; p.x += p.vx; p.y += p.vy;
+          p.ph += p.sp * 2; p.x += p.vx * 2; p.y += p.vy * 2;
           var dx = p.x - mx, dy = p.y - my, d = Math.sqrt(dx * dx + dy * dy);
           if (d < 90 && d > 0){ var f = (90 - d) / 90 * 2.2; p.x += dx / d * f; p.y += dy / d * f; }
           if (p.y < -6){ p.y = H + 6; p.x = Math.random() * W; }
           if (p.x < -6) p.x = W + 6; else if (p.x > W + 6) p.x = -6;
         }
-        var a = .3 + .45 * (.5 + .5 * Math.sin(p.ph)), g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-        g.addColorStop(0, "rgba(184,146,74," + a + ")"); g.addColorStop(.45, "rgba(212,175,90," + (a * .5) + ")"); g.addColorStop(1, "rgba(212,175,90,0)");
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, 6.283); ctx.fill();
+        var sz = p.r * 6;
+        ctx.globalAlpha = .3 + .45 * (.5 + .5 * Math.sin(p.ph));
+        ctx.drawImage(spr, p.x - sz / 2, p.y - sz / 2, sz, sz);
       }
+      ctx.globalAlpha = 1;
     }
-    function frame(){ if (document.hidden || !active()){ running = false; return; } draw(true); requestAnimationFrame(frame); }
+    function frame(now){ if (document.hidden || !active()){ running = false; return; } if (!lastF || now - lastF >= 31){ lastF = now; draw(true); } requestAnimationFrame(frame); }
     host.addEventListener("pointermove", function(e){ var r = host.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
     host.addEventListener("pointerleave", function(){ mx = my = -999; });
     window.addEventListener("resize", function(){ if (running) size(); });
-    host._pt = { start:function(){ size(); if (reduce){ draw(false); return; } if (running) return; running = true; requestAnimationFrame(frame); } };
+    host._pt = { start:function(){ size(); if (reduce){ draw(false); return; } if (running) return; running = true; lastF = 0; requestAnimationFrame(frame); } };
     return host._pt;
   }
   function heroParticles(){
@@ -2338,14 +2348,23 @@
       })(t0);
     });
   }
+  /* animations en pause dès qu'on ne les voit pas (hors écran, onglet masqué, page cachée sous le parcours) */
+  function fxPause(){
+    if (main._fxp) return; main._fxp = 1;
+    if ("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle("fx-off", !e.isIntersecting); }); }, { rootMargin:"80px 0px" });
+      [].forEach.call(main.children, function(el){ io.observe(el); });
+    }
+    document.addEventListener("visibilitychange", function(){ document.documentElement.classList.toggle("fx-hidden", document.hidden); });
+  }
   function initFx(root){
     root = root || main;
     root.querySelectorAll("[data-memberhost]").forEach(function(h){ if (!h.firstChild) h.innerHTML = memberCardHTML(); });
-    root.querySelectorAll(".wall .tile").forEach(function(el){ bindTilt(el, { max:16, scale:1.03, glare:true, idle:true, persp:true }); });
+    root.querySelectorAll(".wall .tile").forEach(function(el){ bindTilt(el, { max:16, scale:1.03, glare:true, persp:true }); });
     root.querySelectorAll(".plan").forEach(function(el){ bindTilt(el, { max:6, scale:1.01, glare:true, persp:true }); });
     root.querySelectorAll(".mcard").forEach(function(el){ bindTilt(el, { max:26, maxX:14, idle:true, card:true }); });
     root.querySelectorAll("[data-proofbox]").forEach(layFlow);
-    if (root === main) heroParticles();
+    if (root === main){ heroParticles(); fxPause(); }
   }
   function stepFx(st){
     if (!st) return;
